@@ -1,5 +1,5 @@
 ###
-# Copyright (2016) Hewlett Packard Enterprise Development LP
+# Copyright (2016-2017) Hewlett Packard Enterprise Development LP
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # You may not use this file except in compliance with the License.
@@ -17,9 +17,7 @@
 import unittest
 
 from oneview_fc_network_facts import FcNetworkFactsModule
-from test.utils import FactsParamsTestCase
-from test.utils import ModuleContructorTestCase
-from test.utils import ErrorHandlingTestCase
+from hpe_test_utils import OneViewBaseTestCase
 
 ERROR_MSG = 'Fake message error'
 
@@ -40,14 +38,10 @@ PRESENT_NETWORKS = [{
 
 
 class FcNetworkFactsSpec(unittest.TestCase,
-                         ModuleContructorTestCase,
-                         FactsParamsTestCase,
-                         ErrorHandlingTestCase):
+                         OneViewBaseTestCase):
     def setUp(self):
         self.configure_mocks(self, FcNetworkFactsModule)
         self.fc_networks = self.mock_ov_client.fc_networks
-        FactsParamsTestCase.configure_client_mock(self, self.fc_networks)
-        ErrorHandlingTestCase.configure(self, method_to_fire=self.fc_networks.get_by)
 
     def test_should_get_all_fc_networks(self):
         self.fc_networks.get_all.return_value = PRESENT_NETWORKS
@@ -57,7 +51,7 @@ class FcNetworkFactsSpec(unittest.TestCase,
 
         self.mock_ansible_module.exit_json.assert_called_once_with(
             changed=False,
-            ansible_facts=dict(fc_networks=(PRESENT_NETWORKS))
+            ansible_facts=dict(fc_networks=PRESENT_NETWORKS)
         )
 
     def test_should_get_fc_network_by_name(self):
@@ -68,7 +62,7 @@ class FcNetworkFactsSpec(unittest.TestCase,
 
         self.mock_ansible_module.exit_json.assert_called_once_with(
             changed=False,
-            ansible_facts=dict(fc_networks=(PRESENT_NETWORKS))
+            ansible_facts=dict(fc_networks=PRESENT_NETWORKS)
         )
 
 
