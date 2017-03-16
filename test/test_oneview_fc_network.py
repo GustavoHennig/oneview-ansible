@@ -15,12 +15,7 @@
 ###
 import unittest
 
-from oneview_fc_network import (FcNetworkModule,
-                                FC_NETWORK_CREATED,
-                                FC_NETWORK_ALREADY_EXIST,
-                                FC_NETWORK_UPDATED,
-                                FC_NETWORK_DELETED,
-                                FC_NETWORK_ALREADY_ABSENT)
+from oneview_fc_network import FcNetworkModule
 from hpe_test_utils import OneViewBaseTestCase
 
 FAKE_MSG_ERROR = 'Fake message error'
@@ -72,7 +67,7 @@ class FcNetworkModuleSpec(unittest.TestCase,
 
         self.mock_ansible_module.exit_json.assert_called_once_with(
             changed=True,
-            msg=FC_NETWORK_CREATED,
+            msg=FcNetworkModule.MSG_CREATED,
             ansible_facts=dict(fc_network=DEFAULT_FC_NETWORK_TEMPLATE)
         )
 
@@ -85,7 +80,7 @@ class FcNetworkModuleSpec(unittest.TestCase,
 
         self.mock_ansible_module.exit_json.assert_called_once_with(
             changed=False,
-            msg=FC_NETWORK_ALREADY_EXIST,
+            msg=FcNetworkModule.MSG_ALREADY_EXIST,
             ansible_facts=dict(fc_network=DEFAULT_FC_NETWORK_TEMPLATE)
         )
 
@@ -103,7 +98,7 @@ class FcNetworkModuleSpec(unittest.TestCase,
 
         self.mock_ansible_module.exit_json.assert_called_once_with(
             changed=True,
-            msg=FC_NETWORK_UPDATED,
+            msg=FcNetworkModule.MSG_UPDATED,
             ansible_facts=dict(fc_network=data_merged)
         )
 
@@ -116,7 +111,7 @@ class FcNetworkModuleSpec(unittest.TestCase,
 
         self.mock_ansible_module.exit_json.assert_called_once_with(
             changed=True,
-            msg=FC_NETWORK_DELETED
+            msg=FcNetworkModule.MSG_DELETED
         )
 
     def test_should_do_nothing_when_fc_network_not_exist(self):
@@ -128,7 +123,7 @@ class FcNetworkModuleSpec(unittest.TestCase,
 
         self.mock_ansible_module.exit_json.assert_called_once_with(
             changed=False,
-            msg=FC_NETWORK_ALREADY_ABSENT
+            msg=FcNetworkModule.MSG_ALREADY_ABSENT
         )
 
 

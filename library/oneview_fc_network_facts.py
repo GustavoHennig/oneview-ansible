@@ -97,21 +97,14 @@ class FcNetworkFactsModule(OneViewModuleBase):
 
         super(FcNetworkFactsModule, self).__init__(additional_arg_spec=argument_spec)
 
+
     def execute_module(self):
 
         if self.module.params['name']:
-            return self.__get_by_name(self.module.params['name'])
+            fc_networks = self.oneview_client.fc_networks.get_by('name', self.module.params['name'])
         else:
-            return self.__get_all()
-
-    def __get_by_name(self, name):
-        fc_network = self.oneview_client.fc_networks.get_by('name', name)
-
-        return dict(changed=False, ansible_facts=dict(fc_networks=fc_network))
-
-    def __get_all(self):
-        params = self.module.params.get('params') or {}
-        fc_networks = self.oneview_client.fc_networks.get_all(**params)
+            params = self.module.params.get('params') or {}
+            fc_networks = self.oneview_client.fc_networks.get_all(**params)
 
         return dict(changed=False, ansible_facts=dict(fc_networks=fc_networks))
 

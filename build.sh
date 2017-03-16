@@ -75,13 +75,10 @@ echo -e "\n${COLOR_START}Validating playbooks${COLOR_END}"
 ansible-playbook -i "localhost," --syntax-check examples/*.yml
 exit_code_playbook_validation=$?
 
-echo -e "\n${COLOR_START}Running tests${COLOR_END}"
-python -m unittest discover
-exit_code_tests=$?
 
 echo -e "\n${COLOR_START}Running flake8${COLOR_END}"
 if hash flake8 2>/dev/null; then
-  flake8 library test --max-line-length=120 --ignore=F403,F405,F402,F401
+  flake8 library test --max-line-length=120 --ignore=F401,F402,F403,F405
   exit_code_flake8=$?
 else
   echo "ERROR:flake8 is not installed."
@@ -101,6 +98,13 @@ else
   coveralls
   exit_code_coveralls=$?
 fi
+
+export PYTHONPATH=dependencies:$PYTHONPATH
+
+echo -e "\n${COLOR_START}Running tests${COLOR_END}"
+python -m unittest discover
+exit_code_tests=$?
+
 
 echo -e "\n=== Summary =========================="
 print_summary "Modules validation" ${exit_code_module_validation}

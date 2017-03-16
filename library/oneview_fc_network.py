@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 ###
-# Copyright (2016) Hewlett Packard Enterprise Development LP
+# Copyright (2016-2017) Hewlett Packard Enterprise Development LP
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # You may not use this file except in compliance with the License.
@@ -80,16 +80,17 @@ fc_network:
 '''
 
 from ansible.module_utils.basic import *
-from _ansible.module_utils.oneview import OneViewModuleBase, ResourceComparator
-
-FC_NETWORK_CREATED = 'FC Network created successfully.'
-FC_NETWORK_UPDATED = 'FC Network updated successfully.'
-FC_NETWORK_DELETED = 'FC Network deleted successfully.'
-FC_NETWORK_ALREADY_EXIST = 'FC Network already exists.'
-FC_NETWORK_ALREADY_ABSENT = 'Nothing to do.'
+from _ansible.module_utils.oneview import OneViewModuleBase
 
 
 class FcNetworkModule(OneViewModuleBase):
+    MSG_CREATED = 'FC Network created successfully.'
+    MSG_UPDATED = 'FC Network updated successfully.'
+    MSG_DELETED = 'FC Network deleted successfully.'
+    MSG_ALREADY_EXIST = 'FC Network already exists.'
+    MSG_ALREADY_ABSENT = 'FC Network is already absent.'
+    RESOURCE_FACT_NAME = 'fc_network'
+
     def __init__(self):
 
         add_arg_spec = dict(data=dict(required=True, type='dict'),
@@ -100,52 +101,15 @@ class FcNetworkModule(OneViewModuleBase):
         super(FcNetworkModule, self).__init__(additional_arg_spec=add_arg_spec,
                                               validate_etag_support=True)
 
+        self.resource_client = self.oneview_client.fc_networks
+
     def execute_module(self):
-        resource = self.__get_by_name()
+        resource = self.get_by_name(self.data['name'])
 
         if self.state == 'present':
-            return self.__present(resource)
+            return self.resource_present(resource)
         elif self.state == 'absent':
-            return self.__absent(resource)
-
-    def __present(self, resource):
-        changed = False
-        if "newName" in self.data:
-            self.data["name"] = self.data.pop("newName")
-
-        if not resource:
-            resource = self.oneview_client.fc_networks.create(self.data)
-            msg = FC_NETWORK_CREATED
-            changed = True
-
-        else:
-            merged_data = resource.copy()
-            merged_data.update(self.data)
-
-            if ResourceComparator.compare(resource, merged_data):
-                msg = FC_NETWORK_ALREADY_EXIST
-            else:
-                resource = self.oneview_client.fc_networks.update(merged_data)
-                changed = True
-                msg = FC_NETWORK_UPDATED
-
-        return dict(
-            msg=msg,
-            changed=changed,
-            ansible_facts=dict(fc_network=resource)
-        )
-
-    def __absent(self, resource):
-
-        if resource:
-            self.oneview_client.fc_networks.delete(resource)
-            return {"changed": True, "msg": FC_NETWORK_DELETED}
-        else:
-            return {"changed": False, "msg": FC_NETWORK_ALREADY_ABSENT}
-
-    def __get_by_name(self):
-        result = self.oneview_client.fc_networks.get_by('name', self.data['name'])
-        return result[0] if result else None
+            return self.resource_absent(resource)
 
 
 def main():

@@ -15,8 +15,7 @@
 ###
 import unittest
 
-from oneview_fcoe_network import FcoeNetworkModule, FCOE_NETWORK_CREATED, FCOE_NETWORK_ALREADY_EXIST, \
-    FCOE_NETWORK_UPDATED, FCOE_NETWORK_DELETED, FCOE_NETWORK_ALREADY_ABSENT
+from oneview_fcoe_network import FcoeNetworkModule
 from hpe_test_utils import OneViewBaseTestCase
 
 FAKE_MSG_ERROR = 'Fake message error'
@@ -68,7 +67,7 @@ class FcoeNetworkSpec(unittest.TestCase,
 
         self.mock_ansible_module.exit_json.assert_called_once_with(
             changed=True,
-            msg=FCOE_NETWORK_CREATED,
+            msg=FcoeNetworkModule.MSG_CREATED,
             ansible_facts=dict(fcoe_network=DEFAULT_FCOE_NETWORK_TEMPLATE)
         )
 
@@ -80,7 +79,7 @@ class FcoeNetworkSpec(unittest.TestCase,
 
         self.mock_ansible_module.exit_json.assert_called_once_with(
             changed=False,
-            msg=FCOE_NETWORK_ALREADY_EXIST,
+            msg=FcoeNetworkModule.MSG_ALREADY_EXIST,
             ansible_facts=dict(fcoe_network=DEFAULT_FCOE_NETWORK_TEMPLATE)
         )
 
@@ -97,7 +96,7 @@ class FcoeNetworkSpec(unittest.TestCase,
 
         self.mock_ansible_module.exit_json.assert_called_once_with(
             changed=True,
-            msg=FCOE_NETWORK_UPDATED,
+            msg=FcoeNetworkModule.MSG_UPDATED,
             ansible_facts=dict(fcoe_network=data_merged)
         )
 
@@ -110,7 +109,7 @@ class FcoeNetworkSpec(unittest.TestCase,
 
         self.mock_ansible_module.exit_json.assert_called_once_with(
             changed=True,
-            msg=FCOE_NETWORK_DELETED
+            msg=FcoeNetworkModule.MSG_DELETED
         )
 
     def test_should_do_nothing_when_fcoe_network_not_exist(self):
@@ -122,7 +121,7 @@ class FcoeNetworkSpec(unittest.TestCase,
 
         self.mock_ansible_module.exit_json.assert_called_once_with(
             changed=False,
-            msg=FCOE_NETWORK_ALREADY_ABSENT
+            msg=FcoeNetworkModule.MSG_ALREADY_ABSENT
         )
 
 

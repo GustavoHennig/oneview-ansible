@@ -37,7 +37,8 @@ logger = logging.getLogger(__name__)
 try:
     from hpOneView.oneview_client import OneViewClient
     from hpOneView.exceptions import (HPOneViewException,
-                                      HPOneViewTaskError)
+                                      HPOneViewTaskError,
+                                      HPOneViewValueError)
 
     HAS_HPE_ONEVIEW = True
 except ImportError:
@@ -45,7 +46,14 @@ except ImportError:
 
 
 class OneViewModuleBase(object):
+    MSG_CREATED = 'Resource created successfully.'
+    MSG_UPDATED = 'Resource updated successfully.'
+    MSG_ALREADY_EXIST = 'Resource already exists.'
+    MSG_DELETED = 'Resource deleted successfully.'
+    MSG_ALREADY_ABSENT = 'Resource is already absent.'
     HPE_ONEVIEW_SDK_REQUIRED = 'HPE OneView Python SDK is required for this module.'
+
+    RESOURCE_FACT_NAME = ''
 
     ONEVIEW_COMMON_ARGS = dict(
         config=dict(required=False, type='str')
@@ -57,6 +65,8 @@ class OneViewModuleBase(object):
             type='bool',
             default=True)
     )
+
+    resource_client = None
 
     def __build_argument_spec(self, additional_arg_spec, validate_etag_support):
 
@@ -113,6 +123,49 @@ class OneViewModuleBase(object):
 
         except HPOneViewException as exception:
             self.module.fail_json(msg='; '.join(str(e) for e in exception.args))
+
+    def resource_absent(self, resource, method='delete'):
+        if resource:
+            getattr(self.resource_client, method)(resource)
+
+            return {"changed": True, "msg": self.MSG_DELETED}
+        else:
+            return {"changed": False, "msg": self.MSG_ALREADY_ABSENT}
+
+    def get_by_name(self, name):
+        result = self.resource_client.get_by('name', name)
+        return result[0] if result else None
+
+    def resource_present(self, resource, create_method='create'):
+
+        if not self.RESOURCE_FACT_NAME:
+            raise HPOneViewValueError("RESOURCE_FACT_NAME was not defined")
+
+        changed = False
+        if "newName" in self.data:
+            self.data["name"] = self.data.pop("newName")
+
+        if not resource:
+            resource = getattr(self.resource_client, create_method)(self.data)
+            msg = self.MSG_CREATED
+            changed = True
+
+        else:
+            merged_data = resource.copy()
+            merged_data.update(self.data)
+
+            if ResourceComparator.compare(resource, merged_data):
+                msg = self.MSG_ALREADY_EXIST
+            else:
+                resource = self.resource_client.update(merged_data)
+                changed = True
+                msg = self.MSG_UPDATED
+
+        return dict(
+            msg=msg,
+            changed=changed,
+            ansible_facts={self.RESOURCE_FACT_NAME: resource}
+        )
 
 
 class ResourceComparator():

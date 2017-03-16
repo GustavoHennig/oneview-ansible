@@ -17,10 +17,11 @@ import unittest
 import mock
 
 from _ansible.module_utils.oneview import (OneViewModuleBase,
-                                           ResourceComparator,
-                                           ResourceMerger,
-                                           OneViewClient,
-                                           HPOneViewException)
+                                          ResourceComparator,
+                                          ResourceMerger,
+                                          OneViewClient,
+                                          HPOneViewException,
+                                          HPOneViewValueError)
 
 MSG_GENERIC_ERROR = 'Generic error message'
 MSG_GENERIC = "Generic message"
@@ -47,6 +48,10 @@ class OneViewModuleBaseSpec(unittest.TestCase):
         state='present',
         data={'name': 'resource name'}
     )
+
+    RESOURCE_COMMON = {'uri': '/rest/resource/id',
+                       'name': 'Resource Name'
+                       }
 
     def setUp(self):
         # Define OneView Client Mock (FILE)
@@ -222,6 +227,130 @@ class OneViewModuleBaseSpec(unittest.TestCase):
             self.assertEqual(e.args[0], MSG_GENERIC_ERROR)
         else:
             self.fail('Expected Exception was not raised')
+
+    def test_resource_present_should_create(self):
+        self.mock_ansible_module.params = self.PARAMS_FOR_PRESENT
+
+        ov_base = OneViewModuleBase()
+        ov_base.resource_client = mock.Mock()
+        ov_base.resource_client.create.return_value = self.RESOURCE_COMMON
+        ov_base.data = {'name': 'Resource Name'}
+        ov_base.RESOURCE_FACT_NAME = 'resource'
+
+        facts = ov_base.resource_present(None)
+
+        expected = self.RESOURCE_COMMON.copy()
+
+        ov_base.resource_client.create.assert_called_once_with({'name': 'Resource Name'})
+
+        self.assertEqual(facts,
+                         dict(
+                             changed=True,
+                             msg=OneViewModuleBase.MSG_CREATED,
+                             ansible_facts=dict(resource=expected))
+                         )
+
+    def test_resource_present_should_fail_with_undefined_fact_name(self):
+        self.mock_ansible_module.params = self.PARAMS_FOR_PRESENT
+        ov_base = OneViewModuleBase()
+
+        self.assertRaises(HPOneViewValueError, ov_base.resource_present, None)
+
+    def test_resource_present_should_not_update_when_data_is_equals(self):
+        self.mock_ansible_module.params = self.PARAMS_FOR_PRESENT
+
+        ov_base = OneViewModuleBase()
+        ov_base.resource_client = mock.Mock()
+        ov_base.data = self.RESOURCE_COMMON.copy()
+        ov_base.RESOURCE_FACT_NAME = 'resource'
+
+        facts = ov_base.resource_present(self.RESOURCE_COMMON.copy())
+
+        self.assertEqual(facts,
+                         dict(
+                             changed=False,
+                             msg=OneViewModuleBase.MSG_ALREADY_EXIST,
+                             ansible_facts=dict(resource=self.RESOURCE_COMMON.copy()))
+                         )
+
+    def test_resource_present_should_update_when_data_has_modified_attributes(self):
+        self.mock_ansible_module.params = self.PARAMS_FOR_PRESENT
+
+        ov_base = OneViewModuleBase()
+        ov_base.resource_client = mock.Mock()
+        ov_base.resource_client.update.return_value = {'return': 'value'}
+        ov_base.data = {'newName': 'Resource Name New'}
+        ov_base.RESOURCE_FACT_NAME = 'resource'
+
+        facts = ov_base.resource_present(self.RESOURCE_COMMON)
+
+        expected = self.RESOURCE_COMMON.copy()
+        expected['name'] = 'Resource Name New'
+
+        ov_base.resource_client.update.assert_called_once_with(expected)
+
+        self.assertEqual(facts,
+                         dict(
+                             changed=True,
+                             msg=OneViewModuleBase.MSG_UPDATED,
+                             ansible_facts=dict(resource={'return': 'value'}))
+                         )
+
+    def test_resource_absent_should_remove(self):
+        self.mock_ansible_module.params = self.PARAMS_FOR_PRESENT
+
+        ov_base = OneViewModuleBase()
+        ov_base.resource_client = mock.Mock()
+
+        facts = ov_base.resource_absent(self.RESOURCE_COMMON.copy())
+        ov_base.resource_client.delete.assert_called_once_with(self.RESOURCE_COMMON.copy())
+
+        self.assertEqual(facts,
+                         dict(
+                             changed=True,
+                             msg=OneViewModuleBase.MSG_DELETED)
+                         )
+
+    def test_resource_absent_should_do_nothing_when_not_exist(self):
+        self.mock_ansible_module.params = self.PARAMS_FOR_PRESENT
+
+        ov_base = OneViewModuleBase()
+        ov_base.resource_client = mock.Mock()
+
+        facts = ov_base.resource_absent(None)
+        ov_base.resource_client.delete.assert_not_called()
+
+        self.assertEqual(facts,
+                         dict(
+                             changed=False,
+                             msg=OneViewModuleBase.MSG_ALREADY_ABSENT)
+                         )
+
+    def test_get_by_name_with_value(self):
+        self.mock_ansible_module.params = self.PARAMS_FOR_PRESENT
+
+        ov_base = OneViewModuleBase()
+        ov_base.resource_client = mock.Mock()
+        ov_base.resource_client.get_by.return_value = [{'resource': 1}]
+
+        res = ov_base.get_by_name('name')
+
+        ov_base.resource_client.get_by.assert_called_once_with('name', 'name')
+
+        self.assertEqual(res, {'resource': 1})
+
+    def test_get_by_name_without_value(self):
+        self.mock_ansible_module.params = self.PARAMS_FOR_PRESENT
+
+        ov_base = OneViewModuleBase()
+        ov_base.resource_client = mock.Mock()
+        ov_base.resource_client.get_by.return_value = []
+
+        res = ov_base.get_by_name('name')
+
+        ov_base.resource_client.get_by.assert_called_once_with('name', 'name')
+
+        self.assertIsNone(res)
 
 
 class ResourceComparatorTest(unittest.TestCase):
