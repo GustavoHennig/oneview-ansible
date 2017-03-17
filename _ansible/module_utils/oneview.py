@@ -25,9 +25,10 @@ from __future__ import (absolute_import,
                         unicode_literals)
 
 from future import standard_library
-from ansible.module_utils.basic import *
 import json
 import logging
+import os
+from ansible.module_utils.basic import AnsibleModule
 from copy import deepcopy
 from collections import OrderedDict
 
@@ -93,6 +94,7 @@ class OneViewModuleBase(object):
 
         self.state = self.module.params.get('state')
         self.data = self.module.params.get('data')
+        self.params = self.module.params.get('params') or {}
         self.validate_etag_support = validate_etag_support
 
     def __check_hpe_oneview(self):
@@ -433,7 +435,9 @@ class ServerProfileMerger(object):
         if self._should_merge(data, resource, key=SPKeys.CONNECTIONS):
             existing_connections = resource[SPKeys.CONNECTIONS]
             params_connections = data[SPKeys.CONNECTIONS]
-            merged_data[SPKeys.CONNECTIONS] = ResourceMerger.merge_list_by_key(existing_connections, params_connections, key=SPKeys.ID)
+            merged_data[SPKeys.CONNECTIONS] = ResourceMerger.merge_list_by_key(existing_connections,
+                                                                               params_connections,
+                                                                               key=SPKeys.ID)
 
             # merge Boot from Connections
             merged_data = self._merge_connections_boot(merged_data, resource)
@@ -485,7 +489,9 @@ class ServerProfileMerger(object):
 
                     paths_from_merged_volume = merged_volume[SPKeys.PATHS]
 
-                    merged_paths = ResourceMerger.merge_list_by_key(existent_paths, paths_from_merged_volume, key=SPKeys.CONN_ID)
+                    merged_paths = ResourceMerger.merge_list_by_key(existent_paths,
+                                                                    paths_from_merged_volume,
+                                                                    key=SPKeys.CONN_ID)
 
                     merged_volume[SPKeys.PATHS] = merged_paths
         return merged_data
@@ -532,9 +538,9 @@ class ServerProfileMerger(object):
             existing_items = resource[SPKeys.LOCAL_STORAGE][SPKeys.SAS_LOGICAL_JBODS]
             provided_items = merged_data[SPKeys.LOCAL_STORAGE][SPKeys.SAS_LOGICAL_JBODS]
             merged_jbods = ResourceMerger.merge_list_by_key(existing_items,
-                                             provided_items,
-                                             key=SPKeys.ID,
-                                             ignore_when_null=[SPKeys.SAS_LOGICAL_JBOD_URI])
+                                                            provided_items,
+                                                            key=SPKeys.ID,
+                                                            ignore_when_null=[SPKeys.SAS_LOGICAL_JBOD_URI])
             merged_data[SPKeys.LOCAL_STORAGE][SPKeys.SAS_LOGICAL_JBODS] = merged_jbods
         return merged_data
 
@@ -542,7 +548,9 @@ class ServerProfileMerger(object):
         if self._should_merge(data[SPKeys.LOCAL_STORAGE], resource[SPKeys.LOCAL_STORAGE], key=SPKeys.CONTROLLERS):
             existing_items = resource[SPKeys.LOCAL_STORAGE][SPKeys.CONTROLLERS]
             provided_items = merged_data[SPKeys.LOCAL_STORAGE][SPKeys.CONTROLLERS]
-            merged_controllers = ResourceMerger.merge_list_by_key(existing_items, provided_items, key=SPKeys.DEVICE_SLOT)
+            merged_controllers = ResourceMerger.merge_list_by_key(existing_items,
+                                                                  provided_items,
+                                                                  key=SPKeys.DEVICE_SLOT)
             merged_data[SPKeys.LOCAL_STORAGE][SPKeys.CONTROLLERS] = merged_controllers
 
             # Merge Drives from Mezzanine and Embedded controllers
@@ -560,8 +568,8 @@ class ServerProfileMerger(object):
 
                     if key_merge:
                         merged_drives = ResourceMerger.merge_list_by_key(existing_controller[SPKeys.LOGICAL_DRIVES],
-                                                          current_controller[SPKeys.LOGICAL_DRIVES],
-                                                          key=key_merge)
+                                                                         current_controller[SPKeys.LOGICAL_DRIVES],
+                                                                         key=key_merge)
                         current_controller[SPKeys.LOGICAL_DRIVES] = merged_drives
         return merged_data
 

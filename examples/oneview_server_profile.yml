@@ -18,11 +18,11 @@
   vars:
     - config: "{{ playbook_dir }}/oneview_config.json"
     # Name of the server profile template that will be used to provision the server profile
-    - ov_template: 'BL460c Gen9 1'
+    - ov_template: 'SPT'
     # Set the uri of an existent enclosure group to run this example
-    - enclosure_group_uri: '/rest/enclosure-groups/ad5e9e88-b858-4935-ba58-017d60a17c89'
+    - enclosure_group_uri: '/rest/enclosure-groups/691edbc7-f280-4c7a-94c8-d849e5821841'
     # Set the uri of an existent server hardware type to run this example
-    - server_hardware_type_uri: '/rest/server-hardware-types/79F8B345-19E9-416D-9EE5-E6804A192B17'
+    - server_hardware_type_uri: '/rest/server-hardware-types/DA332E35-F964-48FB-BB16-5F04999B9704'
 
   tasks:
     - name : Create Server Profile from a Server Profile Template

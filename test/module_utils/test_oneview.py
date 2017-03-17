@@ -2172,13 +2172,17 @@ class ServerProfileMergerTest(unittest.TestCase):
                     osDeploymentSettings=deepcopy(self.OS_DEPLOYMENT_SETTINGS))
         first_attr = data[SPKeys.OS_DEPLOYMENT][SPKeys.ATTRIBUTES][0]
         second_attr = data[SPKeys.OS_DEPLOYMENT][SPKeys.ATTRIBUTES][1]
+
         data[SPKeys.OS_DEPLOYMENT][SPKeys.ATTRIBUTES][0] = second_attr
         data[SPKeys.OS_DEPLOYMENT][SPKeys.ATTRIBUTES][1] = first_attr
         resource = deepcopy(self.profile_with_os_deployment)
 
         merged_data = ServerProfileMerger().merge_data(resource, data)
 
-        self.assertEqual(merged_data, deepcopy(self.profile_with_os_deployment))
+        list1 = list.sort(merged_data[SPKeys.OS_DEPLOYMENT][SPKeys.ATTRIBUTES])
+        list2 = list.sort(deepcopy(self.profile_with_os_deployment)[SPKeys.OS_DEPLOYMENT][SPKeys.ATTRIBUTES])
+
+        self.assertEqual(list1, list2)
 
     def test_merge_when_custom_attributes_have_different_values_and_order(self):
         data = dict(name="Profile101",

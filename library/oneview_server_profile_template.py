@@ -34,6 +34,7 @@ module: oneview_server_profile_template
 short_description: Manage OneView Server Profile Template resources.
 description:
     - Provides an interface to create, modify, and delete server profile templates.
+version_added: "2.3"
 requirements:
     - "python >= 2.7.9"
     - "hpOneView >= 3.1.0"

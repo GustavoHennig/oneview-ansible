@@ -25,8 +25,9 @@ DOCUMENTATION = '''
 module: oneview_server_profile
 short_description: Manage OneView Server Profile resources.
 description:
-    - Manage the servers lifecycle with OneView Server Profiles. On 'present' state, it selects a server hardware
+    - Manage the servers lifecycle with OneView Server Profiles. On C(present) state, it selects a server hardware
       automatically based on the server profile configuration if no server hardware was provided.
+version_added: "2.3"
 requirements:
     - "python >= 2.7.9"
     - "hpOneView >= 3.1.0"
@@ -40,7 +41,6 @@ options:
       - Indicates the desired state for the Server Profile resource by the end of the playbook execution.
         C(present) will ensure data properties are compliant with OneView. This operation will power off the Server
         Hardware before configuring the Server Profile. After it completes, the Server Hardware is powered on.
-        For the I(osDeploymentSettings), you can provide an I(osDeploymentPlanName) instead of I(osDeploymentPlanUri).
         C(absent) will remove the resource from OneView, if it exists.
         C(compliant) will make the server profile compliant with its server profile template, when this option was
         specified. If there are Offline updates, the Server Hardware is turned off before remediate compliance issues
@@ -155,7 +155,7 @@ created:
     type: bool
 '''
 
-from ansible.module_utils.basic import *
+from ansible.module_utils.basic import AnsibleModule
 from _ansible.module_utils.oneview import (OneViewModuleBase,
                                            ServerProfileReplaceNamesByUris,
                                            HPOneViewValueError,
