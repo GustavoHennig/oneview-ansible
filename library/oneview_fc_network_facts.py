@@ -97,7 +97,6 @@ class FcNetworkFactsModule(OneViewModuleBase):
 
         super(FcNetworkFactsModule, self).__init__(additional_arg_spec=argument_spec)
 
-
     def execute_module(self):
 
         if self.module.params['name']:

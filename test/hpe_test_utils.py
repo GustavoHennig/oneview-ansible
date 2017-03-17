@@ -28,8 +28,6 @@ class OneViewBaseTestCase(object):
     mock_ansible_module = None
     mock_ov_client = None
 
-
-
     def configure_mocks(self, test_case, testing_class):
         """
         Preload mocked OneViewClient instance and AnsibleModule

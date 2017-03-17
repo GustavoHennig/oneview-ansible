@@ -17,13 +17,12 @@
 ###
 
 from ansible.module_utils.basic import *
+from _ansible.module_utils.oneview import ServerProfileReplaceNamesByUris, ServerProfileMerger
 
 try:
     from hpOneView.oneview_client import OneViewClient
     from hpOneView.extras.comparators import resource_compare
     from hpOneView.exceptions import HPOneViewException
-    from hpOneView.extras.server_profile_utils import ServerProfileReplaceNamesByUris
-    from hpOneView.extras.server_profile_utils import ServerProfileMerger
 
     HAS_HPE_ONEVIEW = True
 except ImportError:
