@@ -1,7 +1,7 @@
 #!/usr/bin/python
-
+# -*- coding: utf-8 -*-
 ###
-# Copyright (2016) Hewlett Packard Enterprise Development LP
+# Copyright (2016-2017) Hewlett Packard Enterprise Development LP
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # You may not use this file except in compliance with the License.
@@ -16,17 +16,9 @@
 # limitations under the License.
 ###
 
-from ansible.module_utils.basic import *
-from _ansible.module_utils.oneview import ServerProfileReplaceNamesByUris, ServerProfileMerger
-
-try:
-    from hpOneView.oneview_client import OneViewClient
-    from hpOneView.extras.comparators import resource_compare
-    from hpOneView.exceptions import HPOneViewException
-
-    HAS_HPE_ONEVIEW = True
-except ImportError:
-    HAS_HPE_ONEVIEW = False
+ANSIBLE_METADATA = {'status': ['stableinterface'],
+                    'supported_by': 'committer',
+                    'version': '1.0'}
 
 DOCUMENTATION = '''
 ---
@@ -40,33 +32,17 @@ requirements:
     - "hpOneView >= 3.1.0"
 author: "Bruno Souza (@bsouza)"
 options:
-    config:
-      description:
-        - Path to a .json configuration file containing the OneView client configuration.
-          The configuration file is optional. If the file path is not provided, the configuration will be loaded from
-          environment variables.
-      required: false
     state:
         description:
             - Indicates the desired state for the Server Profile Template.
-              'present' will ensure data properties are compliant with OneView.
-              'absent' will remove the resource from OneView, if it exists.
+              C(present) will ensure data properties are compliant with OneView.
+              C(absent) will remove the resource from OneView, if it exists.
         choices: ['present', 'absent']
     data:
         description:
             - Dict with Server Profile Template properties.
         required: true
-    validate_etag:
-        description:
-            - When the ETag Validation is enabled, the request will be conditionally processed only if the current ETag
-              for the resource matches the ETag provided in the data.
-        default: true
-        choices: ['true', 'false']
 notes:
-    - "A sample configuration file for the config parameter can be found at:
-       https://github.com/HewlettPackard/oneview-ansible/blob/master/examples/oneview_config-rename.json"
-    - "Check how to use environment variables for configuration at:
-       https://github.com/HewlettPackard/oneview-ansible#environment-variables"
     - "For the following data, you can provide either a name  or a URI: enclosureGroupName or enclosureGroupUri,
        osDeploymentPlanName or osDeploymentPlanUri (on the osDeploymentSettings), networkName or networkUri (on the
        connections list), volumeName or volumeUri (on the volumeAttachments list), volumeStoragePoolName or
@@ -74,6 +50,10 @@ notes:
        volumeAttachments list), serverHardwareTypeName or  serverHardwareTypeUri, enclosureName or enclosureUri,
        firmwareBaselineName or firmwareBaselineUri (on the firmware), and sasLogicalJBODName or sasLogicalJBODUri (on
        the sasLogicalJBODs list)"
+
+extends_documentation_fragment:
+    - oneview
+    - oneview.validateetag
 '''
 
 EXAMPLES = '''
@@ -113,6 +93,18 @@ server_profile_template:
     type: complex
 '''
 
+import time
+from ansible.module_utils.basic import AnsibleModule
+from _ansible.module_utils.oneview import (OneViewModuleBase,
+                                           ServerProfileReplaceNamesByUris,
+                                           HPOneViewValueError,
+                                           ServerProfileMerger,
+                                           ResourceComparator,
+                                           HPOneViewTaskError,
+                                           SPKeys,
+                                           HPOneViewException)
+from copy import deepcopy
+
 SRV_PROFILE_TEMPLATE_CREATED = 'Server Profile Template created successfully.'
 SRV_PROFILE_TEMPLATE_UPDATED = 'Server Profile Template updated successfully.'
 SRV_PROFILE_TEMPLATE_DELETED = 'Server Profile Template deleted successfully.'
@@ -124,52 +116,32 @@ SRV_PROFILE_TEMPLATE_ENCLOSURE_GROUP_NOT_FOUND = 'Enclosure Group not found: '
 HPE_ONEVIEW_SDK_REQUIRED = 'HPE OneView Python SDK is required for this module.'
 
 
-class ServerProfileTemplateModule(object):
+class ServerProfileTemplateModule(OneViewModuleBase):
     argument_spec = dict(
-        config=dict(required=False, type='str'),
         state=dict(
             required=True,
             choices=['present', 'absent']
         ),
-        data=dict(required=True, type='dict'),
-        validate_etag=dict(
-            required=False,
-            type='bool',
-            default=True)
+        data=dict(required=True, type='dict')
     )
 
     def __init__(self):
-        self.module = AnsibleModule(
-            argument_spec=self.argument_spec,
-            supports_check_mode=False
-        )
-        if not HAS_HPE_ONEVIEW:
-            self.module.fail_json(msg=HPE_ONEVIEW_SDK_REQUIRED)
 
-        if not self.module.params['config']:
-            self.oneview_client = OneViewClient.from_environment_variables()
-        else:
-            self.oneview_client = OneViewClient.from_json_file(self.module.params['config'])
+        super(ServerProfileTemplateModule, self).__init__(additional_arg_spec=self.argument_spec,
+                                                          validate_etag_support=True)
 
         self.resource_client = self.oneview_client.server_profile_templates
 
-    def run(self):
-        try:
-            if not self.module.params.get('validate_etag'):
-                self.oneview_client.connection.disable_etag_validation()
+    def execute_module(self):
 
-            state = self.module.params["state"]
-            data = self.module.params["data"]
-            template = self.resource_client.get_by_name(data["name"])
+        template = self.resource_client.get_by_name(self.data["name"])
 
-            if state == 'present':
-                result = self.__present(data, template)
-            else:
-                result = self.__absent(template)
+        if self.state == 'present':
+            result = self.__present(self.data, template)
+        else:
+            result = self.__absent(template)
 
-            self.module.exit_json(**result)
-        except HPOneViewException as exception:
-            self.module.fail_json(msg='; '.join(str(e) for e in exception.args))
+        return result
 
     def __present(self, data, template):
 
@@ -195,7 +167,7 @@ class ServerProfileTemplateModule(object):
 
         merged_data = ServerProfileMerger().merge_data(resource, data)
 
-        equal = resource_compare(merged_data, resource)
+        equal = ResourceComparator.compare(merged_data, resource)
 
         if equal:
             msg = SRV_PROFILE_TEMPLATE_ALREADY_EXIST

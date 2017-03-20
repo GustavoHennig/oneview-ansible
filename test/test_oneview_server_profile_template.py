@@ -1,5 +1,5 @@
 ###
-# Copyright (2016) Hewlett Packard Enterprise Development LP
+# Copyright (2016-2017) Hewlett Packard Enterprise Development LP
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # You may not use this file except in compliance with the License.
@@ -25,7 +25,7 @@ from oneview_server_profile_template import (ServerProfileTemplateModule,
                                              SRV_PROFILE_TEMPLATE_DELETED,
                                              SRV_PROFILE_TEMPLATE_ALREADY_ABSENT)
 
-from utils import ValidateEtagTestCase, ModuleContructorTestCase, ErrorHandlingTestCase
+from hpe_test_utils import OneViewBaseTestCase
 
 FAKE_MSG_ERROR = 'Fake message error'
 TEMPLATE_NAME = 'ProfileTemplate101'
@@ -92,13 +92,10 @@ PARAMS_FOR_ABSENT = dict(
 
 
 class ServerProfileTemplateModuleSpec(unittest.TestCase,
-                                      ModuleContructorTestCase,
-                                      ValidateEtagTestCase,
-                                      ErrorHandlingTestCase):
+                                      OneViewBaseTestCase):
     def setUp(self):
         self.configure_mocks(self, ServerProfileTemplateModule)
         self.resource = self.mock_ov_client.server_profile_templates
-        ErrorHandlingTestCase.configure(self, method_to_fire=self.resource.get_by_name)
 
     def test_should_create_new_template_when_it_not_exists(self):
         self.resource.get_by_name.return_value = []

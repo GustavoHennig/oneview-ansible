@@ -1,5 +1,5 @@
 ###
-# Copyright (2016) Hewlett Packard Enterprise Development LP
+# Copyright (2016-2017) Hewlett Packard Enterprise Development LP
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # You may not use this file except in compliance with the License.
@@ -18,14 +18,24 @@ import unittest
 import mock
 
 from copy import deepcopy
-from _ansible.module_utils.oneview import (HPOneViewException, HPOneViewTaskError, OneViewModuleBase, SPKeys,
-                                           ServerProfileMerger, ServerProfileReplaceNamesByUris, ResourceComparator)
+from _ansible.module_utils.oneview import (HPOneViewException,
+                                           HPOneViewTaskError,
+                                           OneViewModuleBase,
+                                           SPKeys,
+                                           ServerProfileMerger,
+                                           ServerProfileReplaceNamesByUris,
+                                           ResourceComparator)
 
-from oneview_server_profile import (ServerProfileModule, MAKE_COMPLIANT_NOT_SUPPORTED, SERVER_PROFILE_CREATED,
+from oneview_server_profile import (ServerProfileModule,
+                                    MAKE_COMPLIANT_NOT_SUPPORTED,
+                                    SERVER_PROFILE_CREATED,
                                     REMEDIATED_COMPLIANCE,
-                                    ALREADY_COMPLIANT, SERVER_PROFILE_DELETED, SERVER_PROFILE_UPDATED,
+                                    ALREADY_COMPLIANT,
+                                    SERVER_PROFILE_DELETED,
+                                    SERVER_PROFILE_UPDATED,
                                     SERVER_ALREADY_UPDATED,
-                                    ERROR_ALLOCATE_SERVER_HARDWARE, SERVER_PROFILE_ALREADY_ABSENT)
+                                    ERROR_ALLOCATE_SERVER_HARDWARE,
+                                    SERVER_PROFILE_ALREADY_ABSENT)
 
 from hpe_test_utils import OneViewBaseTestCase
 

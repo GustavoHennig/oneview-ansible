@@ -1,5 +1,5 @@
 ###
-# Copyright (2016) Hewlett Packard Enterprise Development LP
+# Copyright (2016-2017) Hewlett Packard Enterprise Development LP
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # You may not use this file except in compliance with the License.
@@ -16,10 +16,7 @@
 
 import unittest
 
-from test.utils import FactsParamsTestCase
-from test.utils import ModuleContructorTestCase
-from test.utils import ErrorHandlingTestCase
-
+from hpe_test_utils import FactsParamsTestCase
 from oneview_server_profile_facts import ServerProfileFactsModule
 from copy import deepcopy
 
@@ -97,20 +94,15 @@ PARAMS_WITH_OPTIONS = dict(
 
 
 class ServerProfileFactsSpec(unittest.TestCase,
-                             ModuleContructorTestCase,
-                             FactsParamsTestCase,
-                             ErrorHandlingTestCase):
+                             FactsParamsTestCase):
     """
-    ModuleContructorTestCase has common tests for the class constructor and the main function, and also provides the
-    mocks used in this test class.
-
     FactsParamsTestCase has common tests for the parameters support.
     """
+
     def setUp(self):
         self.configure_mocks(self, ServerProfileFactsModule)
 
         FactsParamsTestCase.configure_client_mock(self, self.mock_ov_client.server_profiles)
-        ErrorHandlingTestCase.configure(self, method_to_fire=self.mock_ov_client.server_profiles.get_by)
 
     def test_should_get_all_servers(self):
         server_profiles = [

@@ -33,15 +33,6 @@ requirements:
 author:
     "Mariana Kreisig (@marikrg)"
 options:
-    params:
-      description:
-        - List of params to delimit, filter and sort the list of resources.
-        - "params allowed:
-          'start': The first item to return, using 0-based indexing.
-          'count': The number of resources to return.
-          'filter': A general filter/query string to narrow the list of items returned.
-          'sort': The sort order of the returned data set."
-      required: false
     name:
       description:
         - Fibre Channel Network name.
@@ -49,6 +40,7 @@ options:
 
 extends_documentation_fragment:
     - oneview
+    - oneview.factsparams
 '''
 
 EXAMPLES = '''
@@ -83,7 +75,7 @@ fc_networks:
     type: complex
 '''
 
-from ansible.module_utils.basic import *
+from ansible.module_utils.basic import AnsibleModule
 from _ansible.module_utils.oneview import OneViewModuleBase
 
 
