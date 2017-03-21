@@ -42,19 +42,11 @@ options:
           Options allowed: C(bios), C(javaRemoteConsoleUrl), C(environmentalConfig), C(iloSsoUrl), C(remoteConsoleUrl),
           C(utilization), C(firmware), and C(firmwares)."
       required: false
-    params:
-      description:
-        - List of params to delimit, filter and sort the list of resources.
-        - "params allowed:
-           C(start): The first item to return, using 0-based indexing.
-           C(count): The number of resources to return.
-           C(filter): A general filter/query string to narrow the list of items returned.
-           C(sort): The sort order of the returned data set."
-      required: false
 notes:
     - The options C(firmware) and C(firmwares) are only available for API version 300 or later.
 extends_documentation_fragment:
     - oneview
+    - oneview.factsparams
 '''
 
 EXAMPLES = '''

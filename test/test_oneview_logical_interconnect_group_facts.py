@@ -15,10 +15,10 @@
 ###
 
 import unittest
+
+from hpe_test_utils import FactsParamsTestCase
+
 from oneview_logical_interconnect_group_facts import LogicalInterconnectGroupFactsModule
-from test.utils import FactsParamsTestCase
-from test.utils import ModuleContructorTestCase
-from test.utils import ErrorHandlingTestCase
 
 ERROR_MSG = 'Fake message error'
 
@@ -38,15 +38,11 @@ PRESENT_LIGS = [{
 }]
 
 
-class LogicalInterconnectGroupFactsSpec(unittest.TestCase,
-                                        ModuleContructorTestCase,
-                                        FactsParamsTestCase,
-                                        ErrorHandlingTestCase):
+class LogicalInterconnectGroupFactsSpec(unittest.TestCase, FactsParamsTestCase):
     def setUp(self):
         self.configure_mocks(self, LogicalInterconnectGroupFactsModule)
         self.logical_interconnect_groups = self.mock_ov_client.logical_interconnect_groups
         FactsParamsTestCase.configure_client_mock(self, self.logical_interconnect_groups)
-        ErrorHandlingTestCase.configure(self, method_to_fire=self.logical_interconnect_groups.get_by)
 
     def test_should_get_all_ligs(self):
         self.logical_interconnect_groups.get_all.return_value = PRESENT_LIGS

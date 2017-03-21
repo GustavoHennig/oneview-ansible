@@ -2243,7 +2243,7 @@ Manage OneView Ethernet Network resources.
 | ------------- |-------------| ---------|----------- |--------- |
 | config  |   No  |  | |  Path to a .json configuration file containing the OneView client configuration. The configuration file is optional. If the file path is not provided, the configuration will be loaded from environment variables.  |
 | data  |   Yes  |  | |  List with Ethernet Network properties.  |
-| state  |   |  | <ul> <li>present</li>  <li>absent</li>  <li>default_bandwidth_reset</li> </ul> |  Indicates the desired state for the Ethernet Network resource. 'present' will ensure data properties are compliant with OneView. 'absent' will remove the resource from OneView, if it exists. 'default_bandwidth_reset' will reset the network connection template to the default.  |
+| state  |   |  | <ul> <li>present</li>  <li>absent</li>  <li>default_bandwidth_reset</li> </ul> |  Indicates the desired state for the Ethernet Network resource. **present** will ensure data properties are compliant with OneView. **absent** will remove the resource from OneView, if it exists. **default_bandwidth_reset** will reset the network connection template to the default.  |
 | validate_etag  |   |  True  | <ul> <li>true</li>  <li>false</li> </ul> |  When the ETag Validation is enabled, the request will be conditionally processed only if the current ETag for the resource matches the ETag provided in the data.  |
 
 
@@ -2323,9 +2323,11 @@ Manage OneView Ethernet Network resources.
 
 #### Notes
 
-- A sample configuration file for the config parameter can be found at: https://github.com/HewlettPackard/oneview-ansible/blob/master/examples/oneview_config-rename.json
+- A sample configuration file for the config parameter can be found at: U(https://github.com/HewlettPackard/oneview-ansible/blob/master/examples/oneview_config-rename.json)
 
-- Check how to use environment variables for configuration at: https://github.com/HewlettPackard/oneview-ansible#environment-variables
+- Check how to use environment variables for configuration at: U(https://github.com/HewlettPackard/oneview-ansible#environment-variables)
+
+- Additional Playbooks for the HPE OneView Ansible modules can be found at: U(https://github.com/HewlettPackard/oneview-ansible/tree/master/examples)
 
 
 ---
@@ -2347,8 +2349,8 @@ Retrieve the facts about one or more of the OneView Ethernet Networks.
 | ------------- |-------------| ---------|----------- |--------- |
 | config  |   No  |  | |  Path to a .json configuration file containing the OneView client configuration. The configuration file is optional. If the file path is not provided, the configuration will be loaded from environment variables.  |
 | name  |   No  |  | |  Ethernet Network name.  |
-| options  |   No  |  | |  List with options to gather additional facts about an Ethernet Network and related resources. Options allowed: associatedProfiles and associatedUplinkGroups.  |
-| params  |   No  |  | |  List of params to delimit, filter and sort the list of resources.  params allowed: 'start': The first item to return, using 0-based indexing. 'count': The number of resources to return. 'filter': A general filter/query string to narrow the list of items returned. 'sort': The sort order of the returned data set.  |
+| options  |   No  |  | |  List with options to gather additional facts about an Ethernet Network and related resources. Options allowed: **associatedProfiles** and **associatedUplinkGroups**.  |
+| params  |   No  |  | |  List of params to delimit, filter and sort the list of resources.  params allowed: **start**: The first item to return, using 0-based indexing. **count**: The number of resources to return. **filter**: A general filter/query string to narrow the list of items returned. **sort**: The sort order of the returned data set.  |
 
 
  
@@ -2406,9 +2408,11 @@ Retrieve the facts about one or more of the OneView Ethernet Networks.
 
 #### Notes
 
-- A sample configuration file for the config parameter can be found at: https://github.com/HewlettPackard/oneview-ansible/blob/master/examples/oneview_config-rename.json
+- A sample configuration file for the config parameter can be found at: U(https://github.com/HewlettPackard/oneview-ansible/blob/master/examples/oneview_config-rename.json)
 
-- Check how to use environment variables for configuration at: https://github.com/HewlettPackard/oneview-ansible#environment-variables
+- Check how to use environment variables for configuration at: U(https://github.com/HewlettPackard/oneview-ansible#environment-variables)
+
+- Additional Playbooks for the HPE OneView Ansible modules can be found at: U(https://github.com/HewlettPackard/oneview-ansible/tree/master/examples)
 
 
 ---
@@ -3268,7 +3272,7 @@ Retrieve facts about one or more of the OneView Interconnect Types.
 | ------------- |-------------| ---------|----------- |--------- |
 | config  |   No  |  | |  Path to a .json configuration file containing the OneView client configuration. The configuration file is optional. If the file path is not provided, the configuration will be loaded from environment variables.  |
 | name  |   No  |  | |  Interconnect Type name.  |
-| params  |   No  |  | |  List of params to delimit, filter and sort the list of resources.  params allowed: 'start': The first item to return, using 0-based indexing. 'count': The number of resources to return. 'filter': A general filter/query string to narrow the list of items returned. 'sort': The sort order of the returned data set.  |
+| params  |   No  |  | |  List of params to delimit, filter and sort the list of resources.  params allowed: **start**: The first item to return, using 0-based indexing. **count**: The number of resources to return. **filter**: A general filter/query string to narrow the list of items returned. **sort**: The sort order of the returned data set.  |
 
 
  
@@ -3312,9 +3316,11 @@ Retrieve facts about one or more of the OneView Interconnect Types.
 
 #### Notes
 
-- A sample configuration file for the config parameter can be found at: https://github.com/HewlettPackard/oneview-ansible/blob/master/examples/oneview_config-rename.json
+- A sample configuration file for the config parameter can be found at: U(https://github.com/HewlettPackard/oneview-ansible/blob/master/examples/oneview_config-rename.json)
 
-- Check how to use environment variables for configuration at: https://github.com/HewlettPackard/oneview-ansible#environment-variables
+- Check how to use environment variables for configuration at: U(https://github.com/HewlettPackard/oneview-ansible#environment-variables)
+
+- Additional Playbooks for the HPE OneView Ansible modules can be found at: U(https://github.com/HewlettPackard/oneview-ansible/tree/master/examples)
 
 
 ---
@@ -3975,7 +3981,7 @@ Manage OneView Logical Interconnect Group resources.
 | ------------- |-------------| ---------|----------- |--------- |
 | config  |   No  |  | |  Path to a .json configuration file containing the OneView client configuration. The configuration file is optional. If the file path is not provided, the configuration will be loaded from environment variables.  |
 | data  |   Yes  |  | |  List with the Logical Interconnect Group properties.  |
-| state  |   |  | <ul> <li>present</li>  <li>absent</li> </ul> |  Indicates the desired state for the Logical Interconnect Group resource. 'present' will ensure data properties are compliant with OneView. 'absent' will remove the resource from OneView, if it exists.  |
+| state  |   |  | <ul> <li>present</li>  <li>absent</li> </ul> |  Indicates the desired state for the Logical Interconnect Group resource. **present** will ensure data properties are compliant with OneView. **absent** will remove the resource from OneView, if it exists.  |
 | validate_etag  |   |  True  | <ul> <li>true</li>  <li>false</li> </ul> |  When the ETag Validation is enabled, the request will be conditionally processed only if the current ETag for the resource matches the ETag provided in the data.  |
 
 
@@ -4031,9 +4037,11 @@ Manage OneView Logical Interconnect Group resources.
 
 #### Notes
 
-- A sample configuration file for the config parameter can be found at: https://github.com/HewlettPackard/oneview-ansible/blob/master/examples/oneview_config-rename.json
+- A sample configuration file for the config parameter can be found at: U(https://github.com/HewlettPackard/oneview-ansible/blob/master/examples/oneview_config-rename.json)
 
-- Check how to use environment variables for configuration at: https://github.com/HewlettPackard/oneview-ansible#environment-variables
+- Check how to use environment variables for configuration at: U(https://github.com/HewlettPackard/oneview-ansible#environment-variables)
+
+- Additional Playbooks for the HPE OneView Ansible modules can be found at: U(https://github.com/HewlettPackard/oneview-ansible/tree/master/examples)
 
 
 ---
@@ -4055,7 +4063,7 @@ Retrieve facts about one or more of the OneView Logical Interconnect Groups.
 | ------------- |-------------| ---------|----------- |--------- |
 | config  |   No  |  | |  Path to a .json configuration file containing the OneView client configuration. The configuration file is optional. If the file path is not provided, the configuration will be loaded from environment variables.  |
 | name  |   No  |  | |  Logical Interconnect Group name.  |
-| params  |   No  |  | |  List of params to delimit, filter, and sort the list of resources.  params allowed: 'start': The first item to return, using 0-based indexing. 'count': The number of resources to return. 'filter': A general filter/query string to narrow the list of items returned. 'sort': The sort order of the returned data set.  |
+| params  |   No  |  | |  List of params to delimit, filter and sort the list of resources.  params allowed: **start**: The first item to return, using 0-based indexing. **count**: The number of resources to return. **filter**: A general filter/query string to narrow the list of items returned. **sort**: The sort order of the returned data set.  |
 
 
  
@@ -4099,9 +4107,11 @@ Retrieve facts about one or more of the OneView Logical Interconnect Groups.
 
 #### Notes
 
-- A sample configuration file for the config parameter can be found at: https://github.com/HewlettPackard/oneview-ansible/blob/master/examples/oneview_config-rename.json
+- A sample configuration file for the config parameter can be found at: U(https://github.com/HewlettPackard/oneview-ansible/blob/master/examples/oneview_config-rename.json)
 
-- Check how to use environment variables for configuration at: https://github.com/HewlettPackard/oneview-ansible#environment-variables
+- Check how to use environment variables for configuration at: U(https://github.com/HewlettPackard/oneview-ansible#environment-variables)
+
+- Additional Playbooks for the HPE OneView Ansible modules can be found at: U(https://github.com/HewlettPackard/oneview-ansible/tree/master/examples)
 
 
 ---
@@ -4836,8 +4846,8 @@ Retrieve facts about one or more Os Deployment Plans.
 | ------------- |-------------| ---------|----------- |--------- |
 | config  |   No  |  | |  Path to a .json configuration file containing the OneView client configuration. The configuration file is optional. If the file path is not provided, the configuration will be loaded from environment variables.  |
 | name  |   No  |  | |  Os Deployment Plan name.  |
-| options  |   No  |  | |  List with options to gather facts about OS Deployment Plan. Option allowed: osCustomAttributesForServerProfile The option 'osCustomAttributesForServerProfile' retrieves the list of editable OS Custom Atributes, prepared for Server Profile use.  |
-| params  |   No  |  | |  List of params to delimit, filter and sort the list of resources.  params allowed: 'start': The first item to return, using 0-based indexing. 'count': The number of resources to return. 'filter': A general filter/query string to narrow the list of items returned. 'sort': The sort order of the returned data set.  |
+| options  |   No  |  | |  List with options to gather facts about OS Deployment Plan. Option allowed: **osCustomAttributesForServerProfile** The option **osCustomAttributesForServerProfile** retrieves the list of editable OS Custom Atributes, prepared for Server Profile use.  |
+| params  |   No  |  | |  List of params to delimit, filter and sort the list of resources.  params allowed: **start**: The first item to return, using 0-based indexing. **count**: The number of resources to return. **filter**: A general filter/query string to narrow the list of items returned. **sort**: The sort order of the returned data set.  |
 
 
  
@@ -4893,9 +4903,11 @@ Retrieve facts about one or more Os Deployment Plans.
 
 #### Notes
 
-- A sample configuration file for the config parameter can be found at: https://github.com/HewlettPackard/oneview-ansible/blob/master/examples/oneview_config-rename.json
+- A sample configuration file for the config parameter can be found at: U(https://github.com/HewlettPackard/oneview-ansible/blob/master/examples/oneview_config-rename.json)
 
-- Check how to use environment variables for configuration at: https://github.com/HewlettPackard/oneview-ansible#environment-variables
+- Check how to use environment variables for configuration at: U(https://github.com/HewlettPackard/oneview-ansible#environment-variables)
+
+- Additional Playbooks for the HPE OneView Ansible modules can be found at: U(https://github.com/HewlettPackard/oneview-ansible/tree/master/examples)
 
 
 ---
@@ -4996,8 +5008,8 @@ Retrieve facts about one or more OS Deployment Servers.
 | ------------- |-------------| ---------|----------- |--------- |
 | config  |   No  |  | |  Path to a .json configuration file containing the OneView client configuration. The configuration file is optional. If the file path is not provided, the configuration will be loaded from environment variables.  |
 | name  |   No  |  | |  OS Deployment Server name.  |
-| options  |   No  |  | |  List with options to gather additional facts about an OS Deployment Server and related resources. Options allowed: networks, appliances, and appliance.  |
-| params  |   No  |  | |  List of params to delimit, filter and sort the list of resources.  params allowed: 'start': The first item to return, using 0-based indexing. 'count': The number of resources to return. 'filter': A general filter/query string to narrow the list of items returned. 'sort': The sort order of the returned data set. 'query': A general query string to narrow the list of resources returned. 'fields': Specifies which fields should be returned in the result set. 'view': Return a specific subset of the attributes of the resource or collection, by specifying the name of a predefined view.  |
+| options  |   No  |  | |  List with options to gather additional facts about an OS Deployment Server and related resources. Options allowed: **networks**, **appliances**, and **appliance**.  |
+| params  |   No  |  | |  List of params to delimit, filter and sort the list of resources.  params allowed: **start**: The first item to return, using 0-based indexing. **count**: The number of resources to return. **filter**: A general filter/query string to narrow the list of items returned. **sort**: The sort order of the returned data set. **query**: A general query string to narrow the list of resources returned. **fields**: Specifies which fields should be returned in the result set. **view**: Return a specific subset of the attributes of the resource or collection, by specifying the name of a predefined view.  |
 
 
  
@@ -5049,11 +5061,13 @@ Retrieve facts about one or more OS Deployment Servers.
 
 #### Notes
 
-- A sample configuration file for the config parameter can be found at: https://github.com/HewlettPackard/oneview-ansible/blob/master/examples/oneview_config-rename.json
-
-- Check how to use environment variables for configuration at: https://github.com/HewlettPackard/oneview-ansible#environment-variables
-
 - This resource is only available on HPE Synergy
+
+- A sample configuration file for the config parameter can be found at: U(https://github.com/HewlettPackard/oneview-ansible/blob/master/examples/oneview_config-rename.json)
+
+- Check how to use environment variables for configuration at: U(https://github.com/HewlettPackard/oneview-ansible#environment-variables)
+
+- Additional Playbooks for the HPE OneView Ansible modules can be found at: U(https://github.com/HewlettPackard/oneview-ansible/tree/master/examples)
 
 
 ---
