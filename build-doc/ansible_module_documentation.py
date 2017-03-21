@@ -15,7 +15,12 @@
 # limitations under the License.
 ###
 from ansible.module_utils.basic import AnsibleModule
-from ansible.utils import module_docs
+
+try:
+    from ansible.utils import module_docs
+except ImportError:
+    # Ignored for the unit tests
+    pass
 from fnmatch import fnmatch
 import os
 import yaml

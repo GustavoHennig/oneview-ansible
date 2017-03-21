@@ -15,13 +15,11 @@
 ###
 
 import unittest
-
-from oneview_os_deployment_server_facts import OsDeploymentServerFactsModule
-from oneview_os_deployment_server_facts import EXAMPLES
-from test.utils import FactsParamsTestCase
-from test.utils import ModuleContructorTestCase
-from test.utils import ErrorHandlingTestCase
 import yaml
+
+from oneview_os_deployment_server_facts import (OsDeploymentServerFactsModule,
+                                                EXAMPLES)
+from hpe_test_utils import FactsParamsTestCase
 
 SERVERS = [
     {
@@ -32,14 +30,11 @@ SERVERS = [
 
 
 class OsDeploymentServerFactsSpec(unittest.TestCase,
-                                  ModuleContructorTestCase,
-                                  FactsParamsTestCase,
-                                  ErrorHandlingTestCase):
+                                  FactsParamsTestCase):
     def setUp(self):
         self.configure_mocks(self, OsDeploymentServerFactsModule)
         self.os_deployment_servers = self.mock_ov_client.os_deployment_servers
         FactsParamsTestCase.configure_client_mock(self, self.os_deployment_servers)
-        ErrorHandlingTestCase.configure(self, method_to_fire=self.os_deployment_servers.get_by)
 
         # Load scenarios from module examples
         self.EXAMPLES = yaml.load(EXAMPLES)
