@@ -55,8 +55,6 @@ class OneViewModuleBase(object):
     MSG_ALREADY_ABSENT = 'Resource is already absent.'
     HPE_ONEVIEW_SDK_REQUIRED = 'HPE OneView Python SDK is required for this module.'
 
-    RESOURCE_FACT_NAME = ''
-
     ONEVIEW_COMMON_ARGS = dict(
         config=dict(required=False, type='str')
     )
@@ -84,6 +82,13 @@ class OneViewModuleBase(object):
         return merged_arg_spec
 
     def __init__(self, additional_arg_spec=None, validate_etag_support=False):
+        """
+        OneViewModuleBase constructor.
+
+        Args:
+            additional_arg_spec (dict): Additional argument spec definition.
+            validate_etag_support (bool): Enables support to eTag validation.
+        """
 
         argument_spec = self.__build_argument_spec(additional_arg_spec, validate_etag_support)
 
@@ -114,10 +119,17 @@ class OneViewModuleBase(object):
             self.oneview_client = OneViewClient.from_json_file(self.module.params['config'])
 
     def execute_module(self):
-        # Abstract function, must be implemented by inheritor
+        """
+        Abstract function, must be implemented by the inheritor.
+        """
         raise HPOneViewException("execute_module not implemented")
 
     def run(self):
+        """
+        Common implementation of the OneView run modules.
+        It calls the inheritor 'execute_module' function and send the return to the Ansible.
+        Also handles eventual exceptions.
+        """
         try:
             if self.validate_etag_support:
                 if not self.module.params.get('validate_etag'):
@@ -134,6 +146,18 @@ class OneViewModuleBase(object):
             self.module.fail_json(msg='; '.join(str(e) for e in exception.args))
 
     def resource_absent(self, resource, method='delete'):
+        """
+        Generic implementation of the absent state for the OneView resources.
+        It checks if the resource needs to be removed.
+        Args:
+            resource (dict): Resource to delete.
+            method (str):
+                Function of the OneView client that will be called for resource deletion. Usually delete or remove.
+
+        Returns:
+            A dictionary with the expected arguments for the AnsibleModule.exit_json
+
+        """
         if resource:
             getattr(self.resource_client, method)(resource)
 
@@ -142,13 +166,33 @@ class OneViewModuleBase(object):
             return {"changed": False, "msg": self.MSG_ALREADY_ABSENT}
 
     def get_by_name(self, name):
+        """
+        Generic get by name implementation.
+        Args:
+            name: Resource name to search for.
+
+        Returns:
+            The resource found or None.
+        """
         result = self.resource_client.get_by('name', name)
         return result[0] if result else None
 
-    def resource_present(self, resource, create_method='create'):
+    def resource_present(self, resource, fact_name, create_method='create'):
+        """
+        Generic implementation of the present state for the OneView resources.
+        It checks if the resource needs to be created or updated.
 
-        if not self.RESOURCE_FACT_NAME:
-            raise HPOneViewValueError("RESOURCE_FACT_NAME was not defined")
+        Args:
+            resource (dict):
+                Resource to create or update.
+            fact_name (str):
+                Name of the fact returned to the Ansible.
+            create_method (str):
+                Function of the OneView client that will be called for resource creation. Usually create or add.
+
+        Returns:
+            A dictionary with the expected arguments for the AnsibleModule.exit_json
+        """
 
         changed = False
         if "newName" in self.data:
@@ -173,13 +217,14 @@ class OneViewModuleBase(object):
         return dict(
             msg=msg,
             changed=changed,
-            ansible_facts={self.RESOURCE_FACT_NAME: resource}
+            ansible_facts={fact_name: resource}
         )
 
     @staticmethod
     def transform_list_to_dict(list_):
         """
-            Transforms a list into a dictionary, putting values as keys
+        Transforms a list into a dictionary, putting values as keys.
+
         Args:
             list_: List of values
 

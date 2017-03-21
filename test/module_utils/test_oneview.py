@@ -240,9 +240,8 @@ class OneViewModuleBaseSpec(unittest.TestCase):
         ov_base.resource_client = mock.Mock()
         ov_base.resource_client.create.return_value = self.RESOURCE_COMMON
         ov_base.data = {'name': 'Resource Name'}
-        ov_base.RESOURCE_FACT_NAME = 'resource'
 
-        facts = ov_base.resource_present(None)
+        facts = ov_base.resource_present(None, fact_name="resource")
 
         expected = self.RESOURCE_COMMON.copy()
 
@@ -255,21 +254,14 @@ class OneViewModuleBaseSpec(unittest.TestCase):
                              ansible_facts=dict(resource=expected))
                          )
 
-    def test_resource_present_should_fail_with_undefined_fact_name(self):
-        self.mock_ansible_module.params = self.PARAMS_FOR_PRESENT
-        ov_base = OneViewModuleBase()
-
-        self.assertRaises(HPOneViewValueError, ov_base.resource_present, None)
-
     def test_resource_present_should_not_update_when_data_is_equals(self):
         self.mock_ansible_module.params = self.PARAMS_FOR_PRESENT
 
         ov_base = OneViewModuleBase()
         ov_base.resource_client = mock.Mock()
         ov_base.data = self.RESOURCE_COMMON.copy()
-        ov_base.RESOURCE_FACT_NAME = 'resource'
 
-        facts = ov_base.resource_present(self.RESOURCE_COMMON.copy())
+        facts = ov_base.resource_present(self.RESOURCE_COMMON.copy(), fact_name="resource")
 
         self.assertEqual(facts,
                          dict(
@@ -285,9 +277,8 @@ class OneViewModuleBaseSpec(unittest.TestCase):
         ov_base.resource_client = mock.Mock()
         ov_base.resource_client.update.return_value = {'return': 'value'}
         ov_base.data = {'newName': 'Resource Name New'}
-        ov_base.RESOURCE_FACT_NAME = 'resource'
 
-        facts = ov_base.resource_present(self.RESOURCE_COMMON)
+        facts = ov_base.resource_present(self.RESOURCE_COMMON, 'resource')
 
         expected = self.RESOURCE_COMMON.copy()
         expected['name'] = 'Resource Name New'

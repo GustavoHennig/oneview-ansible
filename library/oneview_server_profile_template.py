@@ -93,17 +93,11 @@ server_profile_template:
     type: complex
 '''
 
-import time
 from ansible.module_utils.basic import AnsibleModule
 from _ansible.module_utils.oneview import (OneViewModuleBase,
                                            ServerProfileReplaceNamesByUris,
-                                           HPOneViewValueError,
                                            ServerProfileMerger,
-                                           ResourceComparator,
-                                           HPOneViewTaskError,
-                                           SPKeys,
-                                           HPOneViewException)
-from copy import deepcopy
+                                           ResourceComparator)
 
 SRV_PROFILE_TEMPLATE_CREATED = 'Server Profile Template created successfully.'
 SRV_PROFILE_TEMPLATE_UPDATED = 'Server Profile Template updated successfully.'

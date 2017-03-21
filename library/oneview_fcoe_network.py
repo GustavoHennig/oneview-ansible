@@ -100,7 +100,7 @@ class FcoeNetworkModule(OneViewModuleBase):
         resource = self.get_by_name(self.data.get('name'))
 
         if self.state == 'present':
-            return self.resource_present(resource)
+            return self.resource_present(resource, self.RESOURCE_FACT_NAME)
         elif self.state == 'absent':
             return self.resource_absent(resource)
 
