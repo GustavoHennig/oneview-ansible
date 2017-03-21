@@ -14,11 +14,13 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 ###
-from ansible.module_utils.basic import *
+from ansible.module_utils.basic import AnsibleModule
 from ansible.utils import module_docs
 from fnmatch import fnmatch
 import os
 import yaml
+import re
+from six import iteritems
 
 DOCUMENTATION = '''
 ---
@@ -70,6 +72,8 @@ errors:
     type: complex
 '''
 
+errors = list()
+
 
 def main():
     argument_spec = {
@@ -94,7 +98,6 @@ def main():
     exclusion_filters = module.params['exclusion_filters']
 
     doc_list = list()
-    errors = list()
 
     for root, dirs, files in os.walk(root_path):
         for file_name in sorted(files):
@@ -112,6 +115,8 @@ def main():
                 doc, plainexamples, returndocs = module_docs.get_docstring(module_file_name)
 
                 if doc:
+                    doc = format_dict(doc)
+
                     if plainexamples:
                         doc['examples'] = plainexamples.split('\n')
 
@@ -137,6 +142,29 @@ def check_exclusion(file_name, exclusion_filters):
             if fnmatch(file_name, pattern):
                 return True
     return False
+
+
+def format_doc(data):
+    ret = re.sub(r"(C\()(.*?)(\))", r'**\2**', data)
+    return ret
+
+
+def format_dict(ancestor):
+    if isinstance(ancestor, dict):
+        for (key, value) in iteritems(ancestor):
+            ancestor[key] = format_dict(value)
+    elif isinstance(ancestor, list):
+        ancestor = map(format_dict, ancestor)
+    elif isinstance(ancestor, bool):
+        return ancestor
+    else:
+        try:
+            return format_doc(ancestor)
+        except Exception as e:
+            print(str(type(ancestor)) + e.args[0])
+            return ancestor
+
+    return ancestor
 
 
 if __name__ == '__main__':
