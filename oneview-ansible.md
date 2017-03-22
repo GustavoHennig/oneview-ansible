@@ -1272,11 +1272,11 @@ Retrieve facts about the OneView Alerts.
 
 #### Notes
 
-- A sample configuration file for the config parameter can be found at: U(https://github.com/HewlettPackard/oneview-ansible/blob/master/examples/oneview_config-rename.json)
+- A sample configuration file for the config parameter can be found at: https://github.com/HewlettPackard/oneview-ansible/blob/master/examples/oneview_config-rename.json
 
-- Check how to use environment variables for configuration at: U(https://github.com/HewlettPackard/oneview-ansible#environment-variables)
+- Check how to use environment variables for configuration at: https://github.com/HewlettPackard/oneview-ansible#environment-variables
 
-- Additional Playbooks for the HPE OneView Ansible modules can be found at: U(https://github.com/HewlettPackard/oneview-ansible/tree/master/examples)
+- Additional Playbooks for the HPE OneView Ansible modules can be found at: https://github.com/HewlettPackard/oneview-ansible/tree/master/examples
 
 
 ---
@@ -2323,11 +2323,11 @@ Manage OneView Ethernet Network resources.
 
 #### Notes
 
-- A sample configuration file for the config parameter can be found at: U(https://github.com/HewlettPackard/oneview-ansible/blob/master/examples/oneview_config-rename.json)
+- A sample configuration file for the config parameter can be found at: https://github.com/HewlettPackard/oneview-ansible/blob/master/examples/oneview_config-rename.json
 
-- Check how to use environment variables for configuration at: U(https://github.com/HewlettPackard/oneview-ansible#environment-variables)
+- Check how to use environment variables for configuration at: https://github.com/HewlettPackard/oneview-ansible#environment-variables
 
-- Additional Playbooks for the HPE OneView Ansible modules can be found at: U(https://github.com/HewlettPackard/oneview-ansible/tree/master/examples)
+- Additional Playbooks for the HPE OneView Ansible modules can be found at: https://github.com/HewlettPackard/oneview-ansible/tree/master/examples
 
 
 ---
@@ -2408,11 +2408,11 @@ Retrieve the facts about one or more of the OneView Ethernet Networks.
 
 #### Notes
 
-- A sample configuration file for the config parameter can be found at: U(https://github.com/HewlettPackard/oneview-ansible/blob/master/examples/oneview_config-rename.json)
+- A sample configuration file for the config parameter can be found at: https://github.com/HewlettPackard/oneview-ansible/blob/master/examples/oneview_config-rename.json
 
-- Check how to use environment variables for configuration at: U(https://github.com/HewlettPackard/oneview-ansible#environment-variables)
+- Check how to use environment variables for configuration at: https://github.com/HewlettPackard/oneview-ansible#environment-variables
 
-- Additional Playbooks for the HPE OneView Ansible modules can be found at: U(https://github.com/HewlettPackard/oneview-ansible/tree/master/examples)
+- Additional Playbooks for the HPE OneView Ansible modules can be found at: https://github.com/HewlettPackard/oneview-ansible/tree/master/examples
 
 
 ---
@@ -2612,11 +2612,11 @@ Manage OneView Fibre Channel Network resources.
 
 #### Notes
 
-- A sample configuration file for the config parameter can be found at: U(https://github.com/HewlettPackard/oneview-ansible/blob/master/examples/oneview_config-rename.json)
+- A sample configuration file for the config parameter can be found at: https://github.com/HewlettPackard/oneview-ansible/blob/master/examples/oneview_config-rename.json
 
-- Check how to use environment variables for configuration at: U(https://github.com/HewlettPackard/oneview-ansible#environment-variables)
+- Check how to use environment variables for configuration at: https://github.com/HewlettPackard/oneview-ansible#environment-variables
 
-- Additional Playbooks for the HPE OneView Ansible modules can be found at: U(https://github.com/HewlettPackard/oneview-ansible/tree/master/examples)
+- Additional Playbooks for the HPE OneView Ansible modules can be found at: https://github.com/HewlettPackard/oneview-ansible/tree/master/examples
 
 
 ---
@@ -2681,11 +2681,11 @@ Retrieve the facts about one or more of the OneView Fibre Channel Networks.
 
 #### Notes
 
-- A sample configuration file for the config parameter can be found at: U(https://github.com/HewlettPackard/oneview-ansible/blob/master/examples/oneview_config-rename.json)
+- A sample configuration file for the config parameter can be found at: https://github.com/HewlettPackard/oneview-ansible/blob/master/examples/oneview_config-rename.json
 
-- Check how to use environment variables for configuration at: U(https://github.com/HewlettPackard/oneview-ansible#environment-variables)
+- Check how to use environment variables for configuration at: https://github.com/HewlettPackard/oneview-ansible#environment-variables
 
-- Additional Playbooks for the HPE OneView Ansible modules can be found at: U(https://github.com/HewlettPackard/oneview-ansible/tree/master/examples)
+- Additional Playbooks for the HPE OneView Ansible modules can be found at: https://github.com/HewlettPackard/oneview-ansible/tree/master/examples
 
 
 ---
@@ -2743,11 +2743,11 @@ Manage OneView FCoE Network resources.
 
 #### Notes
 
-- A sample configuration file for the config parameter can be found at: U(https://github.com/HewlettPackard/oneview-ansible/blob/master/examples/oneview_config-rename.json)
+- A sample configuration file for the config parameter can be found at: https://github.com/HewlettPackard/oneview-ansible/blob/master/examples/oneview_config-rename.json
 
-- Check how to use environment variables for configuration at: U(https://github.com/HewlettPackard/oneview-ansible#environment-variables)
+- Check how to use environment variables for configuration at: https://github.com/HewlettPackard/oneview-ansible#environment-variables
 
-- Additional Playbooks for the HPE OneView Ansible modules can be found at: U(https://github.com/HewlettPackard/oneview-ansible/tree/master/examples)
+- Additional Playbooks for the HPE OneView Ansible modules can be found at: https://github.com/HewlettPackard/oneview-ansible/tree/master/examples
 
 
 ---
@@ -2813,11 +2813,11 @@ Retrieve the facts about one or more of the OneView FCoE Networks.
 
 #### Notes
 
-- A sample configuration file for the config parameter can be found at: U(https://github.com/HewlettPackard/oneview-ansible/blob/master/examples/oneview_config-rename.json)
+- A sample configuration file for the config parameter can be found at: https://github.com/HewlettPackard/oneview-ansible/blob/master/examples/oneview_config-rename.json
 
-- Check how to use environment variables for configuration at: U(https://github.com/HewlettPackard/oneview-ansible#environment-variables)
+- Check how to use environment variables for configuration at: https://github.com/HewlettPackard/oneview-ansible#environment-variables
 
-- Additional Playbooks for the HPE OneView Ansible modules can be found at: U(https://github.com/HewlettPackard/oneview-ansible/tree/master/examples)
+- Additional Playbooks for the HPE OneView Ansible modules can be found at: https://github.com/HewlettPackard/oneview-ansible/tree/master/examples
 
 
 ---
@@ -3316,11 +3316,11 @@ Retrieve facts about one or more of the OneView Interconnect Types.
 
 #### Notes
 
-- A sample configuration file for the config parameter can be found at: U(https://github.com/HewlettPackard/oneview-ansible/blob/master/examples/oneview_config-rename.json)
+- A sample configuration file for the config parameter can be found at: https://github.com/HewlettPackard/oneview-ansible/blob/master/examples/oneview_config-rename.json
 
-- Check how to use environment variables for configuration at: U(https://github.com/HewlettPackard/oneview-ansible#environment-variables)
+- Check how to use environment variables for configuration at: https://github.com/HewlettPackard/oneview-ansible#environment-variables
 
-- Additional Playbooks for the HPE OneView Ansible modules can be found at: U(https://github.com/HewlettPackard/oneview-ansible/tree/master/examples)
+- Additional Playbooks for the HPE OneView Ansible modules can be found at: https://github.com/HewlettPackard/oneview-ansible/tree/master/examples
 
 
 ---
@@ -4037,11 +4037,11 @@ Manage OneView Logical Interconnect Group resources.
 
 #### Notes
 
-- A sample configuration file for the config parameter can be found at: U(https://github.com/HewlettPackard/oneview-ansible/blob/master/examples/oneview_config-rename.json)
+- A sample configuration file for the config parameter can be found at: https://github.com/HewlettPackard/oneview-ansible/blob/master/examples/oneview_config-rename.json
 
-- Check how to use environment variables for configuration at: U(https://github.com/HewlettPackard/oneview-ansible#environment-variables)
+- Check how to use environment variables for configuration at: https://github.com/HewlettPackard/oneview-ansible#environment-variables
 
-- Additional Playbooks for the HPE OneView Ansible modules can be found at: U(https://github.com/HewlettPackard/oneview-ansible/tree/master/examples)
+- Additional Playbooks for the HPE OneView Ansible modules can be found at: https://github.com/HewlettPackard/oneview-ansible/tree/master/examples
 
 
 ---
@@ -4107,11 +4107,11 @@ Retrieve facts about one or more of the OneView Logical Interconnect Groups.
 
 #### Notes
 
-- A sample configuration file for the config parameter can be found at: U(https://github.com/HewlettPackard/oneview-ansible/blob/master/examples/oneview_config-rename.json)
+- A sample configuration file for the config parameter can be found at: https://github.com/HewlettPackard/oneview-ansible/blob/master/examples/oneview_config-rename.json
 
-- Check how to use environment variables for configuration at: U(https://github.com/HewlettPackard/oneview-ansible#environment-variables)
+- Check how to use environment variables for configuration at: https://github.com/HewlettPackard/oneview-ansible#environment-variables
 
-- Additional Playbooks for the HPE OneView Ansible modules can be found at: U(https://github.com/HewlettPackard/oneview-ansible/tree/master/examples)
+- Additional Playbooks for the HPE OneView Ansible modules can be found at: https://github.com/HewlettPackard/oneview-ansible/tree/master/examples
 
 
 ---
@@ -4495,7 +4495,7 @@ Manage OneView Managed SAN resources.
 | ------------- |-------------| ---------|----------- |--------- |
 | config  |   No  |  | |  Path to a .json configuration file containing the OneView client configuration. The configuration file is optional. If the file path is not provided, the configuration will be loaded from environment variables.  |
 | data  |   Yes  |  | |  List with Managed SAN properties and its associated states. Warning: For the 'present' state, the contents of the publicAttributes will replace the existing list, so leaving out a public attribute from the given list will effectively delete it.  |
-| state  |   Yes  |  | <ul> <li>present</li>  <li>refresh_state_set</li>  <li>endpoints_csv_file_created</li>  <li>issues_report_created</li> </ul> |  Indicates the desired state for the Managed SAN resource. 'present' ensures data properties are compliant with OneView. 'refresh_state_set' updates the refresh state of the Managed SAN. 'endpoints_csv_file_created' creates a SAN endpoints CSV file. 'issues_report_created' creates an unexpected zoning report for a SAN.  |
+| state  |   Yes  |  | <ul> <li>present</li>  <li>refresh_state_set</li>  <li>endpoints_csv_file_created</li>  <li>issues_report_created</li> </ul> |  Indicates the desired state for the Managed SAN resource. **present** ensures data properties are compliant with OneView. **refresh_state_set** updates the refresh state of the Managed SAN. **endpoints_csv_file_created** creates a SAN endpoints CSV file. **issues_report_created** creates an unexpected zoning report for a SAN.  |
 
 
  
@@ -4567,6 +4567,8 @@ Manage OneView Managed SAN resources.
 
 - Check how to use environment variables for configuration at: https://github.com/HewlettPackard/oneview-ansible#environment-variables
 
+- Additional Playbooks for the HPE OneView Ansible modules can be found at: https://github.com/HewlettPackard/oneview-ansible/tree/master/examples
+
 
 ---
 
@@ -4587,8 +4589,8 @@ Retrieve facts about the OneView Managed SANs.
 | ------------- |-------------| ---------|----------- |--------- |
 | config  |   No  |  | |  Path to a .json configuration file containing the OneView client configuration. The configuration file is optional. If the file path is not provided, the configuration will be loaded from environment variables.  |
 | name  |   No  |  | |  Name of the Managed SAN.  |
-| options  |   No  |  | |  List with options to gather additional facts about Managed SAN. Options allowed: 'endpoints' gets the list of endpoints in the SAN identified by name. 'wwn' gets the list of Managed SANs associated with an informed WWN 'locate'.  |
-| params  |   No  |  | |  List of params to delimit, filter and sort the list of resources.  params allowed: 'start': The first item to return, using 0-based indexing. 'count': The number of resources to return. 'query': A general query string to narrow the list of resources returned. 'sort': The sort order of the returned data set.  |
+| options  |   No  |  | |  List with options to gather additional facts about Managed SAN. Options allowed: **endpoints** gets the list of endpoints in the SAN identified by name. **wwn** gets the list of Managed SANs associated with an informed WWN **locate**.  |
+| params  |   No  |  | |  List of params to delimit, filter and sort the list of resources.  params allowed: **start**: The first item to return, using 0-based indexing. **count**: The number of resources to return. **query**: A general query string to narrow the list of resources returned. **sort**: The sort order of the returned data set.  |
 
 
  
@@ -4662,6 +4664,8 @@ Retrieve facts about the OneView Managed SANs.
 
 - Check how to use environment variables for configuration at: https://github.com/HewlettPackard/oneview-ansible#environment-variables
 
+- Additional Playbooks for the HPE OneView Ansible modules can be found at: https://github.com/HewlettPackard/oneview-ansible/tree/master/examples
+
 
 ---
 
@@ -4730,11 +4734,11 @@ Manage OneView Network Set resources.
 
 #### Notes
 
-- A sample configuration file for the config parameter can be found at: U(https://github.com/HewlettPackard/oneview-ansible/blob/master/examples/oneview_config-rename.json)
+- A sample configuration file for the config parameter can be found at: https://github.com/HewlettPackard/oneview-ansible/blob/master/examples/oneview_config-rename.json
 
-- Check how to use environment variables for configuration at: U(https://github.com/HewlettPackard/oneview-ansible#environment-variables)
+- Check how to use environment variables for configuration at: https://github.com/HewlettPackard/oneview-ansible#environment-variables
 
-- Additional Playbooks for the HPE OneView Ansible modules can be found at: U(https://github.com/HewlettPackard/oneview-ansible/tree/master/examples)
+- Additional Playbooks for the HPE OneView Ansible modules can be found at: https://github.com/HewlettPackard/oneview-ansible/tree/master/examples
 
 
 ---
@@ -4820,11 +4824,11 @@ Retrieve facts about the OneView Network Sets.
 
 #### Notes
 
-- A sample configuration file for the config parameter can be found at: U(https://github.com/HewlettPackard/oneview-ansible/blob/master/examples/oneview_config-rename.json)
+- A sample configuration file for the config parameter can be found at: https://github.com/HewlettPackard/oneview-ansible/blob/master/examples/oneview_config-rename.json
 
-- Check how to use environment variables for configuration at: U(https://github.com/HewlettPackard/oneview-ansible#environment-variables)
+- Check how to use environment variables for configuration at: https://github.com/HewlettPackard/oneview-ansible#environment-variables
 
-- Additional Playbooks for the HPE OneView Ansible modules can be found at: U(https://github.com/HewlettPackard/oneview-ansible/tree/master/examples)
+- Additional Playbooks for the HPE OneView Ansible modules can be found at: https://github.com/HewlettPackard/oneview-ansible/tree/master/examples
 
 
 ---
@@ -4903,11 +4907,11 @@ Retrieve facts about one or more Os Deployment Plans.
 
 #### Notes
 
-- A sample configuration file for the config parameter can be found at: U(https://github.com/HewlettPackard/oneview-ansible/blob/master/examples/oneview_config-rename.json)
+- A sample configuration file for the config parameter can be found at: https://github.com/HewlettPackard/oneview-ansible/blob/master/examples/oneview_config-rename.json
 
-- Check how to use environment variables for configuration at: U(https://github.com/HewlettPackard/oneview-ansible#environment-variables)
+- Check how to use environment variables for configuration at: https://github.com/HewlettPackard/oneview-ansible#environment-variables
 
-- Additional Playbooks for the HPE OneView Ansible modules can be found at: U(https://github.com/HewlettPackard/oneview-ansible/tree/master/examples)
+- Additional Playbooks for the HPE OneView Ansible modules can be found at: https://github.com/HewlettPackard/oneview-ansible/tree/master/examples
 
 
 ---
@@ -5063,11 +5067,11 @@ Retrieve facts about one or more OS Deployment Servers.
 
 - This resource is only available on HPE Synergy
 
-- A sample configuration file for the config parameter can be found at: U(https://github.com/HewlettPackard/oneview-ansible/blob/master/examples/oneview_config-rename.json)
+- A sample configuration file for the config parameter can be found at: https://github.com/HewlettPackard/oneview-ansible/blob/master/examples/oneview_config-rename.json
 
-- Check how to use environment variables for configuration at: U(https://github.com/HewlettPackard/oneview-ansible#environment-variables)
+- Check how to use environment variables for configuration at: https://github.com/HewlettPackard/oneview-ansible#environment-variables
 
-- Additional Playbooks for the HPE OneView Ansible modules can be found at: U(https://github.com/HewlettPackard/oneview-ansible/tree/master/examples)
+- Additional Playbooks for the HPE OneView Ansible modules can be found at: https://github.com/HewlettPackard/oneview-ansible/tree/master/examples
 
 
 ---
@@ -6543,11 +6547,11 @@ Manage OneView Server Hardware resources.
 
 #### Notes
 
-- A sample configuration file for the config parameter can be found at: U(https://github.com/HewlettPackard/oneview-ansible/blob/master/examples/oneview_config-rename.json)
+- A sample configuration file for the config parameter can be found at: https://github.com/HewlettPackard/oneview-ansible/blob/master/examples/oneview_config-rename.json
 
-- Check how to use environment variables for configuration at: U(https://github.com/HewlettPackard/oneview-ansible#environment-variables)
+- Check how to use environment variables for configuration at: https://github.com/HewlettPackard/oneview-ansible#environment-variables
 
-- Additional Playbooks for the HPE OneView Ansible modules can be found at: U(https://github.com/HewlettPackard/oneview-ansible/tree/master/examples)
+- Additional Playbooks for the HPE OneView Ansible modules can be found at: https://github.com/HewlettPackard/oneview-ansible/tree/master/examples
 
 
 ---
@@ -6678,11 +6682,11 @@ Retrieve facts about the OneView Server Hardwares.
 
 - The options **firmware** and **firmwares** are only available for API version 300 or later.
 
-- A sample configuration file for the config parameter can be found at: U(https://github.com/HewlettPackard/oneview-ansible/blob/master/examples/oneview_config-rename.json)
+- A sample configuration file for the config parameter can be found at: https://github.com/HewlettPackard/oneview-ansible/blob/master/examples/oneview_config-rename.json
 
-- Check how to use environment variables for configuration at: U(https://github.com/HewlettPackard/oneview-ansible#environment-variables)
+- Check how to use environment variables for configuration at: https://github.com/HewlettPackard/oneview-ansible#environment-variables
 
-- Additional Playbooks for the HPE OneView Ansible modules can be found at: U(https://github.com/HewlettPackard/oneview-ansible/tree/master/examples)
+- Additional Playbooks for the HPE OneView Ansible modules can be found at: https://github.com/HewlettPackard/oneview-ansible/tree/master/examples
 
 
 ---
@@ -6933,11 +6937,11 @@ Manage OneView Server Profile resources.
 
 - For the following data, you can provide either a name or a URI: enclosureGroupName or enclosureGroupUri, osDeploymentPlanName or osDeploymentPlanUri (on the osDeploymentSettings), networkName or networkUri (on the connections list), volumeName or volumeUri (on the volumeAttachments list), volumeStoragePoolName or volumeStoragePoolUri (on the volumeAttachments list), volumeStorageSystemName or volumeStorageSystemUri (on the volumeAttachments list), serverHardwareTypeName or  serverHardwareTypeUri, enclosureName or enclosureUri, firmwareBaselineName or firmwareBaselineUri (on the firmware), and sasLogicalJBODName or sasLogicalJBODUri (on the sasLogicalJBODs list)
 
-- A sample configuration file for the config parameter can be found at: U(https://github.com/HewlettPackard/oneview-ansible/blob/master/examples/oneview_config-rename.json)
+- A sample configuration file for the config parameter can be found at: https://github.com/HewlettPackard/oneview-ansible/blob/master/examples/oneview_config-rename.json
 
-- Check how to use environment variables for configuration at: U(https://github.com/HewlettPackard/oneview-ansible#environment-variables)
+- Check how to use environment variables for configuration at: https://github.com/HewlettPackard/oneview-ansible#environment-variables
 
-- Additional Playbooks for the HPE OneView Ansible modules can be found at: U(https://github.com/HewlettPackard/oneview-ansible/tree/master/examples)
+- Additional Playbooks for the HPE OneView Ansible modules can be found at: https://github.com/HewlettPackard/oneview-ansible/tree/master/examples
 
 
 ---
@@ -7072,11 +7076,11 @@ Retrieve facts about the OneView Server Profiles.
 
 #### Notes
 
-- A sample configuration file for the config parameter can be found at: U(https://github.com/HewlettPackard/oneview-ansible/blob/master/examples/oneview_config-rename.json)
+- A sample configuration file for the config parameter can be found at: https://github.com/HewlettPackard/oneview-ansible/blob/master/examples/oneview_config-rename.json
 
-- Check how to use environment variables for configuration at: U(https://github.com/HewlettPackard/oneview-ansible#environment-variables)
+- Check how to use environment variables for configuration at: https://github.com/HewlettPackard/oneview-ansible#environment-variables
 
-- Additional Playbooks for the HPE OneView Ansible modules can be found at: U(https://github.com/HewlettPackard/oneview-ansible/tree/master/examples)
+- Additional Playbooks for the HPE OneView Ansible modules can be found at: https://github.com/HewlettPackard/oneview-ansible/tree/master/examples
 
 
 ---
@@ -7149,11 +7153,11 @@ Manage OneView Server Profile Template resources.
 
 - For the following data, you can provide either a name  or a URI: enclosureGroupName or enclosureGroupUri, osDeploymentPlanName or osDeploymentPlanUri (on the osDeploymentSettings), networkName or networkUri (on the connections list), volumeName or volumeUri (on the volumeAttachments list), volumeStoragePoolName or volumeStoragePoolUri (on the volumeAttachments list), volumeStorageSystemName or volumeStorageSystemUri (on the volumeAttachments list), serverHardwareTypeName or  serverHardwareTypeUri, enclosureName or enclosureUri, firmwareBaselineName or firmwareBaselineUri (on the firmware), and sasLogicalJBODName or sasLogicalJBODUri (on the sasLogicalJBODs list)
 
-- A sample configuration file for the config parameter can be found at: U(https://github.com/HewlettPackard/oneview-ansible/blob/master/examples/oneview_config-rename.json)
+- A sample configuration file for the config parameter can be found at: https://github.com/HewlettPackard/oneview-ansible/blob/master/examples/oneview_config-rename.json
 
-- Check how to use environment variables for configuration at: U(https://github.com/HewlettPackard/oneview-ansible#environment-variables)
+- Check how to use environment variables for configuration at: https://github.com/HewlettPackard/oneview-ansible#environment-variables
 
-- Additional Playbooks for the HPE OneView Ansible modules can be found at: U(https://github.com/HewlettPackard/oneview-ansible/tree/master/examples)
+- Additional Playbooks for the HPE OneView Ansible modules can be found at: https://github.com/HewlettPackard/oneview-ansible/tree/master/examples
 
 
 ---
@@ -7229,11 +7233,11 @@ Retrieve facts about the Server Profile Templates from OneView.
 
 - The option **transformation** is only available for API version 300 or later.
 
-- A sample configuration file for the config parameter can be found at: U(https://github.com/HewlettPackard/oneview-ansible/blob/master/examples/oneview_config-rename.json)
+- A sample configuration file for the config parameter can be found at: https://github.com/HewlettPackard/oneview-ansible/blob/master/examples/oneview_config-rename.json
 
-- Check how to use environment variables for configuration at: U(https://github.com/HewlettPackard/oneview-ansible#environment-variables)
+- Check how to use environment variables for configuration at: https://github.com/HewlettPackard/oneview-ansible#environment-variables
 
-- Additional Playbooks for the HPE OneView Ansible modules can be found at: U(https://github.com/HewlettPackard/oneview-ansible/tree/master/examples)
+- Additional Playbooks for the HPE OneView Ansible modules can be found at: https://github.com/HewlettPackard/oneview-ansible/tree/master/examples
 
 
 ---

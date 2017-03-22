@@ -151,6 +151,7 @@ def check_exclusion(file_name, exclusion_filters):
 
 def format_doc(data):
     ret = re.sub(r"(C\()(.*?)(\))", r'**\2**', data)
+    ret = re.sub(r"(U\()(.*?)(\))", r'\2', ret)
     return ret
 
 

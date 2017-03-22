@@ -17,20 +17,13 @@
 import unittest
 
 from oneview_managed_san_facts import ManagedSanFactsModule
-from test.utils import ModuleContructorTestCase, FactsParamsTestCase, ErrorHandlingTestCase
+from hpe_test_utils import FactsParamsTestCase
 
 
 class ManagedSanFactsClientConfigurationSpec(unittest.TestCase,
-                                             ModuleContructorTestCase,
-                                             FactsParamsTestCase,
-                                             ErrorHandlingTestCase):
+                                             FactsParamsTestCase):
     """
-    ModuleContructorTestCase has common tests for the class constructor and the main function, and also provides the
-    mocks used in this test class.
-
     FactsParamsTestCase has common tests for the parameters support.
-
-    ErrorHandlingTestCase has common tests for the module error handling.
     """
     ERROR_MSG = 'Fake message error'
 
@@ -71,7 +64,6 @@ class ManagedSanFactsClientConfigurationSpec(unittest.TestCase,
         self.configure_mocks(self, ManagedSanFactsModule)
         self.managed_sans = self.mock_ov_client.managed_sans
         FactsParamsTestCase.configure_client_mock(self, self.managed_sans)
-        ErrorHandlingTestCase.configure(self, method_to_fire=self.managed_sans.get_by_name)
 
     def test_should_get_all(self):
         self.managed_sans.get_all.return_value = self.ALL_MANAGED_SANS

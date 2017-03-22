@@ -15,11 +15,14 @@
 ###
 import unittest
 
-from oneview_managed_san import ManagedSanModule
-from oneview_managed_san import MANAGED_SAN_UPDATED, MANAGED_SAN_REFRESH_STATE_UPDATED, MANAGED_SAN_NOT_FOUND, \
-    MANAGED_SAN_NO_CHANGES_PROVIDED, MANAGED_SAN_ENDPOINTS_CSV_FILE_CREATED, MANAGED_SAN_ISSUES_REPORT_CREATED
-from utils import ModuleContructorTestCase
-from utils import ErrorHandlingTestCase
+from oneview_managed_san import (ManagedSanModule,
+                                 MANAGED_SAN_UPDATED,
+                                 MANAGED_SAN_REFRESH_STATE_UPDATED,
+                                 MANAGED_SAN_NOT_FOUND,
+                                 MANAGED_SAN_NO_CHANGES_PROVIDED,
+                                 MANAGED_SAN_ENDPOINTS_CSV_FILE_CREATED,
+                                 MANAGED_SAN_ISSUES_REPORT_CREATED)
+from hpe_test_utils import OneViewBaseTestCase
 
 FAKE_MSG_ERROR = 'Fake message error'
 
@@ -68,12 +71,10 @@ PARAMS_TO_CREATE_ISSUES_REPORT = dict(
 
 
 class ManagedSanModuleSpec(unittest.TestCase,
-                           ModuleContructorTestCase,
-                           ErrorHandlingTestCase):
+                           OneViewBaseTestCase):
     def setUp(self):
         self.configure_mocks(self, ManagedSanModule)
         self.resource = self.mock_ov_client.managed_sans
-        ErrorHandlingTestCase.configure(self, method_to_fire=self.resource.get_by_name)
 
     def test_should_not_update_when_data_is_equals(self):
         self.resource.get_by_name.return_value = MANAGED_SAN
