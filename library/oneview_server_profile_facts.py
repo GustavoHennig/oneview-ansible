@@ -39,9 +39,10 @@ options:
     options:
       description:
         - "List with options to gather additional facts about Server Profile related resources.
-          Options allowed: schema, compliancePreview, profilePorts, messages, transformation, available_networks,
-          available_servers, available_storage_system, available_storage_systems, available_targets"
-        - "To gather facts about 'compliancePreview', 'messages' and 'transformation' it is required to inform the
+          Options allowed: C(schema), C(compliancePreview), C(profilePorts), C(messages), C(transformation),
+          C(available_networks), C(available_servers), C(available_storage_system), C(available_storage_systems),
+          C(available_targets)"
+        - "To gather facts about C(compliancePreview), C(messages) and C(transformation) it is required to inform the
           Server Profile name. Otherwise, these options will be ignored."
       required: false
 

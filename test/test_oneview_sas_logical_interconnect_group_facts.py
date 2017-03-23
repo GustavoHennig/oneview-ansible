@@ -17,7 +17,7 @@
 import unittest
 
 from oneview_sas_logical_interconnect_group_facts import SasLogicalInterconnectGroupFactsModule
-from test.utils import ModuleContructorTestCase, FactsParamsTestCase, ErrorHandlingTestCase
+from hpe_test_utils import FactsParamsTestCase
 
 ERROR_MSG = 'Fake message error'
 
@@ -35,14 +35,11 @@ SAS_LIGS = [{"name": "SAS LIG 1"}, {"name": "SAS LIG 2"}]
 
 
 class SasLogicalInterconnectGroupFactsModuleSpec(unittest.TestCase,
-                                                 ModuleContructorTestCase,
-                                                 FactsParamsTestCase,
-                                                 ErrorHandlingTestCase):
+                                                 FactsParamsTestCase):
     def setUp(self):
         self.configure_mocks(self, SasLogicalInterconnectGroupFactsModule)
         self.resource = self.mock_ov_client.sas_logical_interconnect_groups
         FactsParamsTestCase.configure_client_mock(self, self.resource)
-        ErrorHandlingTestCase.configure(self, method_to_fire=self.resource.get_by)
 
     def test_should_get_all(self):
         self.resource.get_all.return_value = SAS_LIGS

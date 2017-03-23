@@ -182,11 +182,7 @@ class ServerHardwareModule(OneViewModuleBase):
                 'environmental_configuration_set',
             ]
         ),
-        data=dict(required=True, type='dict'),
-        validate_etag=dict(
-            required=False,
-            type='bool',
-            default=True)
+        data=dict(required=True, type='dict')
     )
 
     def __init__(self):
@@ -233,6 +229,7 @@ class ServerHardwareModule(OneViewModuleBase):
         return (self.oneview_client.server_hardware.get_by("name", name) or [None])[0]
 
     def __present(self):
+
         if not self.data.get('hostname'):
             raise HPOneViewValueError(self.MSG_MANDATORY_FIELD_MISSING.format("data.hostname"))
 

@@ -96,7 +96,7 @@ class OneViewModuleBaseSpec(unittest.TestCase):
             ansible_facts={'ansible_facts': None}
         )
 
-    def test_should_call_exit_json_adding_changed(self):
+    def test_should_call_exit_json_adding_changed_false_when_undefined(self):
 
         self.mock_ansible_module.params = self.PARAMS_FOR_PRESENT
 
@@ -134,7 +134,7 @@ class OneViewModuleBaseSpec(unittest.TestCase):
         self.mock_ov_client_from_env_vars.assert_called_once()
         self.mock_ov_client_from_json_file.not_been_called()
 
-    def test_should_call_fail_json_when_not_have_oneview(self):
+    def test_should_call_fail_json_when_oneview_sdk_not_installed(self):
         self.mock_ansible_module.params = {'config': 'config.json'}
 
         with mock.patch(OneViewModuleBase.__module__ + ".HAS_HPE_ONEVIEW", False):
@@ -322,7 +322,7 @@ class OneViewModuleBaseSpec(unittest.TestCase):
                              msg=OneViewModuleBase.MSG_ALREADY_ABSENT)
                          )
 
-    def test_get_by_name_with_value(self):
+    def test_get_by_name_when_resource_exists(self):
         self.mock_ansible_module.params = self.PARAMS_FOR_PRESENT
 
         ov_base = OneViewModuleBase()
@@ -335,7 +335,7 @@ class OneViewModuleBaseSpec(unittest.TestCase):
 
         self.assertEqual(res, {'resource': 1})
 
-    def test_get_by_name_without_value(self):
+    def test_get_by_name_when_resource_not_found(self):
         self.mock_ansible_module.params = self.PARAMS_FOR_PRESENT
 
         ov_base = OneViewModuleBase()
