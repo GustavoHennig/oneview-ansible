@@ -1614,7 +1614,7 @@ Manage OneView Drive Enclosure resources.
 | ------------- |-------------| ---------|----------- |--------- |
 | config  |   No  |  | |  Path to a .json configuration file containing the OneView client configuration. The configuration file is optional. If the file path is not provided, the configuration will be loaded from environment variables.  |
 | data  |   Yes  |  | |  List with the Drive Enclosure properties.  |
-| state  |   |  | <ul> <li>power_state_set</li>  <li>uid_state_set</li>  <li>hard_reset_state_set</li>  <li>refresh_state_set</li> </ul> |  Indicates the desired state for the Drive Enclosure resource. 'power_state_set' will set the power state for the Drive Enclosure. 'uid_state_set' will set the uid state for the Drive Enclosure. 'hard_reset_state_set' will request a hard reset of the Drive Enclosure. 'refresh_state_set' will refresh a Drive Enclosure.  |
+| state  |   |  | <ul> <li>power_state_set</li>  <li>uid_state_set</li>  <li>hard_reset_state_set</li>  <li>refresh_state_set</li> </ul> |  Indicates the desired state for the Drive Enclosure resource. **power_state_set** will set the power state for the Drive Enclosure. **uid_state_set** will set the uid state for the Drive Enclosure. **hard_reset_state_set** will request a hard reset of the Drive Enclosure. **refresh_state_set** will refresh a Drive Enclosure.  |
 
 
  
@@ -1665,9 +1665,13 @@ Manage OneView Drive Enclosure resources.
 
 #### Notes
 
+- This resource is only available on HPE Synergy.
+
 - A sample configuration file for the config parameter can be found at: https://github.com/HewlettPackard/oneview-ansible/blob/master/examples/oneview_config-rename.json
 
-- This resource is only available on HPE Synergy.
+- Check how to use environment variables for configuration at: https://github.com/HewlettPackard/oneview-ansible#environment-variables
+
+- Additional Playbooks for the HPE OneView Ansible modules can be found at: https://github.com/HewlettPackard/oneview-ansible/tree/master/examples
 
 
 ---
@@ -2089,7 +2093,7 @@ Manage OneView Enclosure Group resources.
 | ------------- |-------------| ---------|----------- |--------- |
 | config  |   No  |  | |  Path to a .json configuration file containing the OneView client configuration. The configuration file is optional. If the file path is not provided, the configuration will be loaded from environment variables.  |
 | data  |   Yes  |  | |  List with Enclosure Group properties.  |
-| state  |   |  | <ul> <li>present</li>  <li>absent</li> </ul> |  Indicates the desired state for the Enclosure Group resource. 'present' will ensure data properties are compliant with OneView. 'absent' will remove the resource from OneView, if it exists.  |
+| state  |   |  | <ul> <li>present</li>  <li>absent</li> </ul> |  Indicates the desired state for the Enclosure Group resource. **present** will ensure data properties are compliant with OneView. **absent** will remove the resource from OneView, if it exists.  |
 
 
  
@@ -2148,6 +2152,8 @@ Manage OneView Enclosure Group resources.
 
 - Check how to use environment variables for configuration at: https://github.com/HewlettPackard/oneview-ansible#environment-variables
 
+- Additional Playbooks for the HPE OneView Ansible modules can be found at: https://github.com/HewlettPackard/oneview-ansible/tree/master/examples
+
 
 ---
 
@@ -2168,8 +2174,8 @@ Retrieve facts about one or more of the OneView Enclosure Groups.
 | ------------- |-------------| ---------|----------- |--------- |
 | config  |   No  |  | |  Path to a .json configuration file containing the OneView client configuration. The configuration file is optional. If the file path is not provided, the configuration will be loaded from environment variables.  |
 | name  |   No  |  | |  Enclosure Group name.  |
-| options  |   No  |  | |  List with options to gather additional facts about Enclosure Group. Options allowed: 'configuration_script' Gets the configuration script for an Enclosure Group.  |
-| params  |   No  |  | |  List of params to delimit, filter and sort the list of resources.  params allowed: 'start': The first item to return, using 0-based indexing. 'count': The number of resources to return. 'filter': A general filter/query string to narrow the list of items returned. 'sort': The sort order of the returned data set.  |
+| options  |   No  |  | |  List with options to gather additional facts about Enclosure Group. Options allowed: **configuration_script** Gets the configuration script for an Enclosure Group.  |
+| params  |   No  |  | |  List of params to delimit, filter and sort the list of resources.  params allowed: **start**: The first item to return, using 0-based indexing. **count**: The number of resources to return. **filter**: A general filter/query string to narrow the list of items returned. **sort**: The sort order of the returned data set.  |
 
 
  
@@ -2222,6 +2228,8 @@ Retrieve facts about one or more of the OneView Enclosure Groups.
 - A sample configuration file for the config parameter can be found at: https://github.com/HewlettPackard/oneview-ansible/blob/master/examples/oneview_config-rename.json
 
 - Check how to use environment variables for configuration at: https://github.com/HewlettPackard/oneview-ansible#environment-variables
+
+- Additional Playbooks for the HPE OneView Ansible modules can be found at: https://github.com/HewlettPackard/oneview-ansible/tree/master/examples
 
 
 ---
