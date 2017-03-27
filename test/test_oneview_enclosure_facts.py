@@ -17,9 +17,7 @@
 import unittest
 
 from oneview_enclosure_facts import EnclosureFactsModule
-from test.utils import FactsParamsTestCase
-from test.utils import ModuleContructorTestCase
-from test.utils import ErrorHandlingTestCase
+from hpe_test_utils import FactsParamsTestCase
 
 ERROR_MSG = 'Fake message error'
 
@@ -67,14 +65,11 @@ ENCLOSURE_ENVIRONMENTAL_CONFIG = {
 
 
 class EnclosureFactsSpec(unittest.TestCase,
-                         ModuleContructorTestCase,
-                         FactsParamsTestCase,
-                         ErrorHandlingTestCase):
+                         FactsParamsTestCase):
     def setUp(self):
         self.configure_mocks(self, EnclosureFactsModule)
         self.enclosures = self.mock_ov_client.enclosures
         FactsParamsTestCase.configure_client_mock(self, self.enclosures)
-        ErrorHandlingTestCase.configure(self, method_to_fire=self.enclosures.get_by)
 
     def test_should_get_all_enclosures(self):
         self.enclosures.get_all.return_value = PRESENT_ENCLOSURES
