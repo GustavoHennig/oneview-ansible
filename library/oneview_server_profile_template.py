@@ -103,7 +103,7 @@ SRV_PROFILE_TEMPLATE_CREATED = 'Server Profile Template created successfully.'
 SRV_PROFILE_TEMPLATE_UPDATED = 'Server Profile Template updated successfully.'
 SRV_PROFILE_TEMPLATE_DELETED = 'Server Profile Template deleted successfully.'
 SRV_PROFILE_TEMPLATE_ALREADY_EXIST = 'Server Profile Template already exists.'
-SRV_PROFILE_TEMPLATE_ALREADY_ABSENT = 'Nothing to do.'
+SRV_PROFILE_TEMPLATE_ALREADY_ABSENT = 'Server Profile Template is already absent.'
 SRV_PROFILE_TEMPLATE_SRV_HW_TYPE_NOT_FOUND = 'Server Hardware Type not found: '
 SRV_PROFILE_TEMPLATE_ENCLOSURE_GROUP_NOT_FOUND = 'Enclosure Group not found: '
 

@@ -1,7 +1,7 @@
 #!/usr/bin/python
-
+# -*- coding: utf-8 -*-
 ###
-# Copyright (2016) Hewlett Packard Enterprise Development LP
+# Copyright (2016-2017) Hewlett Packard Enterprise Development LP
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # You may not use this file except in compliance with the License.
@@ -16,18 +16,9 @@
 # limitations under the License.
 ###
 
-from ansible.module_utils.basic import *
-
-try:
-    from hpOneView.oneview_client import OneViewClient
-    from hpOneView.extras.comparators import resource_compare
-    from hpOneView.exceptions import HPOneViewException
-    from hpOneView.exceptions import HPOneViewResourceNotFound
-    from hpOneView.exceptions import HPOneViewValueError
-
-    HAS_HPE_ONEVIEW = True
-except ImportError:
-    HAS_HPE_ONEVIEW = False
+ANSIBLE_METADATA = {'status': ['stableinterface'],
+                    'supported_by': 'committer',
+                    'version': '1.0'}
 
 DOCUMENTATION = '''
 ---
@@ -35,38 +26,33 @@ module: oneview_logical_interconnect
 short_description: Manage OneView Logical Interconnect resources.
 description:
     - Provides an interface to manage Logical Interconnect resources.
+version_added: "2.3"
 requirements:
     - "python >= 2.7.9"
     - "hpOneView >= 3.1.0"
 author: "Mariana Kreisig (@marikrg)"
 options:
-    config:
-      description:
-        - Path to a .json configuration file containing the OneView client configuration.
-          The configuration file is optional. If the file path is not provided, the configuration will be loaded from
-          environment variables.
-      required: false
     state:
         description:
             - Indicates the desired state for the Logical Interconnect resource.
-              'compliant' brings the logical interconnect back to a consistent state.
-              'ethernet_settings_updated' updates the Ethernet interconnect settings for the logical interconnect.
-              'internal_networks_updated' updates the internal networks on the logical interconnect. This operation is
+              C(compliant) brings the logical interconnect back to a consistent state.
+              C(ethernet_settings_updated) updates the Ethernet interconnect settings for the logical interconnect.
+              C(internal_networks_updated) updates the internal networks on the logical interconnect. This operation is
               non-idempotent.
-              'settings_updated' updates the Logical Interconnect settings.
-              'forwarding_information_base_generated' generates the forwarding information base dump file for the
+              C(settings_updated) updates the Logical Interconnect settings.
+              C(forwarding_information_base_generated) generates the forwarding information base dump file for the
               logical interconnect. This operation is non-idempotent and asynchronous.
-              'qos_aggregated_configuration_updated' updates the QoS aggregated configuration for the logical
+              C(qos_aggregated_configuration_updated) updates the QoS aggregated configuration for the logical
               interconnect.
-              'snmp_configuration_updated' updates the SNMP configuration for the logical interconnect.
-              'port_monitor_updated' updates the port monitor configuration of a logical interconnect.
-              'configuration_updated' asynchronously applies or re-applies the logical interconnect configuration
+              C(snmp_configuration_updated) updates the SNMP configuration for the logical interconnect.
+              C(port_monitor_updated) updates the port monitor configuration of a logical interconnect.
+              C(configuration_updated) asynchronously applies or re-applies the logical interconnect configuration
               to all managed interconnects. This operation is non-idempotent.
-              'firmware_installed' installs firmware to a logical interconnect. The three operations that are supported
+              C(firmware_installed) installs firmware to a logical interconnect. The three operations that are supported
               for the firmware update are Stage (uploads firmware to the interconnect), Activate (installs firmware on
               the interconnect) and Update (which does a Stage and Activate in a sequential manner). All of them are
               non-idempotent.
-              'telemetry_configuration_updated' updates the telemetry configuration of a logical interconnect.
+              C(telemetry_configuration_updated) updates the telemetry configuration of a logical interconnect.
         choices: ['compliant', 'ethernet_settings_updated', 'internal_networks_updated', 'settings_updated',
                   'forwarding_information_base_generated', 'qos_aggregated_configuration_updated',
                   'snmp_configuration_updated', 'port_monitor_updated', 'configuration_updated', 'firmware_installed',
@@ -75,17 +61,10 @@ options:
         description:
             - List with the options.
         required: true
-    validate_etag:
-        description:
-            - When the ETag Validation is enabled, the request will be conditionally processed only if the current ETag
-              for the resource matches the ETag provided in the data.
-        default: true
-        choices: ['true', 'false']
-notes:
-    - "A sample configuration file for the config parameter can be found at:
-       https://github.com/HewlettPackard/oneview-ansible/blob/master/examples/oneview_config-rename.json"
-    - "Check how to use environment variables for configuration at:
-       https://github.com/HewlettPackard/oneview-ansible#environment-variables"
+
+extends_documentation_fragment:
+    - oneview
+    - oneview.validateetag
 '''
 
 EXAMPLES = '''
@@ -234,6 +213,12 @@ telemetry_configuration:
     type: complex
 '''
 
+from ansible.module_utils.basic import AnsibleModule
+from _ansible.module_utils.oneview import (OneViewModuleBase,
+                                           HPOneViewResourceNotFound,
+                                           ResourceComparator,
+                                           HPOneViewValueError)
+
 LOGICAL_INTERCONNECT_CONSISTENT = 'logical interconnect returned to a consistent state.'
 LOGICAL_INTERCONNECT_ETH_SETTINGS_UPDATED = 'Ethernet settings updated successfully.'
 LOGICAL_INTERCONNECT_INTERNAL_NETWORKS_UPDATED = 'Internal networks updated successfully.'
@@ -251,9 +236,8 @@ LOGICAL_INTERCONNECT_NO_OPTIONS_PROVIDED = 'No options provided.'
 HPE_ONEVIEW_SDK_REQUIRED = 'HPE OneView Python SDK is required for this module.'
 
 
-class LogicalInterconnectModule(object):
+class LogicalInterconnectModule(OneViewModuleBase):
     argument_spec = dict(
-        config=dict(required=False, type='str'),
         state=dict(
             required=True,
             choices=['compliant', 'ethernet_settings_updated', 'internal_networks_updated', 'settings_updated',
@@ -261,70 +245,53 @@ class LogicalInterconnectModule(object):
                      'snmp_configuration_updated', 'port_monitor_updated', 'configuration_updated',
                      'firmware_installed', 'telemetry_configuration_updated']
         ),
-        data=dict(required=True, type='dict'),
-        validate_etag=dict(
-            required=False,
-            type='bool',
-            default=True)
+        data=dict(required=True, type='dict')
     )
 
     def __init__(self):
-        self.module = AnsibleModule(argument_spec=self.argument_spec, supports_check_mode=False)
-        if not HAS_HPE_ONEVIEW:
-            self.module.fail_json(msg=HPE_ONEVIEW_SDK_REQUIRED)
+        super(LogicalInterconnectModule, self).__init__(additional_arg_spec=self.argument_spec,
+                                                        validate_etag_support=True)
 
-        if not self.module.params['config']:
-            self.oneview_client = OneViewClient.from_environment_variables()
+    def execute_module(self):
+
+        resource = self.__get_by_name(self.data)
+
+        if not resource:
+            raise HPOneViewResourceNotFound(LOGICAL_INTERCONNECT_NOT_FOUND)
+
+        uri = resource['uri']
+
+        if self.state == 'compliant':
+            changed, msg, ansible_facts = self.__compliance(uri)
+        elif self.state == 'ethernet_settings_updated':
+            changed, msg, ansible_facts = self.__update_ethernet_settings(resource, self.data)
+        elif self.state == 'internal_networks_updated':
+            changed, msg, ansible_facts = self.__update_internal_networks(uri, self.data)
+        elif self.state == 'settings_updated':
+            changed, msg, ansible_facts = self.__update_settings(resource, self.data)
+        elif self.state == 'forwarding_information_base_generated':
+            changed, msg, ansible_facts = self.__generate_forwarding_information_base(uri)
+        elif self.state == 'qos_aggregated_configuration_updated':
+            changed, msg, ansible_facts = self.__update_qos_configuration(uri, self.data)
+        elif self.state == 'snmp_configuration_updated':
+            changed, msg, ansible_facts = self.__update_snmp_configuration(uri, self.data)
+        elif self.state == 'port_monitor_updated':
+            changed, msg, ansible_facts = self.__update_port_monitor(uri, self.data)
+        elif self.state == 'configuration_updated':
+            changed, msg, ansible_facts = self.__update_configuration(uri)
+        elif self.state == 'firmware_installed':
+            changed, msg, ansible_facts = self.__install_firmware(uri, self.data)
+        elif self.state == 'telemetry_configuration_updated':
+            changed, msg, ansible_facts = self.__update_telemetry_configuration(resource, self.data)
         else:
-            self.oneview_client = OneViewClient.from_json_file(self.module.params['config'])
+            changed, msg, ansible_facts = False, '', dict()
 
-    def run(self):
-        state = self.module.params['state']
-        data = self.module.params['data']
+        if ansible_facts:
+            result = dict(changed=changed, msg=msg, ansible_facts=ansible_facts)
+        else:
+            result = dict(changed=changed, msg=msg)
 
-        try:
-            if not self.module.params.get('validate_etag'):
-                self.oneview_client.connection.disable_etag_validation()
-
-            resource = self.__get_by_name(data)
-
-            if not resource:
-                raise HPOneViewResourceNotFound(LOGICAL_INTERCONNECT_NOT_FOUND)
-
-            uri = resource['uri']
-
-            if state == 'compliant':
-                changed, msg, ansible_facts = self.__compliance(uri)
-            elif state == 'ethernet_settings_updated':
-                changed, msg, ansible_facts = self.__update_ethernet_settings(resource, data)
-            elif state == 'internal_networks_updated':
-                changed, msg, ansible_facts = self.__update_internal_networks(uri, data)
-            elif state == 'settings_updated':
-                changed, msg, ansible_facts = self.__update_settings(resource, data)
-            elif state == 'forwarding_information_base_generated':
-                changed, msg, ansible_facts = self.__generate_forwarding_information_base(uri)
-            elif state == 'qos_aggregated_configuration_updated':
-                changed, msg, ansible_facts = self.__update_qos_configuration(uri, data)
-            elif state == 'snmp_configuration_updated':
-                changed, msg, ansible_facts = self.__update_snmp_configuration(uri, data)
-            elif state == 'port_monitor_updated':
-                changed, msg, ansible_facts = self.__update_port_monitor(uri, data)
-            elif state == 'configuration_updated':
-                changed, msg, ansible_facts = self.__update_configuration(uri)
-            elif state == 'firmware_installed':
-                changed, msg, ansible_facts = self.__install_firmware(uri, data)
-            elif state == 'telemetry_configuration_updated':
-                changed, msg, ansible_facts = self.__update_telemetry_configuration(resource, data)
-            else:
-                changed, msg, ansible_facts = False, '', dict()
-
-            if ansible_facts:
-                self.module.exit_json(changed=changed, msg=msg, ansible_facts=ansible_facts)
-            else:
-                self.module.exit_json(changed=changed, msg=msg)
-
-        except HPOneViewException as exception:
-            self.module.fail_json(msg='; '.join(str(e) for e in exception.args))
+        return result
 
     def __compliance(self, uri):
         li = self.oneview_client.logical_interconnects.update_compliance(uri)
@@ -336,7 +303,7 @@ class LogicalInterconnectModule(object):
         ethernet_settings_merged = resource['ethernetSettings'].copy()
         ethernet_settings_merged.update(data['ethernetSettings'])
 
-        if resource_compare(resource['ethernetSettings'], ethernet_settings_merged):
+        if ResourceComparator.compare(resource['ethernetSettings'], ethernet_settings_merged):
             return False, LOGICAL_INTERCONNECT_NO_CHANGES_PROVIDED, dict()
         else:
             li = self.oneview_client.logical_interconnects.update_ethernet_settings(resource['uri'],
@@ -367,8 +334,8 @@ class LogicalInterconnectModule(object):
         ethernet_settings_merged = self.__merge_network_settings('ethernetSettings', resource, data)
         fcoe_settings_merged = self.__merge_network_settings('fcoeSettings', resource, data)
 
-        if resource_compare(resource['ethernetSettings'], ethernet_settings_merged) and \
-                resource_compare(resource['fcoeSettings'], fcoe_settings_merged):
+        if ResourceComparator.compare(resource['ethernetSettings'], ethernet_settings_merged) and \
+                ResourceComparator.compare(resource['fcoeSettings'], fcoe_settings_merged):
 
             return False, LOGICAL_INTERCONNECT_NO_CHANGES_PROVIDED, dict(logical_interconnect=resource)
         else:
@@ -389,7 +356,7 @@ class LogicalInterconnectModule(object):
         qos_config = self.__get_qos_aggregated_configuration(uri)
         qos_config_merged = self.__merge_options(data['qosConfiguration'], qos_config)
 
-        if resource_compare(qos_config_merged, qos_config):
+        if ResourceComparator.compare(qos_config_merged, qos_config):
             return False, LOGICAL_INTERCONNECT_NO_CHANGES_PROVIDED, dict()
         else:
             qos_config_updated = self.oneview_client.logical_interconnects.update_qos_aggregated_configuration(
@@ -403,7 +370,7 @@ class LogicalInterconnectModule(object):
         snmp_config = self.__get_snmp_configuration(uri)
         snmp_config_merged = self.__merge_options(data['snmpConfiguration'], snmp_config)
 
-        if resource_compare(snmp_config_merged, snmp_config):
+        if ResourceComparator.compare(snmp_config_merged, snmp_config):
 
             return False, LOGICAL_INTERCONNECT_NO_CHANGES_PROVIDED, None
         else:
@@ -418,7 +385,7 @@ class LogicalInterconnectModule(object):
         monitor_config = self.__get_port_monitor_configuration(uri)
         monitor_config_merged = self.__merge_options(data['portMonitor'], monitor_config)
 
-        if resource_compare(monitor_config_merged, monitor_config):
+        if ResourceComparator.compare(monitor_config_merged, monitor_config):
             return False, LOGICAL_INTERCONNECT_NO_CHANGES_PROVIDED, None
         else:
             monitor_config_updated = self.oneview_client.logical_interconnects.update_port_monitor(

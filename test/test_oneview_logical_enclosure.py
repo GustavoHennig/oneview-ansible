@@ -1,6 +1,7 @@
+#!/usr/bin/python
 # -*- coding: utf-8 -*-
 ###
-# Copyright (2016) Hewlett Packard Enterprise Development LP
+# Copyright (2016-2017) Hewlett Packard Enterprise Development LP
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # You may not use this file except in compliance with the License.
@@ -17,12 +18,19 @@
 import unittest
 import yaml
 
-from test.utils import PreloadedMocksBaseTestCase, ModuleContructorTestCase, ErrorHandlingTestCase
-from oneview_logical_enclosure import LogicalEnclosureModule, LOGICAL_ENCLOSURE_UPDATED, \
-    LOGICAL_ENCLOSURE_ALREADY_UPDATED, LOGICAL_ENCLOSURE_FIRMWARE_UPDATED, \
-    LOGICAL_ENCLOSURE_CONFIGURATION_SCRIPT_UPDATED, \
-    LOGICAL_ENCLOSURE_DUMP_GENERATED, LOGICAL_ENCLOSURE_RECONFIGURED, LOGICAL_ENCLOSURE_UPDATED_FROM_GROUP, \
-    LOGICAL_ENCLOSURE_REQUIRED, LOGICAL_ENCLOSURE_CREATED, LOGICAL_ENCLOSURE_DELETED, LOGICAL_ENCLOSURE_ALREADY_ABSENT
+from hpe_test_utils import OneViewBaseTestCase
+from oneview_logical_enclosure import (LogicalEnclosureModule,
+                                       LOGICAL_ENCLOSURE_UPDATED,
+                                       LOGICAL_ENCLOSURE_ALREADY_UPDATED,
+                                       LOGICAL_ENCLOSURE_FIRMWARE_UPDATED,
+                                       LOGICAL_ENCLOSURE_CONFIGURATION_SCRIPT_UPDATED,
+                                       LOGICAL_ENCLOSURE_DUMP_GENERATED,
+                                       LOGICAL_ENCLOSURE_RECONFIGURED,
+                                       LOGICAL_ENCLOSURE_UPDATED_FROM_GROUP,
+                                       LOGICAL_ENCLOSURE_REQUIRED,
+                                       LOGICAL_ENCLOSURE_CREATED,
+                                       LOGICAL_ENCLOSURE_DELETED,
+                                       LOGICAL_ENCLOSURE_ALREADY_ABSENT)
 
 YAML_LOGICAL_ENCLOSURE = """
     config: "{{ config }}"
@@ -113,20 +121,19 @@ DICT_DEFAULT_LOGICAL_ENCLOSURE = yaml.load(YAML_LOGICAL_ENCLOSURE)["data"]
 
 
 class LogicalEnclosureModuleSpec(unittest.TestCase,
-                                 ModuleContructorTestCase,
-                                 ErrorHandlingTestCase):
+                                 OneViewBaseTestCase):
     """
     Test the module constructor
     ModuleContructorTestCase has common tests for class constructor and main function
 
     ErrorHandlingTestCase has common tests for the module error handling.
     """
+
     def setUp(self):
         self.configure_mocks(self, LogicalEnclosureModule)
-        ErrorHandlingTestCase.configure(self, method_to_fire=self.mock_ov_client.logical_enclosures.get_by_name)
 
 
-class LogicalEnclosureSpec(unittest.TestCase, PreloadedMocksBaseTestCase):
+class LogicalEnclosureSpec(unittest.TestCase, OneViewBaseTestCase):
     def setUp(self):
         self.configure_mocks(self, LogicalEnclosureModule)
 

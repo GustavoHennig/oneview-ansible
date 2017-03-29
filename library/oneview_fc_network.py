@@ -49,7 +49,7 @@ extends_documentation_fragment:
 '''
 
 EXAMPLES = '''
-- name: Ensure that a Fibre Channel Network is present using the default configuration
+- name: Ensure that the Fibre Channel Network is present using the default configuration
   oneview_fc_network:
     config: "{{ config_file_path }}"
     state: present
@@ -64,7 +64,7 @@ EXAMPLES = '''
       name: 'New FC Network'
       fabricType: 'DirectAttach'
 
-- name: Ensure that Fibre Channel Network is absent
+- name: Ensure that the Fibre Channel Network is absent
   oneview_fc_network:
     config: "{{ config_file_path }}"
     state: absent

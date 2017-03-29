@@ -35,30 +35,30 @@ options:
     state:
       description:
         - Indicates the desired state for the Enclosure resource.
-          'present' will ensure data properties are compliant with OneView. You can rename the enclosure providing an
-          attribute 'newName'. You can also rename the rack providing an attribute 'rackName'.
-          'absent' will remove the resource from OneView, if it exists.
-          'reconfigured' will reapply the appliance's configuration on the enclosure. This includes
+          C(present) will ensure data properties are compliant with OneView. You can rename the enclosure providing an
+          attribute C(newName). You can also rename the rack providing an attribute C(rackName).
+          C(absent) will remove the resource from OneView, if it exists.
+          C(reconfigured) will reapply the appliance's configuration on the enclosure. This includes
           running the same configuration steps that were performed as part of the enclosure add.
-          'refreshed' will refresh the enclosure along with all of its components, including interconnects and
+          C(refreshed) will refresh the enclosure along with all of its components, including interconnects and
           servers. Any new hardware is added, and any hardware that is no longer present within the enclosure is
           removed.
-          'appliance_bays_powered_on' will set the appliance bay power state on.
-          'uid_on' will set the UID state on.
-          'uid_off' will set the UID state off.
-          'manager_bays_uid_on' will set the UID state on for the Synergy Frame Link Module.
-          'manager_bays_uid_off' will set the UID state off for the Synergy Frame Link Module.
-          'manager_bays_power_state_e_fuse' will E-Fuse the Synergy Frame Link Module bay in the path.
-          'manager_bays_power_state_reset' will Reset the Synergy Frame Link Module bay in the path.
-          'appliance_bays_power_state_e_fuse' will E-Fuse the appliance bay in the path.
-          'device_bays_power_state_e_fuse' will E-Fuse the device bay in the path.
-          'device_bays_power_state_reset' will Reset the device bay in the path.
-          'interconnect_bays_power_state_e_fuse' will E-Fuse the IC bay in the path.
-          'manager_bays_role_active' will set the active Synergy Frame Link Module.
-          'device_bays_ipv4_removed' will release the IPv4 address in the device bay.
-          'interconnect_bays_ipv4_removed' will release the IPv4 address in the interconnect bay.
-          'support_data_collection_set' will set the support data collection state for the enclosure. The supported
-          values for this state are 'PendingCollection', 'Completed', 'Error' and 'NotSupported'
+          C(appliance_bays_powered_on) will set the appliance bay power state on.
+          C(uid_on) will set the UID state on.
+          C(uid_off) will set the UID state off.
+          C(manager_bays_uid_on) will set the UID state on for the Synergy Frame Link Module.
+          C(manager_bays_uid_off) will set the UID state off for the Synergy Frame Link Module.
+          C(manager_bays_power_state_e_fuse) will E-Fuse the Synergy Frame Link Module bay in the path.
+          C(manager_bays_power_state_reset) will Reset the Synergy Frame Link Module bay in the path.
+          C(appliance_bays_power_state_e_fuse) will E-Fuse the appliance bay in the path.
+          C(device_bays_power_state_e_fuse) will E-Fuse the device bay in the path.
+          C(device_bays_power_state_reset) will Reset the device bay in the path.
+          C(interconnect_bays_power_state_e_fuse) will E-Fuse the IC bay in the path.
+          C(manager_bays_role_active) will set the active Synergy Frame Link Module.
+          C(device_bays_ipv4_removed) will release the IPv4 address in the device bay.
+          C(interconnect_bays_ipv4_removed) will release the IPv4 address in the interconnect bay.
+          C(support_data_collection_set) will set the support data collection state for the enclosure. The supported
+          values for this state are C(PendingCollection), C(Completed), C(Error) and C(NotSupported)
       choices: [
         'present', 'absent', 'reconfigured', 'refreshed', 'appliance_bays_powered_on', 'uid_on', 'uid_off',
         'manager_bays_uid_on', 'manager_bays_uid_off', 'manager_bays_power_state_e_fuse',
@@ -71,11 +71,11 @@ options:
         - List with the Enclosure properties.
       required: true
 notes:
-    - "These states are only available on HPE Synergy: 'appliance_bays_powered_on', 'uid_on', 'uid_off',
-      'manager_bays_uid_on', 'manager_bays_uid_off', 'manager_bays_power_state_e_fuse',
-      'manager_bays_power_state_reset', 'appliance_bays_power_state_e_fuse', 'device_bays_power_state_e_fuse',
-      'device_bays_power_state_reset', 'interconnect_bays_power_state_e_fuse', 'manager_bays_role_active',
-      'device_bays_ipv4_removed' and 'interconnect_bays_ipv4_removed'"
+    - "These states are only available on HPE Synergy: C(appliance_bays_powered_on), C(uid_on), C(uid_off),
+      C(manager_bays_uid_on), C(manager_bays_uid_off), C(manager_bays_power_state_e_fuse),
+      C(manager_bays_power_state_reset), C(appliance_bays_power_state_e_fuse), C(device_bays_power_state_e_fuse),
+      C(device_bays_power_state_reset), C(interconnect_bays_power_state_e_fuse), C(manager_bays_role_active),
+      C(device_bays_ipv4_removed) and C(interconnect_bays_ipv4_removed)"
 
 extends_documentation_fragment:
     - oneview

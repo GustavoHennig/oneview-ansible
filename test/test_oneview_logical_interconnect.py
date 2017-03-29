@@ -16,7 +16,7 @@
 import unittest
 import mock
 
-from utils import ValidateEtagTestCase, ModuleContructorTestCase, PreloadedMocksBaseTestCase, ErrorHandlingTestCase
+from hpe_test_utils import OneViewBaseTestCase
 
 from oneview_logical_interconnect import (LogicalInterconnectModule,
                                           LOGICAL_INTERCONNECT_CONSISTENT,
@@ -58,20 +58,15 @@ LOGICAL_INTERCONNECT = {'uri': '/rest/logical-interconnects/id',
 
 
 class LogicalInterconnectModuleSpec(unittest.TestCase,
-                                    ModuleContructorTestCase,
-                                    ValidateEtagTestCase,
-                                    ErrorHandlingTestCase):
+                                    OneViewBaseTestCase):
     """
     Test the module constructor and shared functions
-    ModuleContructorTestCase has common tests for class constructor and main function
-    ValidateEtagTestCase has common tests for the validate_etag attribute, also provides the mocks used in this test
-    case.
+    OneViewBaseTestCase has common mocks and tests for main function
     """
 
     def setUp(self):
         self.configure_mocks(self, LogicalInterconnectModule)
         self.resource = self.mock_ov_client.logical_interconnects
-        ErrorHandlingTestCase.configure(self, method_to_fire=self.resource.get_by_name)
 
     def test_should_fail_when_option_is_invalid(self):
         self.mock_ansible_module.params = dict(
@@ -87,7 +82,7 @@ class LogicalInterconnectModuleSpec(unittest.TestCase,
         )
 
 
-class LogicalInterconnectCompliantStateSpec(unittest.TestCase, PreloadedMocksBaseTestCase):
+class LogicalInterconnectCompliantStateSpec(unittest.TestCase, OneViewBaseTestCase):
     """
     PreloadedMocksBaseTestCase provides the mocks used in this test case.
     """
@@ -127,9 +122,9 @@ class LogicalInterconnectCompliantStateSpec(unittest.TestCase, PreloadedMocksBas
         )
 
 
-class LogicalInterconnectEthernetSettingsUpdatedStateSpec(unittest.TestCase, PreloadedMocksBaseTestCase):
+class LogicalInterconnectEthernetSettingsUpdatedStateSpec(unittest.TestCase, OneViewBaseTestCase):
     """
-    PreloadedMocksBaseTestCase provides the mocks used in this test case.
+    OneViewBaseTestCase provides the mocks used in this test case.
     """
 
     PARAMS_ETHERNET_SETTINGS = dict(
@@ -197,9 +192,9 @@ class LogicalInterconnectEthernetSettingsUpdatedStateSpec(unittest.TestCase, Pre
         )
 
 
-class LogicalInterconnectInternalNetworksUpdatedStateSpec(unittest.TestCase, PreloadedMocksBaseTestCase):
+class LogicalInterconnectInternalNetworksUpdatedStateSpec(unittest.TestCase, OneViewBaseTestCase):
     """
-    PreloadedMocksBaseTestCase provides the mocks used in this test case.
+    OneViewBaseTestCase provides the mocks used in this test case.
     """
 
     PARAMS_INTERNAL_NETWORKS = dict(
@@ -267,9 +262,9 @@ class LogicalInterconnectInternalNetworksUpdatedStateSpec(unittest.TestCase, Pre
         )
 
 
-class LogicalInterconnectSettingsUpdatedStateSpec(unittest.TestCase, PreloadedMocksBaseTestCase):
+class LogicalInterconnectSettingsUpdatedStateSpec(unittest.TestCase, OneViewBaseTestCase):
     """
-    PreloadedMocksBaseTestCase provides the mocks used in this test case.
+    OneViewBaseTestCase provides the mocks used in this test case.
     """
 
     PARAMS_SETTTINGS = dict(
@@ -393,9 +388,9 @@ class LogicalInterconnectSettingsUpdatedStateSpec(unittest.TestCase, PreloadedMo
         )
 
 
-class LogicalInterconnectForwardingInformationBaseGeneratedStateSpec(unittest.TestCase, PreloadedMocksBaseTestCase):
+class LogicalInterconnectForwardingInformationBaseGeneratedStateSpec(unittest.TestCase, OneViewBaseTestCase):
     """
-    PreloadedMocksBaseTestCase provides the mocks used in this test case.
+    OneViewBaseTestCase provides the mocks used in this test case.
     """
 
     PARAMS_GENERATE_FIB = dict(
@@ -439,9 +434,9 @@ class LogicalInterconnectForwardingInformationBaseGeneratedStateSpec(unittest.Te
         )
 
 
-class LogicalInterconnectQosAggregatedConfigurationUpdatedStateSpec(unittest.TestCase, PreloadedMocksBaseTestCase):
+class LogicalInterconnectQosAggregatedConfigurationUpdatedStateSpec(unittest.TestCase, OneViewBaseTestCase):
     """
-    PreloadedMocksBaseTestCase provides the mocks used in this test case.
+    OneViewBaseTestCase provides the mocks used in this test case.
     """
 
     PARAMS_QOS_AGGREG_CONFIG = dict(
@@ -522,9 +517,9 @@ class LogicalInterconnectQosAggregatedConfigurationUpdatedStateSpec(unittest.Tes
         )
 
 
-class LogicalInterconnectSnmpConfigurationUpdatedStateSpec(unittest.TestCase, PreloadedMocksBaseTestCase):
+class LogicalInterconnectSnmpConfigurationUpdatedStateSpec(unittest.TestCase, OneViewBaseTestCase):
     """
-    PreloadedMocksBaseTestCase provides the mocks used in this test case.
+    OneViewBaseTestCase provides the mocks used in this test case.
     """
 
     PARAMS_SNMP_CONFIG = dict(
@@ -585,9 +580,9 @@ class LogicalInterconnectSnmpConfigurationUpdatedStateSpec(unittest.TestCase, Pr
         )
 
 
-class LogicalInterconnectPortMonitorUpdatedStateSpec(unittest.TestCase, PreloadedMocksBaseTestCase):
+class LogicalInterconnectPortMonitorUpdatedStateSpec(unittest.TestCase, OneViewBaseTestCase):
     """
-    PreloadedMocksBaseTestCase provides the mocks used in this test case.
+    OneViewBaseTestCase provides the mocks used in this test case.
     """
 
     def setUp(self):
@@ -648,9 +643,9 @@ class LogicalInterconnectPortMonitorUpdatedStateSpec(unittest.TestCase, Preloade
         )
 
 
-class LogicalInterconnectConfigurationUpdatedStateSpec(unittest.TestCase, PreloadedMocksBaseTestCase):
+class LogicalInterconnectConfigurationUpdatedStateSpec(unittest.TestCase, OneViewBaseTestCase):
     """
-    PreloadedMocksBaseTestCase provides the mocks used in this test case.
+    OneViewBaseTestCase provides the mocks used in this test case.
     """
 
     PARAMS_CONFIGURATION = dict(
@@ -689,9 +684,9 @@ class LogicalInterconnectConfigurationUpdatedStateSpec(unittest.TestCase, Preloa
         )
 
 
-class LogicalInterconnectFirmwareUpdatedStateSpec(unittest.TestCase, PreloadedMocksBaseTestCase):
+class LogicalInterconnectFirmwareUpdatedStateSpec(unittest.TestCase, OneViewBaseTestCase):
     """
-    PreloadedMocksBaseTestCase provides the mocks used in this test case.
+    OneViewBaseTestCase provides the mocks used in this test case.
     """
 
     PARAMS_FIRMWARE_WITH_SPP_NAME = dict(
@@ -764,9 +759,9 @@ class LogicalInterconnectFirmwareUpdatedStateSpec(unittest.TestCase, PreloadedMo
         )
 
 
-class LogicalInterconnectTelemetryConfigurationUpdatedStateSpec(unittest.TestCase, PreloadedMocksBaseTestCase):
+class LogicalInterconnectTelemetryConfigurationUpdatedStateSpec(unittest.TestCase, OneViewBaseTestCase):
     """
-    PreloadedMocksBaseTestCase provides the mocks used in this test case.
+    OneViewBaseTestCase provides the mocks used in this test case.
     """
 
     CONFIG = dict(

@@ -1773,7 +1773,7 @@ Manage OneView Enclosure resources.
 | ------------- |-------------| ---------|----------- |--------- |
 | config  |   No  |  | |  Path to a .json configuration file containing the OneView client configuration. The configuration file is optional. If the file path is not provided, the configuration will be loaded from environment variables.  |
 | data  |   Yes  |  | |  List with the Enclosure properties.  |
-| state  |   |  | <ul> <li>present</li>  <li>absent</li>  <li>reconfigured</li>  <li>refreshed</li>  <li>appliance_bays_powered_on</li>  <li>uid_on</li>  <li>uid_off</li>  <li>manager_bays_uid_on</li>  <li>manager_bays_uid_off</li>  <li>manager_bays_power_state_e_fuse</li>  <li>manager_bays_power_state_reset</li>  <li>appliance_bays_power_state_e_fuse</li>  <li>device_bays_power_state_e_fuse</li>  <li>device_bays_power_state_reset</li>  <li>interconnect_bays_power_state_e_fuse</li>  <li>manager_bays_role_active</li>  <li>device_bays_ipv4_removed</li>  <li>interconnect_bays_ipv4_removed</li>  <li>support_data_collection_set</li> </ul> |  Indicates the desired state for the Enclosure resource. 'present' will ensure data properties are compliant with OneView. You can rename the enclosure providing an attribute 'newName'. You can also rename the rack providing an attribute 'rackName'. 'absent' will remove the resource from OneView, if it exists. 'reconfigured' will reapply the appliance's configuration on the enclosure. This includes running the same configuration steps that were performed as part of the enclosure add. 'refreshed' will refresh the enclosure along with all of its components, including interconnects and servers. Any new hardware is added, and any hardware that is no longer present within the enclosure is removed. 'appliance_bays_powered_on' will set the appliance bay power state on. 'uid_on' will set the UID state on. 'uid_off' will set the UID state off. 'manager_bays_uid_on' will set the UID state on for the Synergy Frame Link Module. 'manager_bays_uid_off' will set the UID state off for the Synergy Frame Link Module. 'manager_bays_power_state_e_fuse' will E-Fuse the Synergy Frame Link Module bay in the path. 'manager_bays_power_state_reset' will Reset the Synergy Frame Link Module bay in the path. 'appliance_bays_power_state_e_fuse' will E-Fuse the appliance bay in the path. 'device_bays_power_state_e_fuse' will E-Fuse the device bay in the path. 'device_bays_power_state_reset' will Reset the device bay in the path. 'interconnect_bays_power_state_e_fuse' will E-Fuse the IC bay in the path. 'manager_bays_role_active' will set the active Synergy Frame Link Module. 'device_bays_ipv4_removed' will release the IPv4 address in the device bay. 'interconnect_bays_ipv4_removed' will release the IPv4 address in the interconnect bay. 'support_data_collection_set' will set the support data collection state for the enclosure. The supported values for this state are 'PendingCollection', 'Completed', 'Error' and 'NotSupported'  |
+| state  |   |  | <ul> <li>present</li>  <li>absent</li>  <li>reconfigured</li>  <li>refreshed</li>  <li>appliance_bays_powered_on</li>  <li>uid_on</li>  <li>uid_off</li>  <li>manager_bays_uid_on</li>  <li>manager_bays_uid_off</li>  <li>manager_bays_power_state_e_fuse</li>  <li>manager_bays_power_state_reset</li>  <li>appliance_bays_power_state_e_fuse</li>  <li>device_bays_power_state_e_fuse</li>  <li>device_bays_power_state_reset</li>  <li>interconnect_bays_power_state_e_fuse</li>  <li>manager_bays_role_active</li>  <li>device_bays_ipv4_removed</li>  <li>interconnect_bays_ipv4_removed</li>  <li>support_data_collection_set</li> </ul> |  Indicates the desired state for the Enclosure resource. **present** will ensure data properties are compliant with OneView. You can rename the enclosure providing an attribute **newName**. You can also rename the rack providing an attribute **rackName**. **absent** will remove the resource from OneView, if it exists. **reconfigured** will reapply the appliance's configuration on the enclosure. This includes running the same configuration steps that were performed as part of the enclosure add. **refreshed** will refresh the enclosure along with all of its components, including interconnects and servers. Any new hardware is added, and any hardware that is no longer present within the enclosure is removed. **appliance_bays_powered_on** will set the appliance bay power state on. **uid_on** will set the UID state on. **uid_off** will set the UID state off. **manager_bays_uid_on** will set the UID state on for the Synergy Frame Link Module. **manager_bays_uid_off** will set the UID state off for the Synergy Frame Link Module. **manager_bays_power_state_e_fuse** will E-Fuse the Synergy Frame Link Module bay in the path. **manager_bays_power_state_reset** will Reset the Synergy Frame Link Module bay in the path. **appliance_bays_power_state_e_fuse** will E-Fuse the appliance bay in the path. **device_bays_power_state_e_fuse** will E-Fuse the device bay in the path. **device_bays_power_state_reset** will Reset the device bay in the path. **interconnect_bays_power_state_e_fuse** will E-Fuse the IC bay in the path. **manager_bays_role_active** will set the active Synergy Frame Link Module. **device_bays_ipv4_removed** will release the IPv4 address in the device bay. **interconnect_bays_ipv4_removed** will release the IPv4 address in the interconnect bay. **support_data_collection_set** will set the support data collection state for the enclosure. The supported values for this state are **PendingCollection**, **Completed**, **Error** and **NotSupported**  |
 
 
  
@@ -1961,7 +1961,7 @@ Manage OneView Enclosure resources.
 
 #### Notes
 
-- These states are only available on HPE Synergy: 'appliance_bays_powered_on', 'uid_on', 'uid_off', 'manager_bays_uid_on', 'manager_bays_uid_off', 'manager_bays_power_state_e_fuse', 'manager_bays_power_state_reset', 'appliance_bays_power_state_e_fuse', 'device_bays_power_state_e_fuse', 'device_bays_power_state_reset', 'interconnect_bays_power_state_e_fuse', 'manager_bays_role_active', 'device_bays_ipv4_removed' and 'interconnect_bays_ipv4_removed'
+- These states are only available on HPE Synergy: **appliance_bays_powered_on**, **uid_on**, **uid_off**, **manager_bays_uid_on**, **manager_bays_uid_off**, **manager_bays_power_state_e_fuse**, **manager_bays_power_state_reset**, **appliance_bays_power_state_e_fuse**, **device_bays_power_state_e_fuse**, **device_bays_power_state_reset**, **interconnect_bays_power_state_e_fuse**, **manager_bays_role_active**, **device_bays_ipv4_removed** and **interconnect_bays_ipv4_removed**
 
 - A sample configuration file for the config parameter can be found at: https://github.com/HewlettPackard/oneview-ansible/blob/master/examples/oneview_config-rename.json
 
@@ -2589,7 +2589,7 @@ Manage OneView Fibre Channel Network resources.
 #### Examples
 
 ```yaml
-- name: Ensure that a Fibre Channel Network is present using the default configuration
+- name: Ensure that the Fibre Channel Network is present using the default configuration
   oneview_fc_network:
     config: "{{ config_file_path }}"
     state: present
@@ -2604,7 +2604,7 @@ Manage OneView Fibre Channel Network resources.
       name: 'New FC Network'
       fabricType: 'DirectAttach'
 
-- name: Ensure that Fibre Channel Network is absent
+- name: Ensure that the Fibre Channel Network is absent
   oneview_fc_network:
     config: "{{ config_file_path }}"
     state: absent
@@ -3506,7 +3506,7 @@ Manage OneView Logical Enclosure resources.
 | ------------- |-------------| ---------|----------- |--------- |
 | config  |   No  |  | |  Path to a .json configuration file containing the OneView client configuration. The configuration file is optional. If the file path is not provided, the configuration will be loaded from environment variables.  |
 | data  |   Yes  |  | |  List with Logical Enclosure properties and its associated states.  |
-| state  |   Yes  |  | <ul> <li>present</li>  <li>firmware_updated</li>  <li>script_updated</li>  <li>dumped</li>  <li>reconfigured</li>  <li>updated_from_group</li>  <li>absent</li> </ul> |  Indicates the desired state for the Logical Enclosure resource. 'present' ensures data properties are compliant with OneView. You can rename the enclosure providing an attribute 'newName'. 'firmware_updated' updates the firmware for the Logical Enclosure. 'script_updated' updates the Logical Enclosure configuration script. 'dumped' generates a support dump for the Logical Enclosure. 'reconfigured' reconfigures all enclosures associated with a logical enclosure. 'updated_from_group' makes the logical enclosure consistent with the enclosure group. 'absent' will remove the resource from OneView, if it exists.  |
+| state  |   Yes  |  | <ul> <li>present</li>  <li>firmware_updated</li>  <li>script_updated</li>  <li>dumped</li>  <li>reconfigured</li>  <li>updated_from_group</li>  <li>absent</li> </ul> |  Indicates the desired state for the Logical Enclosure resource. **present** ensures data properties are compliant with OneView. You can rename the enclosure providing an attribute **newName**. **firmware_updated** updates the firmware for the Logical Enclosure. **script_updated** updates the Logical Enclosure configuration script. **dumped** generates a support dump for the Logical Enclosure. **reconfigured** reconfigures all enclosures associated with a logical enclosure. **updated_from_group** makes the logical enclosure consistent with the enclosure group. **absent** will remove the resource from OneView, if it exists.  |
 
 
  
@@ -3625,11 +3625,13 @@ Manage OneView Logical Enclosure resources.
 
 #### Notes
 
+- The **absent** state and the creation of a Logical Enclosure done through the **present** state are available only on HPE Synergy.
+
 - A sample configuration file for the config parameter can be found at: https://github.com/HewlettPackard/oneview-ansible/blob/master/examples/oneview_config-rename.json
 
 - Check how to use environment variables for configuration at: https://github.com/HewlettPackard/oneview-ansible#environment-variables
 
-- The 'absent' state and the creation of a Logical Enclosure done through the 'present' state are available only on HPE Synergy.
+- Additional Playbooks for the HPE OneView Ansible modules can be found at: https://github.com/HewlettPackard/oneview-ansible/tree/master/examples
 
 
 ---
@@ -3652,7 +3654,7 @@ Retrieve facts about one or more of the OneView Logical Enclosures.
 | config  |   No  |  | |  Path to a .json configuration file containing the OneView client configuration. The configuration file is optional. If the file path is not provided, the configuration will be loaded from environment variables.  |
 | name  |   No  |  | |  Logical Enclosure name.  |
 | options  |   No  |  | |  List with options to gather additional facts about a Logical Enclosure and related resources. Options allowed: script.  |
-| params  |   No  |  | |  List of params to delimit, filter and sort the list of resources.  params allowed: 'start': The first item to return, using 0-based indexing. 'count': The number of resources to return. 'filter': A general filter/query string to narrow the list of items returned. 'sort': The sort order of the returned data set.  |
+| params  |   No  |  | |  List of params to delimit, filter and sort the list of resources.  params allowed: **start**: The first item to return, using 0-based indexing. **count**: The number of resources to return. **filter**: A general filter/query string to narrow the list of items returned. **sort**: The sort order of the returned data set.  |
 
 
  
@@ -3714,6 +3716,8 @@ Retrieve facts about one or more of the OneView Logical Enclosures.
 
 - Check how to use environment variables for configuration at: https://github.com/HewlettPackard/oneview-ansible#environment-variables
 
+- Additional Playbooks for the HPE OneView Ansible modules can be found at: https://github.com/HewlettPackard/oneview-ansible/tree/master/examples
+
 
 ---
 
@@ -3734,7 +3738,7 @@ Manage OneView Logical Interconnect resources.
 | ------------- |-------------| ---------|----------- |--------- |
 | config  |   No  |  | |  Path to a .json configuration file containing the OneView client configuration. The configuration file is optional. If the file path is not provided, the configuration will be loaded from environment variables.  |
 | data  |   Yes  |  | |  List with the options.  |
-| state  |   |  | <ul> <li>compliant</li>  <li>ethernet_settings_updated</li>  <li>internal_networks_updated</li>  <li>settings_updated</li>  <li>forwarding_information_base_generated</li>  <li>qos_aggregated_configuration_updated</li>  <li>snmp_configuration_updated</li>  <li>port_monitor_updated</li>  <li>configuration_updated</li>  <li>firmware_installed</li>  <li>telemetry_configuration_updated</li> </ul> |  Indicates the desired state for the Logical Interconnect resource. 'compliant' brings the logical interconnect back to a consistent state. 'ethernet_settings_updated' updates the Ethernet interconnect settings for the logical interconnect. 'internal_networks_updated' updates the internal networks on the logical interconnect. This operation is non-idempotent. 'settings_updated' updates the Logical Interconnect settings. 'forwarding_information_base_generated' generates the forwarding information base dump file for the logical interconnect. This operation is non-idempotent and asynchronous. 'qos_aggregated_configuration_updated' updates the QoS aggregated configuration for the logical interconnect. 'snmp_configuration_updated' updates the SNMP configuration for the logical interconnect. 'port_monitor_updated' updates the port monitor configuration of a logical interconnect. 'configuration_updated' asynchronously applies or re-applies the logical interconnect configuration to all managed interconnects. This operation is non-idempotent. 'firmware_installed' installs firmware to a logical interconnect. The three operations that are supported for the firmware update are Stage (uploads firmware to the interconnect), Activate (installs firmware on the interconnect) and Update (which does a Stage and Activate in a sequential manner). All of them are non-idempotent. 'telemetry_configuration_updated' updates the telemetry configuration of a logical interconnect.  |
+| state  |   |  | <ul> <li>compliant</li>  <li>ethernet_settings_updated</li>  <li>internal_networks_updated</li>  <li>settings_updated</li>  <li>forwarding_information_base_generated</li>  <li>qos_aggregated_configuration_updated</li>  <li>snmp_configuration_updated</li>  <li>port_monitor_updated</li>  <li>configuration_updated</li>  <li>firmware_installed</li>  <li>telemetry_configuration_updated</li> </ul> |  Indicates the desired state for the Logical Interconnect resource. **compliant** brings the logical interconnect back to a consistent state. **ethernet_settings_updated** updates the Ethernet interconnect settings for the logical interconnect. **internal_networks_updated** updates the internal networks on the logical interconnect. This operation is non-idempotent. **settings_updated** updates the Logical Interconnect settings. **forwarding_information_base_generated** generates the forwarding information base dump file for the logical interconnect. This operation is non-idempotent and asynchronous. **qos_aggregated_configuration_updated** updates the QoS aggregated configuration for the logical interconnect. **snmp_configuration_updated** updates the SNMP configuration for the logical interconnect. **port_monitor_updated** updates the port monitor configuration of a logical interconnect. **configuration_updated** asynchronously applies or re-applies the logical interconnect configuration to all managed interconnects. This operation is non-idempotent. **firmware_installed** installs firmware to a logical interconnect. The three operations that are supported for the firmware update are Stage (uploads firmware to the interconnect), Activate (installs firmware on the interconnect) and Update (which does a Stage and Activate in a sequential manner). All of them are non-idempotent. **telemetry_configuration_updated** updates the telemetry configuration of a logical interconnect.  |
 | validate_etag  |   |  True  | <ul> <li>true</li>  <li>false</li> </ul> |  When the ETag Validation is enabled, the request will be conditionally processed only if the current ETag for the resource matches the ETag provided in the data.  |
 
 
@@ -3871,6 +3875,8 @@ Manage OneView Logical Interconnect resources.
 
 - Check how to use environment variables for configuration at: https://github.com/HewlettPackard/oneview-ansible#environment-variables
 
+- Additional Playbooks for the HPE OneView Ansible modules can be found at: https://github.com/HewlettPackard/oneview-ansible/tree/master/examples
+
 
 ---
 
@@ -3891,8 +3897,8 @@ Retrieve facts about one or more of the OneView Logical Interconnects.
 | ------------- |-------------| ---------|----------- |--------- |
 | config  |   No  |  | |  Path to a .json configuration file containing the OneView client configuration. The configuration file is optional. If the file path is not provided, the configuration will be loaded from environment variables.  |
 | name  |   No  |  | |  Logical Interconnect name.  |
-| options  |   No  |  | |  List with options to gather additional facts about Logical Interconnect. Options allowed: 'qos_aggregated_configuration' gets the QoS aggregated configuration for the logical interconnect. 'snmp_configuration' gets the SNMP configuration for a logical interconnect. 'port_monitor' gets the port monitor configuration of a logical interconnect. 'internal_vlans' gets the internal VLAN IDs for the provisioned networks on a logical interconnect. 'forwarding_information_base' gets the forwarding information base data for a logical interconnect. 'firmware' get the installed firmware for a logical interconnect. 'unassigned_uplink_ports' gets a collection of uplink ports from the member interconnects which are eligible for assignment to an analyzer port. 'telemetry_configuration' gets the telemetry configuration of the logical interconnect. 'ethernet_settings' gets the Ethernet interconnect settings for the Logical Interconnect. - These options are valid just when a 'name' is provided. Otherwise it will be ignored.  |
-| params  |   No  |  | |  List of params to delimit, filter and sort the list of resources.  params allowed: 'start': The first item to return, using 0-based indexing. 'count': The number of resources to return. 'filter': A general filter/query string to narrow the list of items returned. 'sort': The sort order of the returned data set.  |
+| options  |   No  |  | |  List with options to gather additional facts about Logical Interconnect. Options allowed: **qos_aggregated_configuration** gets the QoS aggregated configuration for the logical interconnect. **snmp_configuration** gets the SNMP configuration for a logical interconnect. **port_monitor** gets the port monitor configuration of a logical interconnect. **internal_vlans** gets the internal VLAN IDs for the provisioned networks on a logical interconnect. **forwarding_information_base** gets the forwarding information base data for a logical interconnect. **firmware** get the installed firmware for a logical interconnect. **unassigned_uplink_ports** gets a collection of uplink ports from the member interconnects which are eligible for assignment to an analyzer port. **telemetry_configuration** gets the telemetry configuration of the logical interconnect. **ethernet_settings** gets the Ethernet interconnect settings for the Logical Interconnect. - These options are valid just when a **name** is provided. Otherwise it will be ignored.  |
+| params  |   No  |  | |  List of params to delimit, filter and sort the list of resources.  params allowed: **start**: The first item to return, using 0-based indexing. **count**: The number of resources to return. **filter**: A general filter/query string to narrow the list of items returned. **sort**: The sort order of the returned data set.  |
 
 
  
@@ -3976,6 +3982,8 @@ Retrieve facts about one or more of the OneView Logical Interconnects.
 - A sample configuration file for the config parameter can be found at: https://github.com/HewlettPackard/oneview-ansible/blob/master/examples/oneview_config-rename.json
 
 - Check how to use environment variables for configuration at: https://github.com/HewlettPackard/oneview-ansible#environment-variables
+
+- Additional Playbooks for the HPE OneView Ansible modules can be found at: https://github.com/HewlettPackard/oneview-ansible/tree/master/examples
 
 
 ---

@@ -18,16 +18,34 @@ from hpe_test_utils import OneViewBaseTestCase
 from copy import deepcopy
 import yaml
 
-from oneview_enclosure import EnclosureModule
-from oneview_enclosure import ENCLOSURE_ADDED, ENCLOSURE_ALREADY_EXIST, ENCLOSURE_UPDATED, \
-    ENCLOSURE_RECONFIGURED, ENCLOSURE_REFRESHED, \
-    ENCLOSURE_NOT_FOUND, APPLIANCE_BAY_POWERED_ON, APPLIANCE_BAY_ALREADY_POWERED_ON, UID_ALREADY_POWERED_ON, \
-    UID_POWERED_ON, UID_POWERED_OFF, UID_ALREADY_POWERED_OFF, MANAGER_BAY_UID_ALREADY_ON, \
-    MANAGER_BAY_UID_ON, BAY_NOT_FOUND, MANAGER_BAY_UID_OFF, MANAGER_BAY_UID_ALREADY_OFF, \
-    MANAGER_BAY_POWER_STATE_E_FUSED, MANAGER_BAY_POWER_STATE_RESET, APPLIANCE_BAY_POWER_STATE_E_FUSED, \
-    DEVICE_BAY_POWER_STATE_E_FUSED, DEVICE_BAY_POWER_STATE_RESET, INTERCONNECT_BAY_POWER_STATE_E_FUSE, \
-    DEVICE_BAY_IPV4_SETTING_REMOVED, INTERCONNECT_BAY_IPV4_SETTING_REMOVED, SUPPORT_DATA_COLLECTION_STATE_ALREADY_SET, \
-    SUPPORT_DATA_COLLECTION_STATE_SET
+from oneview_enclosure import (EnclosureModule,
+                               ENCLOSURE_ADDED,
+                               ENCLOSURE_ALREADY_EXIST,
+                               ENCLOSURE_UPDATED,
+                               ENCLOSURE_RECONFIGURED,
+                               ENCLOSURE_REFRESHED,
+                               ENCLOSURE_NOT_FOUND,
+                               APPLIANCE_BAY_POWERED_ON,
+                               APPLIANCE_BAY_ALREADY_POWERED_ON,
+                               UID_ALREADY_POWERED_ON,
+                               UID_POWERED_ON,
+                               UID_POWERED_OFF,
+                               UID_ALREADY_POWERED_OFF,
+                               MANAGER_BAY_UID_ALREADY_ON,
+                               MANAGER_BAY_UID_ON,
+                               BAY_NOT_FOUND,
+                               MANAGER_BAY_UID_OFF,
+                               MANAGER_BAY_UID_ALREADY_OFF,
+                               MANAGER_BAY_POWER_STATE_E_FUSED,
+                               MANAGER_BAY_POWER_STATE_RESET,
+                               APPLIANCE_BAY_POWER_STATE_E_FUSED,
+                               DEVICE_BAY_POWER_STATE_E_FUSED,
+                               DEVICE_BAY_POWER_STATE_RESET,
+                               INTERCONNECT_BAY_POWER_STATE_E_FUSE,
+                               DEVICE_BAY_IPV4_SETTING_REMOVED,
+                               INTERCONNECT_BAY_IPV4_SETTING_REMOVED,
+                               SUPPORT_DATA_COLLECTION_STATE_ALREADY_SET,
+                               SUPPORT_DATA_COLLECTION_STATE_SET)
 
 FAKE_MSG_ERROR = 'Fake message error'
 
