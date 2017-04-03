@@ -17,7 +17,7 @@
 import unittest
 
 from oneview_rack_facts import RackFactsModule
-from utils import ModuleContructorTestCase, FactsParamsTestCase, ErrorHandlingTestCase
+from hpe_test_utils import FactsParamsTestCase
 
 ERROR_MSG = 'Fake message error'
 
@@ -41,12 +41,11 @@ PARAMS_GET_TOPOLOGY = dict(
 )
 
 
-class RackFactsSpec(unittest.TestCase, ModuleContructorTestCase, FactsParamsTestCase, ErrorHandlingTestCase):
+class RackFactsSpec(unittest.TestCase, FactsParamsTestCase):
     def setUp(self):
         self.configure_mocks(self, RackFactsModule)
         self.resource = self.mock_ov_client.racks
         FactsParamsTestCase.configure_client_mock(self, self.resource)
-        ErrorHandlingTestCase.configure(self, method_to_fire=self.resource.get_by)
 
     def test_should_get_all(self):
         self.resource.get_all.return_value = {"name": "Rack Name"}

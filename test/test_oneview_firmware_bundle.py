@@ -15,11 +15,8 @@
 ###
 import unittest
 
-from oneview_firmware_bundle import FirmwareBundleModule
-from oneview_firmware_bundle import FIRMWARE_BUNDLE_UPLOADED
-
-from test.utils import ModuleContructorTestCase
-from test.utils import ErrorHandlingTestCase
+from oneview_firmware_bundle import FirmwareBundleModule, FIRMWARE_BUNDLE_UPLOADED
+from hpe_test_utils import OneViewBaseTestCase
 
 FAKE_MSG_ERROR = 'Fake message error'
 DEFAULT_FIRMWARE_FILE_PATH = '/path/to/file.rpm'
@@ -43,13 +40,10 @@ PARAMS_FOR_PRESENT = dict(
 
 
 class FirmwareBundleModuleSpec(unittest.TestCase,
-                               ModuleContructorTestCase,
-                               ErrorHandlingTestCase):
+                               OneViewBaseTestCase):
 
     def setUp(self):
         self.configure_mocks(self, FirmwareBundleModule)
-        ErrorHandlingTestCase.configure(self, ansible_params=PARAMS_FOR_PRESENT,
-                                        method_to_fire=self.mock_ov_client.firmware_bundles.upload)
 
     def test_should_upload(self):
         self.mock_ov_client.firmware_drivers.get_by_file_name.return_value = None

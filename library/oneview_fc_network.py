@@ -93,12 +93,12 @@ class FcNetworkModule(OneViewModuleBase):
 
     def __init__(self):
 
-        add_arg_spec = dict(data=dict(required=True, type='dict'),
-                            state=dict(
-                                required=True,
-                                choices=['present', 'absent']))
+        additional_arg_spec = dict(data=dict(required=True, type='dict'),
+                                   state=dict(
+                                       required=True,
+                                       choices=['present', 'absent']))
 
-        super(FcNetworkModule, self).__init__(additional_arg_spec=add_arg_spec,
+        super(FcNetworkModule, self).__init__(additional_arg_spec=additional_arg_spec,
                                               validate_etag_support=True)
 
         self.resource_client = self.oneview_client.fc_networks

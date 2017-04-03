@@ -17,16 +17,12 @@
 import unittest
 
 from oneview_power_device_facts import PowerDeviceFactsModule
-from test.utils import ModuleContructorTestCase, FactsParamsTestCase, ErrorHandlingTestCase
+from hpe_test_utils import FactsParamsTestCase
 
 
 class PowerDeviceFactsModuleSpec(unittest.TestCase,
-                                 ModuleContructorTestCase,
-                                 FactsParamsTestCase,
-                                 ErrorHandlingTestCase):
+                                 FactsParamsTestCase):
     """
-    ModuleContructorTestCase has common tests for the class constructor and the main function, and also provides the
-    mocks used in this test class.
     FactsParamsTestCase has common tests for the parameters support.
     """
     ERROR_MSG = 'Fake message error'
@@ -55,7 +51,6 @@ class PowerDeviceFactsModuleSpec(unittest.TestCase,
         self.configure_mocks(self, PowerDeviceFactsModule)
         self.power_devices = self.mock_ov_client.power_devices
         FactsParamsTestCase.configure_client_mock(self, self.power_devices)
-        ErrorHandlingTestCase.configure(self, method_to_fire=self.power_devices.get_by)
 
     def test_should_get_all_power_devices(self):
         self.power_devices.get_all.return_value = {"name": "Power Device Name"}

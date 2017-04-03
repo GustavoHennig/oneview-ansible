@@ -146,7 +146,7 @@ class ServerHardwareModule(OneViewModuleBase):
     MSG_REFRESH_STATE_UPDATED = 'Server Hardware refresh state changed successfully.'
     MSG_ILO_FIRMWARE_VERSION_UPDATED = 'Server Hardware iLO firmware version updated successfully.'
     MSG_ENV_CONFIG_UPDATED = 'Server Hardware calibrated max power updated successfully.'
-    MSG_NOT_FOUND = 'Server Hardware is required for this operation.'
+    MSG_SERVER_HARDWARE_NOT_FOUND = 'The provided Server Hardware was not found.'
     MSG_UID_STATE_CHANGED = 'Server Hardware UID state changed successfully.'
     MSG_ILO_STATE_RESET = 'Server Hardware iLO state changed successfully.'
     MSG_NOTHING_TO_DO = 'Nothing to do.'
@@ -206,7 +206,7 @@ class ServerHardwareModule(OneViewModuleBase):
                 return self.resource_absent(resource, method='remove')
             else:
                 if not resource:
-                    raise HPOneViewResourceNotFound(self.MSG_NOT_FOUND)
+                    raise HPOneViewResourceNotFound(self.MSG_SERVER_HARDWARE_NOT_FOUND)
 
                 if self.state == 'power_state_set':
                     changed, msg, ansible_facts = self.__set_power_state(resource)

@@ -121,14 +121,21 @@ class OneViewModuleBase(object):
     def execute_module(self):
         """
         Abstract function, must be implemented by the inheritor.
+
+        This method is called from the run method. It should contains the module logic
+
+        Returns:
+            dict:
+                 It must return a dictionary with the attributes for the module result,
+                 such as ansible_facts, msg and changed.
         """
         raise HPOneViewException("execute_module not implemented")
 
     def run(self):
         """
         Common implementation of the OneView run modules.
-        It calls the inheritor 'execute_module' function and send the return to the Ansible.
-        Also handles eventual exceptions.
+        It calls the inheritor 'execute_module' function and sends the return to the Ansible.
+        It handles any HPOneViewException in order to signal a failure to Ansible, with a descriptive error message.
         """
         try:
             if self.validate_etag_support:
@@ -248,8 +255,9 @@ class OneViewModuleBase(object):
     @staticmethod
     def get_logger(mod_name):
         """
-            To activate logs, setup the environment var LOGFILE
-            e.g.: export LOGFILE=/tmp/ansible-oneview.log
+        To activate logs, setup the environment var LOGFILE
+        e.g.: export LOGFILE=/tmp/ansible-oneview.log
+
         Args:
             mod_name: module name
 
@@ -274,7 +282,12 @@ class ResourceComparator():
     @staticmethod
     def compare(first_resource, second_resource):
         """
-        Recursively compares dictionary contents, ignoring type and order
+        Recursively compares dictionary contents equivalence, ignoring types and elements order.
+        Particularities of the comparison:
+            - Inexistent key = None
+            - These values are considered equal: None, empty, False
+            - Lists are compared value by value after a sort, if they have same size.
+            - Each element is converted to str before the comparison.
         Args:
             first_resource: first dictionary
             second_resource: second dictionary
@@ -292,51 +305,47 @@ class ResourceComparator():
             logger.debug("resource1 and not resource2. " + debug_resources)
             return False
 
-        # Check all keys in first dict
+        # Checks all keys in first dict against the second dict
         for key in resource1.keys():
             if key not in resource2:
-                # no key in second dict
                 if resource1[key] is not None:
-                    # key inexistent is equivalent to exist and value None
+                    # Inexistent key is equivalent to exist with value None
                     logger.debug(ResourceComparator.MSG_DIFF_AT_KEY.format(key) + debug_resources)
                     return False
-            # If both values are null / empty / False
+            # If both values are null, empty or False it will be considered equal.
             elif not resource1[key] and not resource2[key]:
                 continue
             elif isinstance(resource1[key], dict):
                 # recursive call
                 if not ResourceComparator.compare(resource1[key], resource2[key]):
-                    # if different, stops here
                     logger.debug(ResourceComparator.MSG_DIFF_AT_KEY.format(key) + debug_resources)
                     return False
             elif isinstance(resource1[key], list):
-                # change comparison function (list compare)
+                # change comparison function to compare_list
                 if not ResourceComparator.compare_list(resource1[key], resource2[key]):
-                    # if different, stops here
                     logger.debug(ResourceComparator.MSG_DIFF_AT_KEY.format(key) + debug_resources)
                     return False
             elif ResourceComparator._standardize_value(resource1[key]) != ResourceComparator._standardize_value(
                     resource2[key]):
-                # different value
                 logger.debug(ResourceComparator.MSG_DIFF_AT_KEY.format(key) + debug_resources)
                 return False
 
-        # Check all keys in second dict to find missing
+        # Checks all keys in the second dict, looking for missing elements
         for key in resource2.keys():
             if key not in resource1:
-                # not exists in first dict
                 if resource2[key] is not None:
-                    # key inexistent is equivalent to exist and value None
+                    # Inexistent key is equivalent to exist with value None
                     logger.debug(ResourceComparator.MSG_DIFF_AT_KEY.format(key) + debug_resources)
                     return False
 
-        # no differences found
         return True
 
     @staticmethod
     def compare_list(first_resource, second_resource):
         """
-        Recursively compares lists contents, ignoring type
+        Recursively compares lists contents equivalence, ignoring types and element orders.
+        Lists with same size are compared value by value after a sort,
+        each element is converted to str before the comparison.
         Args:
             first_resource: first list
             second_resource: second list
@@ -344,7 +353,6 @@ class ResourceComparator():
         Returns:
             True when equal;
             False when different.
-
         """
 
         resource1 = deepcopy(first_resource)
@@ -358,7 +366,6 @@ class ResourceComparator():
             return False
 
         if len(resource1) != len(resource2):
-            # different length
             logger.debug("resources have different length. " + debug_resources)
             return False
 
@@ -367,7 +374,7 @@ class ResourceComparator():
 
         for i, val in enumerate(resource1):
             if isinstance(val, dict):
-                # change comparison function
+                # change comparison function to compare dictionaries
                 if not ResourceComparator.compare(val, resource2[i]):
                     logger.debug("resources are different. " + debug_resources)
                     return False
@@ -377,7 +384,6 @@ class ResourceComparator():
                     logger.debug("lists are different. " + debug_resources)
                     return False
             elif ResourceComparator._standardize_value(val) != ResourceComparator._standardize_value(resource2[i]):
-                # value is different
                 logger.debug("values are different. " + debug_resources)
                 return False
 
@@ -514,7 +520,6 @@ class ServerProfileMerger(object):
                                                                                params_connections,
                                                                                key=SPKeys.ID)
 
-            # merge Boot from Connections
             merged_data = self._merge_connections_boot(merged_data, resource)
         return merged_data
 
@@ -537,7 +542,6 @@ class ServerProfileMerger(object):
         elif self._should_merge(data, resource, key=SPKeys.SAN):
             merged_data = self._merge_dict(merged_data, resource, data, key=SPKeys.SAN)
 
-            # Merge Volumes from SAN Storage
             merged_data = self._merge_san_volumes(merged_data, resource, data)
         return merged_data
 
@@ -548,7 +552,6 @@ class ServerProfileMerger(object):
             merged_volumes = ResourceMerger.merge_list_by_key(existing_volumes, params_volumes, key=SPKeys.ID)
             merged_data[SPKeys.SAN][SPKeys.VOLUMES] = merged_volumes
 
-            # Merge Paths from SAN Storage Volumes
             merged_data = self._merge_san_storage_paths(merged_data, resource)
         return merged_data
 
@@ -575,7 +578,6 @@ class ServerProfileMerger(object):
         if self._should_merge(data, resource, key=SPKeys.OS_DEPLOYMENT):
             merged_data = self._merge_dict(merged_data, resource, data, key=SPKeys.OS_DEPLOYMENT)
 
-            # Merge Custom Attributes from OS Deployment Settings
             merged_data = self._merge_os_deployment_custom_attr(merged_data, resource, data)
         return merged_data
 
@@ -600,9 +602,7 @@ class ServerProfileMerger(object):
         if self._removed_data(data, resource, key=SPKeys.LOCAL_STORAGE):
             merged_data[SPKeys.LOCAL_STORAGE] = dict(sasLogicalJBODs=[], controllers=[])
         elif self._should_merge(data, resource, key=SPKeys.LOCAL_STORAGE):
-            # Merge SAS Logical JBODs from Local Storage
             merged_data = self._merge_sas_logical_jbods(merged_data, resource, data)
-            # Merge Controllers from Local Storage
             merged_data = self._merge_controllers(merged_data, resource, data)
         return merged_data
 
@@ -626,7 +626,6 @@ class ServerProfileMerger(object):
                                                                   key=SPKeys.DEVICE_SLOT)
             merged_data[SPKeys.LOCAL_STORAGE][SPKeys.CONTROLLERS] = merged_controllers
 
-            # Merge Drives from Mezzanine and Embedded controllers
             merged_data = self._merge_controller_drives(merged_data, resource)
         return merged_data
 

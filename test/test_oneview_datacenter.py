@@ -16,11 +16,8 @@
 import unittest
 import yaml
 
-from oneview_datacenter import DatacenterModule, DATACENTER_ADDED, DATACENTER_REMOVED, DATACENTER_ALREADY_ABSENT, \
-    RACK_NOT_FOUND, DATACENTER_ALREADY_UPDATED, DATACENTER_UPDATED
-from test.utils import ModuleContructorTestCase
-from test.utils import ValidateEtagTestCase
-from test.utils import ErrorHandlingTestCase
+from oneview_datacenter import DatacenterModule
+from hpe_test_utils import OneViewBaseTestCase
 
 FAKE_MSG_ERROR = 'Fake message error'
 
@@ -66,20 +63,14 @@ DICT_DEFAULT_DATACENTER_CHANGED = yaml.load(YAML_DATACENTER_CHANGE)["data"]
 
 
 class DatacenterModuleSpec(unittest.TestCase,
-                           ModuleContructorTestCase,
-                           ValidateEtagTestCase,
-                           ErrorHandlingTestCase):
+                           OneViewBaseTestCase):
     """
-    ModuleContructorTestCase has common tests for class constructor and main function,
-    also provides the mocks used in this test case
-    ValidateEtagTestCase has common tests for the validate_etag attribute.
+    OneViewBaseTestCase has tests for the main function and provides the mocks used in this test case.
     """
 
     def setUp(self):
         self.configure_mocks(self, DatacenterModule)
         self.resource = self.mock_ov_client.datacenters
-
-        ErrorHandlingTestCase.configure(self, method_to_fire=self.resource.get_by)
 
     def test_should_create_new_datacenter(self):
         self.resource.get_by.return_value = []
@@ -92,7 +83,7 @@ class DatacenterModuleSpec(unittest.TestCase,
 
         self.mock_ansible_module.exit_json.assert_called_once_with(
             changed=True,
-            msg=DATACENTER_ADDED,
+            msg=DatacenterModule.MSG_CREATED,
             ansible_facts=dict(datacenter={"name": "name"})
         )
 
@@ -106,7 +97,7 @@ class DatacenterModuleSpec(unittest.TestCase,
 
         self.mock_ansible_module.exit_json.assert_called_once_with(
             changed=True,
-            msg=DATACENTER_UPDATED,
+            msg=DatacenterModule.MSG_UPDATED,
             ansible_facts=dict(datacenter={"name": "name"})
         )
 
@@ -123,7 +114,7 @@ class DatacenterModuleSpec(unittest.TestCase,
 
         self.mock_ansible_module.exit_json.assert_called_once_with(
             changed=False,
-            msg=DATACENTER_ALREADY_UPDATED,
+            msg=DatacenterModule.MSG_ALREADY_EXIST,
             ansible_facts=dict(datacenter=DICT_DEFAULT_DATACENTER)
         )
 
@@ -135,9 +126,8 @@ class DatacenterModuleSpec(unittest.TestCase,
         DatacenterModule().run()
 
         self.mock_ansible_module.exit_json.assert_called_once_with(
-            ansible_facts={},
             changed=True,
-            msg=DATACENTER_REMOVED
+            msg=DatacenterModule.MSG_DELETED
         )
 
     def test_should_do_nothing_when_datacenter_not_exist(self):
@@ -148,9 +138,8 @@ class DatacenterModuleSpec(unittest.TestCase,
         DatacenterModule().run()
 
         self.mock_ansible_module.exit_json.assert_called_once_with(
-            ansible_facts={},
             changed=False,
-            msg=DATACENTER_ALREADY_ABSENT
+            msg=DatacenterModule.MSG_ALREADY_ABSENT
         )
 
     def test_should_fail_when_switch_type_was_not_found(self):
@@ -162,7 +151,7 @@ class DatacenterModuleSpec(unittest.TestCase,
         DatacenterModule().run()
 
         self.mock_ansible_module.fail_json.assert_called_once_with(
-            msg=RACK_NOT_FOUND
+            msg=DatacenterModule.RACK_NOT_FOUND
         )
 
 

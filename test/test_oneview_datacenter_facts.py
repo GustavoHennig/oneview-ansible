@@ -17,9 +17,7 @@
 import unittest
 
 from oneview_datacenter_facts import DatacenterFactsModule
-from test.utils import FactsParamsTestCase
-from test.utils import ModuleContructorTestCase
-from test.utils import ErrorHandlingTestCase
+from hpe_test_utils import FactsParamsTestCase
 
 ERROR_MSG = 'Fake message error'
 
@@ -44,15 +42,12 @@ PARAMS_GET_CONNECTED = dict(
 
 
 class DatacentersFactsSpec(unittest.TestCase,
-                           ModuleContructorTestCase,
-                           FactsParamsTestCase,
-                           ErrorHandlingTestCase):
+                           FactsParamsTestCase):
     def setUp(self):
         self.configure_mocks(self, DatacenterFactsModule)
         self.datacenters = self.mock_ov_client.datacenters
 
         FactsParamsTestCase.configure_client_mock(self, self.datacenters)
-        ErrorHandlingTestCase.configure(self, method_to_fire=self.datacenters.get_by)
 
     def test_should_get_all_datacenters(self):
         self.datacenters.get_all.return_value = {"name": "Data Center Name"}
