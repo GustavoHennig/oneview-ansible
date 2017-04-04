@@ -18,29 +18,20 @@ import unittest
 import yaml
 
 from image_streamer_os_volume_facts import OsVolumeFactsModule, EXAMPLES
-from utils import ModuleContructorTestCase
-from utils import FactsParamsTestCase
-from utils import ErrorHandlingTestCase
+from hpe_test_utils import FactsParamsTestCase
 
 ERROR_MSG = 'Fake message error'
 
 
 class OsVolumeFactsSpec(unittest.TestCase,
-                        ModuleContructorTestCase,
-                        FactsParamsTestCase,
-                        ErrorHandlingTestCase):
+                        FactsParamsTestCase):
     """
-    ModuleContructorTestCase has common tests for the class constructor and the main function, and also provides the
-    mocks used in this test class.
-
     FactsParamsTestCase has common tests for the parameters support.
-
-    ErrorHandlingTestCase has common tests for the module error handling.
     """
+
     def setUp(self):
         self.configure_mocks(self, OsVolumeFactsModule)
         self.i3s = self.mock_ov_client.create_image_streamer_client()
-        ErrorHandlingTestCase.configure(self, method_to_fire=self.i3s.os_volumes.get_by)
 
         FactsParamsTestCase.configure_client_mock(self, self.i3s.os_volumes)
 

@@ -150,14 +150,12 @@ EXAMPLES = '''
   delegate_to: localhost
 
 - name: Delete a Logical Enclosure (available only on HPE Synergy)
-    oneview_logical_enclosure:
+  oneview_logical_enclosure:
       config: "{{ config_file_name }}"
       state: absent
       data:
-        name: 'Encl1'
-    ignore_errors: true
+          name: 'Encl1'
   delegate_to: localhost
-
 '''
 
 RETURN = '''
