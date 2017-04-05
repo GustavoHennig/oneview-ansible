@@ -1802,10 +1802,10 @@ Manage OneView Enclosure resources.
     config: "{{ config_file_path }}"
     state: present
     data:
-      enclosureGroupUri : {{ enclosure_group_uri }},
-      hostname : {{ enclosure_hostname }},
-      username : {{ enclosure_username }},
-      password : {{ enclosure_password }},
+      enclosureGroupUri : '{{ enclosure_group_uri }}'
+      hostname : '{{ enclosure_hostname }}'
+      username : '{{ enclosure_username }}'
+      password : '{{ enclosure_password }}'
       name: 'Test-Enclosure'
       licensingIntent : 'OneView'
 
@@ -2017,7 +2017,6 @@ Retrieve facts about one or more Enclosures.
 - name: Gather facts about all Enclosures
   oneview_enclosure_facts:
     config: "{{ config_file_path }}"
-
 - debug: var=enclosures
 
 - name: Gather paginated, filtered and sorted facts about Enclosures
@@ -2028,7 +2027,6 @@ Retrieve facts about one or more Enclosures.
       count: 3
       sort: 'name:descending'
       filter: 'status=OK'
-
 - debug: var=enclosures
 
 - name: Gather facts about an Enclosure by name
@@ -2036,7 +2034,6 @@ Retrieve facts about one or more Enclosures.
     config: "{{ config_file_path }}"
     name: "Enclosure-Name"
   delegate_to: localhost
-
 - debug: var=enclosures
 
 - name: Gather facts about an Enclosure by name with options
@@ -2048,7 +2045,6 @@ Retrieve facts about one or more Enclosures.
       - environmentalConfiguration   # optional
       - utilization                  # optional
   delegate_to: localhost
-
 - debug: var=enclosures
 - debug: var=enclosure_script
 - debug: var=enclosure_environmental_configuration
@@ -2060,7 +2056,7 @@ Retrieve facts about one or more Enclosures.
     config: "{{ config_file_path }}"
     name: 'Test-Enclosure'
     options:
-      - utilization                  # optional
+      - utilization:                   # optional
           fields: 'AmbientTemperature'
           filter:
             - "startDate=2016-07-01T14:29:42.000Z"
@@ -2068,7 +2064,6 @@ Retrieve facts about one or more Enclosures.
           view: 'day'
           refresh: False
   delegate_to: localhost
-
 - debug: var=enclosures
 - debug: var=enclosure_utilization
 

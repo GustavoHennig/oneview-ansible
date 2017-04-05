@@ -16,9 +16,9 @@
 # limitations under the License.
 ###
 
-ANSIBLE_METADATA = {'status': ['stableinterface'],
-                    'supported_by': 'committer',
-                    'version': '1.0'}
+ANSIBLE_METADATA = {'metadata_version': '1.0',
+                    'status': ['stableinterface'],
+                    'supported_by': 'curated'}
 
 DOCUMENTATION = '''
 ---
@@ -52,7 +52,6 @@ EXAMPLES = '''
 - name: Gather facts about all Enclosures
   oneview_enclosure_facts:
     config: "{{ config_file_path }}"
-
 - debug: var=enclosures
 
 - name: Gather paginated, filtered and sorted facts about Enclosures
@@ -63,7 +62,6 @@ EXAMPLES = '''
       count: 3
       sort: 'name:descending'
       filter: 'status=OK'
-
 - debug: var=enclosures
 
 - name: Gather facts about an Enclosure by name
@@ -71,7 +69,6 @@ EXAMPLES = '''
     config: "{{ config_file_path }}"
     name: "Enclosure-Name"
   delegate_to: localhost
-
 - debug: var=enclosures
 
 - name: Gather facts about an Enclosure by name with options
@@ -83,7 +80,6 @@ EXAMPLES = '''
       - environmentalConfiguration   # optional
       - utilization                  # optional
   delegate_to: localhost
-
 - debug: var=enclosures
 - debug: var=enclosure_script
 - debug: var=enclosure_environmental_configuration
@@ -95,7 +91,7 @@ EXAMPLES = '''
     config: "{{ config_file_path }}"
     name: 'Test-Enclosure'
     options:
-      - utilization                  # optional
+      - utilization:                   # optional
           fields: 'AmbientTemperature'
           filter:
             - "startDate=2016-07-01T14:29:42.000Z"
@@ -103,7 +99,6 @@ EXAMPLES = '''
           view: 'day'
           refresh: False
   delegate_to: localhost
-
 - debug: var=enclosures
 - debug: var=enclosure_utilization
 '''
