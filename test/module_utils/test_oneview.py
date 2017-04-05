@@ -17,16 +17,16 @@ import unittest
 import mock
 from copy import deepcopy
 
-from _ansible.module_utils.oneview import (OneViewModuleBase,
-                                           ResourceComparator,
-                                           ResourceMerger,
-                                           OneViewClient,
-                                           HPOneViewException,
-                                           HPOneViewValueError,
-                                           ServerProfileReplaceNamesByUris,
-                                           SPKeys,
-                                           ServerProfileMerger,
-                                           HPOneViewResourceNotFound)
+from module_utils.oneview import (OneViewModuleBase,
+                                  ResourceComparator,
+                                  ResourceMerger,
+                                  OneViewClient,
+                                  HPOneViewException,
+                                  HPOneViewValueError,
+                                  ServerProfileReplaceNamesByUris,
+                                  SPKeys,
+                                  ServerProfileMerger,
+                                  HPOneViewResourceNotFound)
 
 MSG_GENERIC_ERROR = 'Generic error message'
 MSG_GENERIC = "Generic message"
