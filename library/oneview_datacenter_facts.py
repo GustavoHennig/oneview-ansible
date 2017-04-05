@@ -16,13 +16,13 @@
 # limitations under the License.
 ###
 
-ANSIBLE_METADATA = {'status': ['stableinterface'],
-                    'supported_by': 'committer',
-                    'version': '1.0'}
+ANSIBLE_METADATA = {'metadata_version': '1.0',
+                    'status': ['stableinterface'],
+                    'supported_by': 'curated'}
 
 DOCUMENTATION = '''
 ---
-module: oneview_datacenters_facts
+module: oneview_datacenter_facts
 short_description: Retrieve facts about the OneView Data Centers.
 description:
     - Retrieve facts about the OneView Data Centers.

@@ -16,10 +16,10 @@
 # limitations under the License.
 ###
 
+ANSIBLE_METADATA = {'metadata_version': '1.0',
+                    'status': ['stableinterface'],
+                    'supported_by': 'curated'}
 
-ANSIBLE_METADATA = {'status': ['stableinterface'],
-                    'supported_by': 'committer',
-                    'version': '1.0'}
 DOCUMENTATION = '''
 ---
 module: oneview_firmware_driver
@@ -52,6 +52,8 @@ EXAMPLES = '''
     state: absent
     name: "Service Pack for ProLiant.iso"
 '''
+
+RETURN = ''' # '''
 
 from ansible.module_utils.basic import AnsibleModule
 from _ansible.module_utils.oneview import OneViewModuleBase

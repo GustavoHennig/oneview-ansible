@@ -226,6 +226,31 @@ class ServerProfileFactsSpec(unittest.TestCase,
                            }
         )
 
+    def test_should_get_server_profiles_with_invalid_options(self):
+        mock_option_return = {'subresource': 'value'}
+
+        self.mock_ov_client.server_profiles.get_by.return_value = [{"name": "Server Profile Name", "uri": PROFILE_URI}]
+
+        self.mock_ov_client.server_profiles.get_profile_ports.return_value = mock_option_return
+
+        self.mock_ansible_module.params = dict(
+            config='config.json',
+            name="Test Server Profile",
+            options=[
+                {'profilePorts': [1]}
+            ])
+
+        ServerProfileFactsModule().run()
+
+        self.mock_ov_client.server_profiles.get_profile_ports.assert_called_once_with()
+
+        self.mock_ansible_module.exit_json.assert_called_once_with(
+            changed=False,
+            ansible_facts={'server_profiles': [{'name': 'Server Profile Name', 'uri': PROFILE_URI}],
+                           'server_profile_profile_ports': mock_option_return,
+                           }
+        )
+
 
 if __name__ == '__main__':
     unittest.main()

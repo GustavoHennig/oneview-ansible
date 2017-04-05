@@ -19,6 +19,7 @@
 import importlib
 
 from mock import Mock, patch
+from oneview_module_loader import ONEVIEW_MODULE_UTILS_PATH
 from hpOneView.oneview_client import OneViewClient
 
 
@@ -46,7 +47,7 @@ class OneViewBaseTestCase(object):
         self.mock_ov_client = self.mock_ov_client_from_json_file.return_value
 
         # Define Ansible Module Mock
-        patcher_ansible = patch('_ansible.module_utils.oneview.AnsibleModule')
+        patcher_ansible = patch(ONEVIEW_MODULE_UTILS_PATH + '.AnsibleModule')
         test_case.addCleanup(patcher_ansible.stop)
         mock_ansible_module = patcher_ansible.start()
         self.mock_ansible_module = Mock()

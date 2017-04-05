@@ -20,7 +20,7 @@
   * [oneview_connection_template - Manage the OneView Connection Template resources.](#oneview_connection_template)
   * [oneview_connection_template_facts - Retrieve facts about the OneView Connection Templates.](#oneview_connection_template_facts)
   * [oneview_datacenter - Manage OneView Data Center resources.](#oneview_datacenter)
-  * [oneview_datacenters_facts - Retrieve facts about the OneView Data Centers.](#oneview_datacenters_facts)
+  * [oneview_datacenter_facts - Retrieve facts about the OneView Data Centers.](#oneview_datacenter_facts)
   * [oneview_drive_enclosure - Manage OneView Drive Enclosure resources.](#oneview_drive_enclosure)
   * [oneview_drive_enclosure_facts - Retrieve the facts about one or more of the OneView Drive Enclosures.](#oneview_drive_enclosure_facts)
   * [oneview_enclosure - Manage OneView Enclosure resources.](#oneview_enclosure)
@@ -1534,7 +1534,7 @@ Manage OneView Data Center resources.
 ---
 
 
-## oneview_datacenters_facts
+## oneview_datacenter_facts
 Retrieve facts about the OneView Data Centers.
 
 #### Synopsis
@@ -6122,8 +6122,7 @@ Retrieve facts about one or more of the OneView SAS Logical Interconnect Groups.
 ```yaml
 - name: Gather facts about all SAS Logical Interconnect Groups
     oneview_sas_logical_interconnect_group_facts:
-    config: "{{ config_path }}"
-
+        config: "{{ config_path }}"
 - debug: var=sas_logical_interconnect_groups
 
 - name: Gather paginated, filtered and sorted facts about SAS Logical Interconnect Groups
@@ -6134,14 +6133,12 @@ Retrieve facts about one or more of the OneView SAS Logical Interconnect Groups.
       count: 5
       sort: 'name:descending'
       filter: "state='Active'"
-
 - debug: var=sas_logical_interconnect_groups
 
 - name: Gather facts about a SAS Logical Interconnect Group by name
     oneview_sas_logical_interconnect_group_facts:
     config: "{{ config_path }}"
     name: "LIG-SLJA-1"
-
 - debug: var=sas_logical_interconnect_groups
 
 ```

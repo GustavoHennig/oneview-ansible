@@ -16,9 +16,9 @@
 # limitations under the License.
 ###
 
-ANSIBLE_METADATA = {'status': ['stableinterface'],
-                    'supported_by': 'committer',
-                    'version': '1.0'}
+ANSIBLE_METADATA = {'metadata_version': '1.0',
+                    'status': ['stableinterface'],
+                    'supported_by': 'curated'}
 
 DOCUMENTATION = '''
 ---
@@ -284,7 +284,7 @@ class ServerProfileFactsModule(OneViewModuleBase):
         return facts
 
     def __get_sub_options(self, option):
-        return option if type(option) is dict else {}
+        return option if isinstance(option, dict) else {}
 
 
 def main():

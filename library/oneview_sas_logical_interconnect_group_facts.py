@@ -16,9 +16,9 @@
 # limitations under the License.
 ###
 
-ANSIBLE_METADATA = {'status': ['stableinterface'],
-                    'supported_by': 'committer',
-                    'version': '1.0'}
+ANSIBLE_METADATA = {'metadata_version': '1.0',
+                    'status': ['stableinterface'],
+                    'supported_by': 'curated'}
 
 DOCUMENTATION = '''
 ---
@@ -46,27 +46,24 @@ extends_documentation_fragment:
 
 EXAMPLES = '''
 - name: Gather facts about all SAS Logical Interconnect Groups
-    oneview_sas_logical_interconnect_group_facts:
+  oneview_sas_logical_interconnect_group_facts:
     config: "{{ config_path }}"
-
 - debug: var=sas_logical_interconnect_groups
 
 - name: Gather paginated, filtered and sorted facts about SAS Logical Interconnect Groups
-    oneview_sas_logical_interconnect_group_facts:
+  oneview_sas_logical_interconnect_group_facts:
     config: "{{ config }}"
     params:
       start: 0
       count: 5
       sort: 'name:descending'
       filter: "state='Active'"
-
 - debug: var=sas_logical_interconnect_groups
 
 - name: Gather facts about a SAS Logical Interconnect Group by name
-    oneview_sas_logical_interconnect_group_facts:
+  oneview_sas_logical_interconnect_group_facts:
     config: "{{ config_path }}"
     name: "LIG-SLJA-1"
-
 - debug: var=sas_logical_interconnect_groups
 '''
 
