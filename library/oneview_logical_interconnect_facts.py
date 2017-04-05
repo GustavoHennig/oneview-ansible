@@ -16,9 +16,9 @@
 # limitations under the License.
 ###
 
-ANSIBLE_METADATA = {'status': ['stableinterface'],
-                    'supported_by': 'committer',
-                    'version': '1.0'}
+ANSIBLE_METADATA = {'metadata_version': '1.0',
+                    'status': ['stableinterface'],
+                    'supported_by': 'curated'}
 
 DOCUMENTATION = '''
 ---
@@ -171,10 +171,10 @@ ethernet_settings:
 from ansible.module_utils.basic import AnsibleModule
 from _ansible.module_utils.oneview import OneViewModuleBase, HPOneViewResourceNotFound
 
-LOGICAL_INTERCONNECT_NOT_FOUND = 'Logical Interconnect not found.'
-
 
 class LogicalInterconnectFactsModule(OneViewModuleBase):
+    MSG_NOT_FOUND = 'Logical Interconnect not found.'
+
     argument_spec = dict(
         name=dict(required=False, type='str'),
         options=dict(required=False, type='list'),
@@ -211,7 +211,7 @@ class LogicalInterconnectFactsModule(OneViewModuleBase):
     def __get_by_name(self, name):
         logical_interconnect = self.resource_client.get_by_name(name=name)
         if not logical_interconnect:
-            raise HPOneViewResourceNotFound(LOGICAL_INTERCONNECT_NOT_FOUND)
+            raise HPOneViewResourceNotFound(self.MSG_NOT_FOUND)
 
         facts = dict(logical_interconnects=logical_interconnect)
 

@@ -16,9 +16,9 @@
 # limitations under the License.
 ###
 
-ANSIBLE_METADATA = {'status': ['stableinterface'],
-                    'supported_by': 'committer',
-                    'version': '1.0'}
+ANSIBLE_METADATA = {'metadata_version': '1.0',
+                    'status': ['stableinterface'],
+                    'supported_by': 'curated'}
 
 DOCUMENTATION = '''
 ---
@@ -65,12 +65,12 @@ firmware_bundle:
 '''
 
 from ansible.module_utils.basic import AnsibleModule
-from _ansible.module_utils.oneview import (OneViewModuleBase)
-
-FIRMWARE_BUNDLE_UPLOADED = 'Firmware Bundle uploaded sucessfully.'
+from _ansible.module_utils.oneview import OneViewModuleBase
 
 
 class FirmwareBundleModule(OneViewModuleBase):
+    MSG_FIRMWARE_BUNDLE_UPLOADED = 'Firmware Bundle uploaded sucessfully.'
+
     argument_spec = dict(
         state=dict(required=True, choices=['present']),
         file_path=dict(required=True, type='str')
@@ -84,7 +84,7 @@ class FirmwareBundleModule(OneViewModuleBase):
 
         new_firmware = self.oneview_client.firmware_bundles.upload(file_path)
         return dict(changed=True,
-                    msg=FIRMWARE_BUNDLE_UPLOADED,
+                    msg=self.MSG_FIRMWARE_BUNDLE_UPLOADED,
                     ansible_facts=dict(firmware_bundle=new_firmware))
 
 

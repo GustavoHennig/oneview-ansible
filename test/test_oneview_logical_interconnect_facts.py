@@ -16,15 +16,12 @@
 
 import unittest
 
-from oneview_logical_interconnect_facts import LogicalInterconnectFactsModule, LOGICAL_INTERCONNECT_NOT_FOUND
+from oneview_logical_interconnect_facts import LogicalInterconnectFactsModule
 from hpe_test_utils import FactsParamsTestCase
 
 ERROR_MSG = 'Fake message error'
-
 LOGICAL_INTERCONNECT_NAME = "test"
-
 LOGICAL_INTERCONNECT_URI = "/rest/logical-interconnects/d1c7b09a-6c7b-4ae0-b68e-ed208ccde1b0"
-
 TELEMETRY_CONF_URI = LOGICAL_INTERCONNECT_URI + "/telemetry-configurations/33845548-eae0-4f8e-b166-38680c2b81e7"
 
 PARAMS_GET_ALL = dict(
@@ -360,7 +357,7 @@ class LogicalInterconnectFactsSpec(unittest.TestCase,
 
         LogicalInterconnectFactsModule().run()
 
-        self.mock_ansible_module.fail_json.assert_called_once_with(msg=LOGICAL_INTERCONNECT_NOT_FOUND)
+        self.mock_ansible_module.fail_json.assert_called_once_with(msg=LogicalInterconnectFactsModule.MSG_NOT_FOUND)
 
 
 if __name__ == '__main__':

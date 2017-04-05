@@ -16,9 +16,9 @@
 # limitations under the License.
 ###
 
-ANSIBLE_METADATA = {'status': ['stableinterface'],
-                    'supported_by': 'committer',
-                    'version': '1.0'}
+ANSIBLE_METADATA = {'metadata_version': '1.0',
+                    'status': ['stableinterface'],
+                    'supported_by': 'curated'}
 
 DOCUMENTATION = '''
 ---
@@ -219,24 +219,23 @@ from _ansible.module_utils.oneview import (OneViewModuleBase,
                                            ResourceComparator,
                                            HPOneViewValueError)
 
-LOGICAL_INTERCONNECT_CONSISTENT = 'logical interconnect returned to a consistent state.'
-LOGICAL_INTERCONNECT_ETH_SETTINGS_UPDATED = 'Ethernet settings updated successfully.'
-LOGICAL_INTERCONNECT_INTERNAL_NETWORKS_UPDATED = 'Internal networks updated successfully.'
-LOGICAL_INTERCONNECT_SETTINGS_UPDATED = 'Logical Interconnect setttings updated successfully.'
-LOGICAL_INTERCONNECT_QOS_UPDATED = 'QoS aggregated configuration updated successfully.'
-LOGICAL_INTERCONNECT_SNMP_UPDATED = 'SNMP configuration updated successfully.'
-LOGICAL_INTERCONNECT_PORT_MONITOR_UPDATED = 'Port Monitor configuration updated successfully.'
-LOGICAL_INTERCONNECT_CONFIGURATION_UPDATED = 'Configuration on the logical interconnect updated successfully.'
-LOGICAL_INTERCONNECT_TELEMETRY_CONFIGURATION_UPDATED = 'Telemetry configuration updated successfully.'
-LOGICAL_INTERCONNECT_FIRMWARE_INSTALLED = 'Firmware updated successfully.'
-LOGICAL_INTERCONNECT_NOT_FOUND = 'Logical Interconnect not found.'
-LOGICAL_INTERCONNECT_ETH_NETWORK_NOT_FOUND = 'Ethernet network not found: '
-LOGICAL_INTERCONNECT_NO_CHANGES_PROVIDED = 'Nothing to do.'
-LOGICAL_INTERCONNECT_NO_OPTIONS_PROVIDED = 'No options provided.'
-HPE_ONEVIEW_SDK_REQUIRED = 'HPE OneView Python SDK is required for this module.'
-
 
 class LogicalInterconnectModule(OneViewModuleBase):
+    MSG_CONSISTENT = 'Logical Interconnect returned to a consistent state.'
+    MSG_ETH_SETTINGS_UPDATED = 'Ethernet settings updated successfully.'
+    MSG_INTERNAL_NETWORKS_UPDATED = 'Internal networks updated successfully.'
+    MSG_SETTINGS_UPDATED = 'Logical Interconnect setttings updated successfully.'
+    MSG_QOS_UPDATED = 'QoS aggregated configuration updated successfully.'
+    MSG_SNMP_UPDATED = 'SNMP configuration updated successfully.'
+    MSG_PORT_MONITOR_UPDATED = 'Port Monitor configuration updated successfully.'
+    MSG_CONFIGURATION_UPDATED = 'Configuration on the Logical Interconnect updated successfully.'
+    MSG_TELEMETRY_CONFIGURATION_UPDATED = 'Telemetry configuration updated successfully.'
+    MSG_FIRMWARE_INSTALLED = 'Firmware updated successfully.'
+    MSG_NOT_FOUND = 'Logical Interconnect not found.'
+    MSG_ETH_NETWORK_NOT_FOUND = 'Ethernet network not found: '
+    MSG_NO_CHANGES_PROVIDED = 'Nothing to do.'
+    MSG_NO_OPTIONS_PROVIDED = 'No options provided.'
+
     argument_spec = dict(
         state=dict(
             required=True,
@@ -257,7 +256,7 @@ class LogicalInterconnectModule(OneViewModuleBase):
         resource = self.__get_by_name(self.data)
 
         if not resource:
-            raise HPOneViewResourceNotFound(LOGICAL_INTERCONNECT_NOT_FOUND)
+            raise HPOneViewResourceNotFound(self.MSG_NOT_FOUND)
 
         uri = resource['uri']
 
@@ -295,7 +294,7 @@ class LogicalInterconnectModule(OneViewModuleBase):
 
     def __compliance(self, uri):
         li = self.oneview_client.logical_interconnects.update_compliance(uri)
-        return True, LOGICAL_INTERCONNECT_CONSISTENT, dict(logical_interconnect=li)
+        return True, self.MSG_CONSISTENT, dict(logical_interconnect=li)
 
     def __update_ethernet_settings(self, resource, data):
         self.__validate_options('ethernetSettings', data)
@@ -304,11 +303,11 @@ class LogicalInterconnectModule(OneViewModuleBase):
         ethernet_settings_merged.update(data['ethernetSettings'])
 
         if ResourceComparator.compare(resource['ethernetSettings'], ethernet_settings_merged):
-            return False, LOGICAL_INTERCONNECT_NO_CHANGES_PROVIDED, dict()
+            return False, self.MSG_NO_CHANGES_PROVIDED, dict()
         else:
             li = self.oneview_client.logical_interconnects.update_ethernet_settings(resource['uri'],
                                                                                     ethernet_settings_merged)
-            return True, LOGICAL_INTERCONNECT_ETH_SETTINGS_UPDATED, dict(logical_interconnect=li)
+            return True, self.MSG_ETH_SETTINGS_UPDATED, dict(logical_interconnect=li)
 
     def __update_internal_networks(self, uri, data):
         self.__validate_options('internalNetworks', data)
@@ -318,7 +317,7 @@ class LogicalInterconnectModule(OneViewModuleBase):
             if 'name' in network_uri_or_name:
                 ethernet_network = self.__get_ethernet_network_by_name(network_uri_or_name['name'])
                 if not ethernet_network:
-                    msg = LOGICAL_INTERCONNECT_ETH_NETWORK_NOT_FOUND + network_uri_or_name['name']
+                    msg = self.MSG_ETH_NETWORK_NOT_FOUND + network_uri_or_name['name']
                     raise HPOneViewResourceNotFound(msg)
                 networks.append(ethernet_network['uri'])
             elif 'uri' in network_uri_or_name:
@@ -326,7 +325,7 @@ class LogicalInterconnectModule(OneViewModuleBase):
 
         li = self.oneview_client.logical_interconnects.update_internal_networks(uri, networks)
 
-        return True, LOGICAL_INTERCONNECT_INTERNAL_NETWORKS_UPDATED, dict(logical_interconnect=li)
+        return True, self.MSG_INTERNAL_NETWORKS_UPDATED, dict(logical_interconnect=li)
 
     def __update_settings(self, resource, data):
         self.__validate_settings(data)
@@ -337,14 +336,14 @@ class LogicalInterconnectModule(OneViewModuleBase):
         if ResourceComparator.compare(resource['ethernetSettings'], ethernet_settings_merged) and \
                 ResourceComparator.compare(resource['fcoeSettings'], fcoe_settings_merged):
 
-            return False, LOGICAL_INTERCONNECT_NO_CHANGES_PROVIDED, dict(logical_interconnect=resource)
+            return False, self.MSG_NO_CHANGES_PROVIDED, dict(logical_interconnect=resource)
         else:
             settings = {
                 'ethernetSettings': ethernet_settings_merged,
                 'fcoeSettings': fcoe_settings_merged
             }
             li = self.oneview_client.logical_interconnects.update_settings(resource['uri'], settings)
-            return True, LOGICAL_INTERCONNECT_SETTINGS_UPDATED, dict(logical_interconnect=li)
+            return True, self.MSG_SETTINGS_UPDATED, dict(logical_interconnect=li)
 
     def __generate_forwarding_information_base(self, uri):
         result = self.oneview_client.logical_interconnects.create_forwarding_information_base(uri)
@@ -357,12 +356,12 @@ class LogicalInterconnectModule(OneViewModuleBase):
         qos_config_merged = self.__merge_options(data['qosConfiguration'], qos_config)
 
         if ResourceComparator.compare(qos_config_merged, qos_config):
-            return False, LOGICAL_INTERCONNECT_NO_CHANGES_PROVIDED, dict()
+            return False, self.MSG_NO_CHANGES_PROVIDED, dict()
         else:
             qos_config_updated = self.oneview_client.logical_interconnects.update_qos_aggregated_configuration(
                 uri, qos_config_merged)
 
-            return True, LOGICAL_INTERCONNECT_QOS_UPDATED, dict(qos_configuration=qos_config_updated)
+            return True, self.MSG_QOS_UPDATED, dict(qos_configuration=qos_config_updated)
 
     def __update_snmp_configuration(self, uri, data):
         self.__validate_options('snmpConfiguration', data)
@@ -372,12 +371,12 @@ class LogicalInterconnectModule(OneViewModuleBase):
 
         if ResourceComparator.compare(snmp_config_merged, snmp_config):
 
-            return False, LOGICAL_INTERCONNECT_NO_CHANGES_PROVIDED, None
+            return False, self.MSG_NO_CHANGES_PROVIDED, None
         else:
             snmp_config_updated = self.oneview_client.logical_interconnects.update_snmp_configuration(
                 uri, snmp_config_merged)
 
-            return True, LOGICAL_INTERCONNECT_SNMP_UPDATED, dict(snmp_configuration=snmp_config_updated)
+            return True, self.MSG_SNMP_UPDATED, dict(snmp_configuration=snmp_config_updated)
 
     def __update_port_monitor(self, uri, data):
         self.__validate_options('portMonitor', data)
@@ -386,12 +385,12 @@ class LogicalInterconnectModule(OneViewModuleBase):
         monitor_config_merged = self.__merge_options(data['portMonitor'], monitor_config)
 
         if ResourceComparator.compare(monitor_config_merged, monitor_config):
-            return False, LOGICAL_INTERCONNECT_NO_CHANGES_PROVIDED, None
+            return False, self.MSG_NO_CHANGES_PROVIDED, None
         else:
             monitor_config_updated = self.oneview_client.logical_interconnects.update_port_monitor(
                 uri, monitor_config_merged)
             result = dict(port_monitor=monitor_config_updated)
-            return True, LOGICAL_INTERCONNECT_PORT_MONITOR_UPDATED, result
+            return True, self.MSG_PORT_MONITOR_UPDATED, result
 
     def __install_firmware(self, uri, data):
         self.__validate_options('firmware', data)
@@ -402,12 +401,12 @@ class LogicalInterconnectModule(OneViewModuleBase):
 
         firmware = self.oneview_client.logical_interconnects.install_firmware(options, uri)
 
-        return True, LOGICAL_INTERCONNECT_FIRMWARE_INSTALLED, dict(li_firmware=firmware)
+        return True, self.MSG_FIRMWARE_INSTALLED, dict(li_firmware=firmware)
 
     def __update_configuration(self, uri):
         result = self.oneview_client.logical_interconnects.update_configuration(uri)
 
-        return True, LOGICAL_INTERCONNECT_CONFIGURATION_UPDATED, dict(logical_interconnect=result)
+        return True, self.MSG_CONFIGURATION_UPDATED, dict(logical_interconnect=result)
 
     def __update_telemetry_configuration(self, resource, data):
         config = data.get('telemetryConfiguration')
@@ -415,7 +414,7 @@ class LogicalInterconnectModule(OneViewModuleBase):
 
         result = self.oneview_client.logical_interconnects.update_telemetry_configurations(telemetry_config_uri, config)
 
-        return True, LOGICAL_INTERCONNECT_TELEMETRY_CONFIGURATION_UPDATED, dict(
+        return True, self.MSG_TELEMETRY_CONFIGURATION_UPDATED, dict(
             telemetry_configuration=result.get('telemetryConfiguration'))
 
     def __get_by_name(self, data):
@@ -454,11 +453,11 @@ class LogicalInterconnectModule(OneViewModuleBase):
 
     def __validate_options(self, subresource_type, data):
         if subresource_type not in data:
-            raise HPOneViewValueError(LOGICAL_INTERCONNECT_NO_OPTIONS_PROVIDED)
+            raise HPOneViewValueError(self.MSG_NO_OPTIONS_PROVIDED)
 
     def __validate_settings(self, data):
         if 'ethernetSettings' not in data and 'fcoeSettings' not in data:
-            raise HPOneViewValueError(LOGICAL_INTERCONNECT_NO_OPTIONS_PROVIDED)
+            raise HPOneViewValueError(self.MSG_NO_OPTIONS_PROVIDED)
 
     def __build_firmware_uri(self, filename):
         return '/rest/firmware-drivers/' + filename

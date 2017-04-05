@@ -15,7 +15,7 @@
 ###
 import unittest
 
-from oneview_firmware_bundle import FirmwareBundleModule, FIRMWARE_BUNDLE_UPLOADED
+from oneview_firmware_bundle import FirmwareBundleModule
 from hpe_test_utils import OneViewBaseTestCase
 
 FAKE_MSG_ERROR = 'Fake message error'
@@ -41,7 +41,6 @@ PARAMS_FOR_PRESENT = dict(
 
 class FirmwareBundleModuleSpec(unittest.TestCase,
                                OneViewBaseTestCase):
-
     def setUp(self):
         self.configure_mocks(self, FirmwareBundleModule)
 
@@ -55,7 +54,7 @@ class FirmwareBundleModuleSpec(unittest.TestCase,
 
         self.mock_ansible_module.exit_json.assert_called_once_with(
             changed=True,
-            msg=FIRMWARE_BUNDLE_UPLOADED,
+            msg=FirmwareBundleModule.MSG_FIRMWARE_BUNDLE_UPLOADED,
             ansible_facts=dict(firmware_bundle=DEFAULT_FIRMWARE_TEMPLATE)
         )
 
