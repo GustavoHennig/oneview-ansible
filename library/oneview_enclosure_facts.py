@@ -126,7 +126,7 @@ enclosure_utilization:
 '''
 
 from ansible.module_utils.basic import AnsibleModule
-from _ansible.module_utils.oneview import OneViewModuleBase
+from module_utils.oneview import OneViewModuleBase
 
 
 class EnclosureFactsModule(OneViewModuleBase):
@@ -149,7 +149,7 @@ class EnclosureFactsModule(OneViewModuleBase):
             if self.options and enclosures:
                 ansible_facts = self.__gather_optional_facts(self.options, enclosures[0])
         else:
-            enclosures = self.oneview_client.enclosures.get_all(**self.params)
+            enclosures = self.oneview_client.enclosures.get_all(**self.facts_params)
 
         ansible_facts['enclosures'] = enclosures
 

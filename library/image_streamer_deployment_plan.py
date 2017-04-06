@@ -87,7 +87,7 @@ deployment_plan:
 '''
 
 from ansible.module_utils.basic import AnsibleModule
-from _ansible.module_utils.oneview import OneViewModuleBase, HPOneViewResourceNotFound
+from module_utils.oneview import OneViewModuleBase, HPOneViewResourceNotFound
 
 
 class DeploymentPlanModule(OneViewModuleBase):

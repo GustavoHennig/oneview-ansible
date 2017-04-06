@@ -17,8 +17,8 @@
 ###
 
 ANSIBLE_METADATA = {'status': ['stableinterface'],
-                    'supported_by': 'committer',
-                    'version': '1.0'}
+                    'supported_by': 'curated',
+                    'metadata_version': '1.0'}
 
 DOCUMENTATION = '''
 ---
@@ -157,14 +157,14 @@ created:
 
 from ansible.module_utils.basic import AnsibleModule
 import time
-from _ansible.module_utils.oneview import (OneViewModuleBase,
-                                           ServerProfileReplaceNamesByUris,
-                                           HPOneViewValueError,
-                                           ServerProfileMerger,
-                                           ResourceComparator,
-                                           HPOneViewTaskError,
-                                           SPKeys,
-                                           HPOneViewException)
+from module_utils.oneview import (OneViewModuleBase,
+                                  ServerProfileReplaceNamesByUris,
+                                  HPOneViewValueError,
+                                  ServerProfileMerger,
+                                  ResourceComparator,
+                                  HPOneViewTaskError,
+                                  SPKeys,
+                                  HPOneViewException)
 from copy import deepcopy
 
 # To activate logs, setup the environment var LOGFILE

@@ -17,8 +17,8 @@
 ###
 
 ANSIBLE_METADATA = {'status': ['stableinterface'],
-                    'supported_by': 'committer',
-                    'version': '1.0'}
+                    'supported_by': 'curated',
+                    'metadata_version': '1.0'}
 
 DOCUMENTATION = '''
 ---
@@ -73,7 +73,7 @@ fcoe_network:
 '''
 
 from ansible.module_utils.basic import AnsibleModule
-from _ansible.module_utils.oneview import OneViewModuleBase
+from module_utils.oneview import OneViewModuleBase
 
 
 class FcoeNetworkModule(OneViewModuleBase):
@@ -86,12 +86,12 @@ class FcoeNetworkModule(OneViewModuleBase):
 
     def __init__(self):
 
-        add_arg_spec = dict(data=dict(required=True, type='dict'),
-                            state=dict(
-                                required=True,
-                                choices=['present', 'absent']))
+        additional_arg_spec = dict(data=dict(required=True, type='dict'),
+                                   state=dict(
+                                       required=True,
+                                       choices=['present', 'absent']))
 
-        super(FcoeNetworkModule, self).__init__(additional_arg_spec=add_arg_spec,
+        super(FcoeNetworkModule, self).__init__(additional_arg_spec=additional_arg_spec,
                                                 validate_etag_support=True)
 
         self.resource_client = self.oneview_client.fcoe_networks

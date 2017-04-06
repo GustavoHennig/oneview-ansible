@@ -205,7 +205,7 @@ server_profile_available_targets:
 '''
 
 from ansible.module_utils.basic import AnsibleModule
-from _ansible.module_utils.oneview import OneViewModuleBase
+from module_utils.oneview import OneViewModuleBase
 
 
 class ServerProfileFactsModule(OneViewModuleBase):
@@ -228,7 +228,7 @@ class ServerProfileFactsModule(OneViewModuleBase):
             if len(server_profiles) > 0:
                 server_profile_uri = server_profiles[0]['uri']
         else:
-            server_profiles = self.oneview_client.server_profiles.get_all(**self.params)
+            server_profiles = self.oneview_client.server_profiles.get_all(**self.facts_params)
 
         if self.options:
             ansible_facts = self.__gather_option_facts(self.options, server_profile_uri)

@@ -16,10 +16,9 @@
 # limitations under the License.
 ###
 
-
 ANSIBLE_METADATA = {'status': ['stableinterface'],
-                    'supported_by': 'committer',
-                    'version': '1.0'}
+                    'supported_by': 'curated',
+                    'metadata_version': '1.0'}
 
 DOCUMENTATION = '''
 ---
@@ -82,7 +81,7 @@ firmware_drivers:
 '''
 
 from ansible.module_utils.basic import AnsibleModule
-from _ansible.module_utils.oneview import OneViewModuleBase
+from module_utils.oneview import OneViewModuleBase
 
 
 class FirmwareDriverFactsModule(OneViewModuleBase):
@@ -103,7 +102,7 @@ class FirmwareDriverFactsModule(OneViewModuleBase):
         if name:
             result = self.resource_client.get_by('name', name)
         else:
-            result = self.resource_client.get_all(**self.params)
+            result = self.resource_client.get_all(**self.facts_params)
 
         return dict(
             changed=False,

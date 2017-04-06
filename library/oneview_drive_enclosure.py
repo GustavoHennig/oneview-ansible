@@ -91,7 +91,7 @@ drive_enclosure:
 '''
 
 from ansible.module_utils.basic import AnsibleModule
-from _ansible.module_utils.oneview import OneViewModuleBase, HPOneViewResourceNotFound, HPOneViewValueError
+from module_utils.oneview import OneViewModuleBase, HPOneViewResourceNotFound, HPOneViewValueError
 
 DRIVE_ENCLOSURE_NAME_REQUIRED = 'Inform the Drive Enclosure name is required.'
 DRIVE_ENCLOSURE_NOT_FOUND = 'Drive Enclosure with specified name not found.'

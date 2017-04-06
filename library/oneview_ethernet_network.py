@@ -17,8 +17,8 @@
 ###
 
 ANSIBLE_METADATA = {'status': ['stableinterface'],
-                    'supported_by': 'committer',
-                    'version': '1.0'}
+                    'supported_by': 'curated',
+                    'metadata_version': '1.0'}
 
 DOCUMENTATION = '''
 ---
@@ -125,7 +125,7 @@ ethernet_network_connection_template:
 '''
 
 from ansible.module_utils.basic import AnsibleModule
-from _ansible.module_utils.oneview import OneViewModuleBase, ResourceComparator, HPOneViewResourceNotFound
+from module_utils.oneview import OneViewModuleBase, ResourceComparator, HPOneViewResourceNotFound
 
 
 class EthernetNetworkModule(OneViewModuleBase):

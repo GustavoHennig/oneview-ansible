@@ -17,8 +17,8 @@
 ###
 
 ANSIBLE_METADATA = {'status': ['stableinterface'],
-                    'supported_by': 'committer',
-                    'version': '1.0'}
+                    'supported_by': 'curated',
+                    'metadata_version': '1.0'}
 
 DOCUMENTATION = '''
 ---
@@ -101,7 +101,7 @@ network_sets:
 '''
 
 from ansible.module_utils.basic import AnsibleModule
-from _ansible.module_utils.oneview import OneViewModuleBase
+from module_utils.oneview import OneViewModuleBase
 
 
 class NetworkSetFactsModule(OneViewModuleBase):
@@ -124,7 +124,7 @@ class NetworkSetFactsModule(OneViewModuleBase):
         elif name:
             network_sets = self.oneview_client.network_sets.get_by('name', name)
         else:
-            network_sets = self.oneview_client.network_sets.get_all(**self.params)
+            network_sets = self.oneview_client.network_sets.get_all(**self.facts_params)
 
         return dict(changed=False,
                     ansible_facts=dict(network_sets=network_sets))

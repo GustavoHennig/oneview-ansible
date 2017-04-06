@@ -478,7 +478,7 @@ Manages Image Stream OS Build Plan resources.
 | ------------- |-------------| ---------|----------- |--------- |
 | config  |   No  |  | |  Path to a .json configuration file containing the OneView client configuration. The configuration file is optional. If the file path is not provided, the configuration will be loaded from environment variables.  |
 | data  |   Yes  |  | |  List with OS Build Plan properties and its associated states.  |
-| state  |   Yes  |  | <ul> <li>present</li>  <li>absent</li> </ul> |  Indicates the desired state for the OS Build Plan resource. **present** will ensure data properties are compliant with OneView. **absent** will remove the resource from OneView, if it exists.  |
+| state  |   Yes  |  | <ul> <li>present</li>  <li>absent</li> </ul> |  Indicates the desired state for the OS Build Plan resource. `present` will ensure data properties are compliant with OneView. `absent` will remove the resource from OneView, if it exists.  |
 
 
  
@@ -552,7 +552,7 @@ Retrieve facts about one or more of the Image Streamer Build Plans.
 | ------------- |-------------| ---------|----------- |--------- |
 | config  |   No  |  | |  Path to a .json configuration file containing the OneView client configuration. The configuration file is optional. If the file path is not provided, the configuration will be loaded from environment variables.  |
 | name  |   No  |  | |  Build Plan name.  |
-| params  |   No  |  | |  List of params to delimit, filter and sort the list of resources.  params allowed: **start**: The first item to return, using 0-based indexing. **count**: The number of resources to return. **filter**: A general filter/query string to narrow the list of items returned. **sort**: The sort order of the returned data set.  |
+| params  |   No  |  | |  List of params to delimit, filter and sort the list of resources.  params allowed: `start`: The first item to return, using 0-based indexing. `count`: The number of resources to return. `filter`: A general filter/query string to narrow the list of items returned. `sort`: The sort order of the returned data set.  |
 
 
  
@@ -622,7 +622,7 @@ Retrieve facts about the Image Streamer Deployment Groups.
 | ------------- |-------------| ---------|----------- |--------- |
 | config  |   No  |  | |  Path to a .json configuration file containing the OneView client configuration. The configuration file is optional. If the file path is not provided, the configuration will be loaded from environment variables.  |
 | name  |   No  |  | |  Name of the Deployment Group.  |
-| params  |   No  |  | |  List of params to delimit, filter and sort the list of resources.  params allowed: **start**: The first item to return, using 0-based indexing. **count**: The number of resources to return. **filter**: A general filter/query string to narrow the list of items returned. **sort**: The sort order of the returned data set.  |
+| params  |   No  |  | |  List of params to delimit, filter and sort the list of resources.  params allowed: `start`: The first item to return, using 0-based indexing. `count`: The number of resources to return. `filter`: A general filter/query string to narrow the list of items returned. `sort`: The sort order of the returned data set.  |
 
 
  
@@ -695,7 +695,7 @@ Manage Image Streamer Deployment Plan resources.
 | ------------- |-------------| ---------|----------- |--------- |
 | config  |   No  |  | |  Path to a .json configuration file containing the OneView client configuration. The configuration file is optional. If the file path is not provided, the configuration will be loaded from environment variables.  |
 | data  |   Yes  |  | |  List with Deployment Plan properties and its associated states.  |
-| state  |   Yes  |  | <ul> <li>present</li>  <li>absent</li> </ul> |  Indicates the desired state for the Deployment Plan resource. **present** will ensure data properties are compliant with OneView. **absent** will remove the resource from OneView, if it exists.  |
+| state  |   Yes  |  | <ul> <li>present</li>  <li>absent</li> </ul> |  Indicates the desired state for the Deployment Plan resource. `present` will ensure data properties are compliant with OneView. `absent` will remove the resource from OneView, if it exists.  |
 
 
  
@@ -770,7 +770,7 @@ Retrieve facts about the Image Streamer Deployment Plans.
 | ------------- |-------------| ---------|----------- |--------- |
 | config  |   No  |  | |  Path to a .json configuration file containing the OneView client configuration. The configuration file is optional. If the file path is not provided, the configuration will be loaded from environment variables.  |
 | name  |   No  |  | |  Deployment Plan name.  |
-| params  |   No  |  | |  List of params to delimit, filter and sort the list of resources.  params allowed: **start**: The first item to return, using 0-based indexing. **count**: The number of resources to return. **filter**: A general filter/query string to narrow the list of items returned. **sort**: The sort order of the returned data set.  |
+| params  |   No  |  | |  List of params to delimit, filter and sort the list of resources.  params allowed: `start`: The first item to return, using 0-based indexing. `count`: The number of resources to return. `filter`: A general filter/query string to narrow the list of items returned. `sort`: The sort order of the returned data set.  |
 
 
  
@@ -840,7 +840,7 @@ Manage Image Streamer Golden Image resources.
 | ------------- |-------------| ---------|----------- |--------- |
 | config  |   No  |  | |  Path to a .json configuration file containing the OneView client configuration. The configuration file is optional. If the file path is not provided, the configuration will be loaded from environment variables.  |
 | data  |   Yes  |  | |  List with Golden Image properties and its associated states.  |
-| state  |   Yes  |  | <ul> <li>present</li>  <li>absent</li>  <li>downloaded</li>  <li>archive_downloaded</li> </ul> |  Indicates the desired state for the Golden Image resource. **present** will ensure data properties are compliant with OneView. **absent** will remove the resource from OneView, if it exists. **downloaded** will download the Golden Image to the file path provided. **archive_downloaded** will download the Golden Image archive to the file path provided.  |
+| state  |   Yes  |  | <ul> <li>present</li>  <li>absent</li>  <li>downloaded</li>  <li>archive_downloaded</li> </ul> |  Indicates the desired state for the Golden Image resource. `present` will ensure data properties are compliant with OneView. `absent` will remove the resource from OneView, if it exists. `downloaded` will download the Golden Image to the file path provided. `archive_downloaded` will download the Golden Image archive to the file path provided.  |
 
 
  
@@ -944,7 +944,7 @@ Retrieve facts about one or more of the Image Streamer Golden Image.
 | ------------- |-------------| ---------|----------- |--------- |
 | config  |   No  |  | |  Path to a .json configuration file containing the OneView client configuration. The configuration file is optional. If the file path is not provided, the configuration will be loaded from environment variables.  |
 | name  |   No  |  | |  Golden Image name.  |
-| params  |   No  |  | |  List of params to delimit, filter and sort the list of resources.  params allowed: **start**: The first item to return, using 0-based indexing. **count**: The number of resources to return. **filter**: A general filter/query string to narrow the list of items returned. **sort**: The sort order of the returned data set.  |
+| params  |   No  |  | |  List of params to delimit, filter and sort the list of resources.  params allowed: `start`: The first item to return, using 0-based indexing. `count`: The number of resources to return. `filter`: A general filter/query string to narrow the list of items returned. `sort`: The sort order of the returned data set.  |
 
 
  
@@ -1014,7 +1014,7 @@ Retrieve facts about the Image Streamer OS Volumes.
 | ------------- |-------------| ---------|----------- |--------- |
 | config  |   No  |  | |  Path to a .json configuration file containing the OneView client configuration. The configuration file is optional. If the file path is not provided, the configuration will be loaded from environment variables.  |
 | name  |   No  |  | |  Name of the OS Volume.  |
-| params  |   No  |  | |  List of params to delimit, filter and sort the list of resources.  params allowed: **start**: The first item to return, using 0-based indexing. **count**: The number of resources to return. **filter**: A general filter/query string to narrow the list of items returned. **sort**: The sort order of the returned data set.  |
+| params  |   No  |  | |  List of params to delimit, filter and sort the list of resources.  params allowed: `start`: The first item to return, using 0-based indexing. `count`: The number of resources to return. `filter`: A general filter/query string to narrow the list of items returned. `sort`: The sort order of the returned data set.  |
 
 
  
@@ -1087,7 +1087,7 @@ Manage the Image Streamer Plan Script resources.
 | ------------- |-------------| ---------|----------- |--------- |
 | config  |   No  |  | |  Path to a .json configuration file containing the OneView client configuration. The configuration file is optional. If the file path is not provided, the configuration will be loaded from environment variables.  |
 | data  |   Yes  |  | |  List with Plan Script properties and its associated states.  |
-| state  |   Yes  |  | <ul> <li>present</li>  <li>absent</li>  <li>differences_retrieved</li> </ul> |  Indicates the desired state for the Plan Script resource. **present** will ensure data properties are compliant with OneView. **absent** will remove the resource from OneView, if it exists. **differences_retrieved** will retrieve the modified contents of the Plan Script as per the selected attributes.  |
+| state  |   Yes  |  | <ul> <li>present</li>  <li>absent</li>  <li>differences_retrieved</li> </ul> |  Indicates the desired state for the Plan Script resource. `present` will ensure data properties are compliant with OneView. `absent` will remove the resource from OneView, if it exists. `differences_retrieved` will retrieve the modified contents of the Plan Script as per the selected attributes.  |
 
 
  
@@ -1175,7 +1175,7 @@ Retrieve facts about the Image Streamer Plan Scripts.
 | ------------- |-------------| ---------|----------- |--------- |
 | config  |   No  |  | |  Path to a .json configuration file containing the OneView client configuration. The configuration file is optional. If the file path is not provided, the configuration will be loaded from environment variables.  |
 | name  |   No  |  | |  Plan Script name.  |
-| params  |   No  |  | |  List of params to delimit, filter and sort the list of resources.  params allowed: **start**: The first item to return, using 0-based indexing. **count**: The number of resources to return. **filter**: A general filter/query string to narrow the list of items returned. **sort**: The sort order of the returned data set.  |
+| params  |   No  |  | |  List of params to delimit, filter and sort the list of resources.  params allowed: `start`: The first item to return, using 0-based indexing. `count`: The number of resources to return. `filter`: A general filter/query string to narrow the list of items returned. `sort`: The sort order of the returned data set.  |
 
 
  
@@ -1244,7 +1244,7 @@ Retrieve facts about the OneView Alerts.
 | Parameter     | Required    | Default  | Choices    | Comments |
 | ------------- |-------------| ---------|----------- |--------- |
 | config  |   No  |  | |  Path to a .json configuration file containing the OneView client configuration. The configuration file is optional. If the file path is not provided, the configuration will be loaded from environment variables.  |
-| params  |   No  |  | |  List with parameters to help filter the alerts. Params allowed: **count**, **fields**, **filter**, **query**, **sort**, **start**, and **view**.  |
+| params  |   No  |  | |  List with parameters to help filter the alerts. Params allowed: `count`, `fields`, `filter`, `query`, `sort`, `start`, and `view`.  |
 
 
  
@@ -1451,7 +1451,7 @@ Manage OneView Data Center resources.
 | ------------- |-------------| ---------|----------- |--------- |
 | config  |   No  |  | |  Path to a .json configuration file containing the OneView client configuration. The configuration file is optional. If the file path is not provided, the configuration will be loaded from environment variables.  |
 | data  |   Yes  |  | |  List with Data Center properties and its associated states.  |
-| state  |   Yes  |  | <ul> <li>present</li>  <li>absent</li> </ul> |  Indicates the desired state for the Data Center resource. **present** will ensure data properties are compliant with OneView. **absent** will remove the resource from OneView, if it exists.  |
+| state  |   Yes  |  | <ul> <li>present</li>  <li>absent</li> </ul> |  Indicates the desired state for the Data Center resource. `present` will ensure data properties are compliant with OneView. `absent` will remove the resource from OneView, if it exists.  |
 | validate_etag  |   |  True  | <ul> <li>true</li>  <li>false</li> </ul> |  When the ETag Validation is enabled, the request will be conditionally processed only if the current ETag for the resource matches the ETag provided in the data.  |
 
 
@@ -1551,7 +1551,7 @@ Retrieve facts about the OneView Data Centers.
 | config  |   No  |  | |  Path to a .json configuration file containing the OneView client configuration. The configuration file is optional. If the file path is not provided, the configuration will be loaded from environment variables.  |
 | name  |   No  |  | |  Data Center name.  |
 | options  |   No  |  | |  Retrieve additional facts. Options available: 'visualContent'.  |
-| params  |   No  |  | |  List of params to delimit, filter and sort the list of resources.  params allowed: **start**: The first item to return, using 0-based indexing. **count**: The number of resources to return. **filter**: A general filter/query string to narrow the list of items returned. **sort**: The sort order of the returned data set.  |
+| params  |   No  |  | |  List of params to delimit, filter and sort the list of resources.  params allowed: `start`: The first item to return, using 0-based indexing. `count`: The number of resources to return. `filter`: A general filter/query string to narrow the list of items returned. `sort`: The sort order of the returned data set.  |
 
 
  
@@ -1631,7 +1631,7 @@ Manage OneView Drive Enclosure resources.
 | ------------- |-------------| ---------|----------- |--------- |
 | config  |   No  |  | |  Path to a .json configuration file containing the OneView client configuration. The configuration file is optional. If the file path is not provided, the configuration will be loaded from environment variables.  |
 | data  |   Yes  |  | |  List with the Drive Enclosure properties.  |
-| state  |   |  | <ul> <li>power_state_set</li>  <li>uid_state_set</li>  <li>hard_reset_state_set</li>  <li>refresh_state_set</li> </ul> |  Indicates the desired state for the Drive Enclosure resource. **power_state_set** will set the power state for the Drive Enclosure. **uid_state_set** will set the uid state for the Drive Enclosure. **hard_reset_state_set** will request a hard reset of the Drive Enclosure. **refresh_state_set** will refresh a Drive Enclosure.  |
+| state  |   |  | <ul> <li>power_state_set</li>  <li>uid_state_set</li>  <li>hard_reset_state_set</li>  <li>refresh_state_set</li> </ul> |  Indicates the desired state for the Drive Enclosure resource. `power_state_set` will set the power state for the Drive Enclosure. `uid_state_set` will set the uid state for the Drive Enclosure. `hard_reset_state_set` will request a hard reset of the Drive Enclosure. `refresh_state_set` will refresh a Drive Enclosure.  |
 
 
  
@@ -1790,7 +1790,7 @@ Manage OneView Enclosure resources.
 | ------------- |-------------| ---------|----------- |--------- |
 | config  |   No  |  | |  Path to a .json configuration file containing the OneView client configuration. The configuration file is optional. If the file path is not provided, the configuration will be loaded from environment variables.  |
 | data  |   Yes  |  | |  List with the Enclosure properties.  |
-| state  |   |  | <ul> <li>present</li>  <li>absent</li>  <li>reconfigured</li>  <li>refreshed</li>  <li>appliance_bays_powered_on</li>  <li>uid_on</li>  <li>uid_off</li>  <li>manager_bays_uid_on</li>  <li>manager_bays_uid_off</li>  <li>manager_bays_power_state_e_fuse</li>  <li>manager_bays_power_state_reset</li>  <li>appliance_bays_power_state_e_fuse</li>  <li>device_bays_power_state_e_fuse</li>  <li>device_bays_power_state_reset</li>  <li>interconnect_bays_power_state_e_fuse</li>  <li>manager_bays_role_active</li>  <li>device_bays_ipv4_removed</li>  <li>interconnect_bays_ipv4_removed</li>  <li>support_data_collection_set</li> </ul> |  Indicates the desired state for the Enclosure resource. **present** will ensure data properties are compliant with OneView. You can rename the enclosure providing an attribute **newName**. You can also rename the rack providing an attribute **rackName**. **absent** will remove the resource from OneView, if it exists. **reconfigured** will reapply the appliance's configuration on the enclosure. This includes running the same configuration steps that were performed as part of the enclosure add. **refreshed** will refresh the enclosure along with all of its components, including interconnects and servers. Any new hardware is added, and any hardware that is no longer present within the enclosure is removed. **appliance_bays_powered_on** will set the appliance bay power state on. **uid_on** will set the UID state on. **uid_off** will set the UID state off. **manager_bays_uid_on** will set the UID state on for the Synergy Frame Link Module. **manager_bays_uid_off** will set the UID state off for the Synergy Frame Link Module. **manager_bays_power_state_e_fuse** will E-Fuse the Synergy Frame Link Module bay in the path. **manager_bays_power_state_reset** will Reset the Synergy Frame Link Module bay in the path. **appliance_bays_power_state_e_fuse** will E-Fuse the appliance bay in the path. **device_bays_power_state_e_fuse** will E-Fuse the device bay in the path. **device_bays_power_state_reset** will Reset the device bay in the path. **interconnect_bays_power_state_e_fuse** will E-Fuse the IC bay in the path. **manager_bays_role_active** will set the active Synergy Frame Link Module. **device_bays_ipv4_removed** will release the IPv4 address in the device bay. **interconnect_bays_ipv4_removed** will release the IPv4 address in the interconnect bay. **support_data_collection_set** will set the support data collection state for the enclosure. The supported values for this state are **PendingCollection**, **Completed**, **Error** and **NotSupported**  |
+| state  |   |  | <ul> <li>present</li>  <li>absent</li>  <li>reconfigured</li>  <li>refreshed</li>  <li>appliance_bays_powered_on</li>  <li>uid_on</li>  <li>uid_off</li>  <li>manager_bays_uid_on</li>  <li>manager_bays_uid_off</li>  <li>manager_bays_power_state_e_fuse</li>  <li>manager_bays_power_state_reset</li>  <li>appliance_bays_power_state_e_fuse</li>  <li>device_bays_power_state_e_fuse</li>  <li>device_bays_power_state_reset</li>  <li>interconnect_bays_power_state_e_fuse</li>  <li>manager_bays_role_active</li>  <li>device_bays_ipv4_removed</li>  <li>interconnect_bays_ipv4_removed</li>  <li>support_data_collection_set</li> </ul> |  Indicates the desired state for the Enclosure resource. `present` will ensure data properties are compliant with OneView. You can rename the enclosure providing an attribute `newName`. You can also rename the rack providing an attribute `rackName`. `absent` will remove the resource from OneView, if it exists. `reconfigured` will reapply the appliance's configuration on the enclosure. This includes running the same configuration steps that were performed as part of the enclosure add. `refreshed` will refresh the enclosure along with all of its components, including interconnects and servers. Any new hardware is added, and any hardware that is no longer present within the enclosure is removed. `appliance_bays_powered_on` will set the appliance bay power state on. `uid_on` will set the UID state on. `uid_off` will set the UID state off. `manager_bays_uid_on` will set the UID state on for the Synergy Frame Link Module. `manager_bays_uid_off` will set the UID state off for the Synergy Frame Link Module. `manager_bays_power_state_e_fuse` will E-Fuse the Synergy Frame Link Module bay in the path. `manager_bays_power_state_reset` will Reset the Synergy Frame Link Module bay in the path. `appliance_bays_power_state_e_fuse` will E-Fuse the appliance bay in the path. `device_bays_power_state_e_fuse` will E-Fuse the device bay in the path. `device_bays_power_state_reset` will Reset the device bay in the path. `interconnect_bays_power_state_e_fuse` will E-Fuse the IC bay in the path. `manager_bays_role_active` will set the active Synergy Frame Link Module. `device_bays_ipv4_removed` will release the IPv4 address in the device bay. `interconnect_bays_ipv4_removed` will release the IPv4 address in the interconnect bay. `support_data_collection_set` will set the support data collection state for the enclosure. The supported values for this state are `PendingCollection`, `Completed`, `Error` and `NotSupported`  |
 
 
  
@@ -1978,7 +1978,7 @@ Manage OneView Enclosure resources.
 
 #### Notes
 
-- These states are only available on HPE Synergy: **appliance_bays_powered_on**, **uid_on**, **uid_off**, **manager_bays_uid_on**, **manager_bays_uid_off**, **manager_bays_power_state_e_fuse**, **manager_bays_power_state_reset**, **appliance_bays_power_state_e_fuse**, **device_bays_power_state_e_fuse**, **device_bays_power_state_reset**, **interconnect_bays_power_state_e_fuse**, **manager_bays_role_active**, **device_bays_ipv4_removed** and **interconnect_bays_ipv4_removed**
+- These states are only available on HPE Synergy: `appliance_bays_powered_on`, `uid_on`, `uid_off`, `manager_bays_uid_on`, `manager_bays_uid_off`, `manager_bays_power_state_e_fuse`, `manager_bays_power_state_reset`, `appliance_bays_power_state_e_fuse`, `device_bays_power_state_e_fuse`, `device_bays_power_state_reset`, `interconnect_bays_power_state_e_fuse`, `manager_bays_role_active`, `device_bays_ipv4_removed` and `interconnect_bays_ipv4_removed`
 
 - A sample configuration file for the config parameter can be found at: https://github.com/HewlettPackard/oneview-ansible/blob/master/examples/oneview_config-rename.json
 
@@ -2006,8 +2006,8 @@ Retrieve facts about one or more Enclosures.
 | ------------- |-------------| ---------|----------- |--------- |
 | config  |   No  |  | |  Path to a .json configuration file containing the OneView client configuration. The configuration file is optional. If the file path is not provided, the configuration will be loaded from environment variables.  |
 | name  |   No  |  | |  Enclosure name.  |
-| options  |   No  |  | |  List with options to gather additional facts about an Enclosure and related resources. Options allowed: **script**, **environmentalConfiguration**, and **utilization**. For the option **utilization**, you can provide specific parameters.  |
-| params  |   No  |  | |  List of params to delimit, filter and sort the list of resources.  params allowed: **start**: The first item to return, using 0-based indexing. **count**: The number of resources to return. **filter**: A general filter/query string to narrow the list of items returned. **sort**: The sort order of the returned data set.  |
+| options  |   No  |  | |  List with options to gather additional facts about an Enclosure and related resources. Options allowed: `script`, `environmentalConfiguration`, and `utilization`. For the option `utilization`, you can provide specific parameters.  |
+| params  |   No  |  | |  List of params to delimit, filter and sort the list of resources.  params allowed: `start`: The first item to return, using 0-based indexing. `count`: The number of resources to return. `filter`: A general filter/query string to narrow the list of items returned. `sort`: The sort order of the returned data set.  |
 
 
  
@@ -2109,7 +2109,7 @@ Manage OneView Enclosure Group resources.
 | ------------- |-------------| ---------|----------- |--------- |
 | config  |   No  |  | |  Path to a .json configuration file containing the OneView client configuration. The configuration file is optional. If the file path is not provided, the configuration will be loaded from environment variables.  |
 | data  |   Yes  |  | |  List with Enclosure Group properties.  |
-| state  |   |  | <ul> <li>present</li>  <li>absent</li> </ul> |  Indicates the desired state for the Enclosure Group resource. **present** will ensure data properties are compliant with OneView. **absent** will remove the resource from OneView, if it exists.  |
+| state  |   |  | <ul> <li>present</li>  <li>absent</li> </ul> |  Indicates the desired state for the Enclosure Group resource. `present` will ensure data properties are compliant with OneView. `absent` will remove the resource from OneView, if it exists.  |
 
 
  
@@ -2190,8 +2190,8 @@ Retrieve facts about one or more of the OneView Enclosure Groups.
 | ------------- |-------------| ---------|----------- |--------- |
 | config  |   No  |  | |  Path to a .json configuration file containing the OneView client configuration. The configuration file is optional. If the file path is not provided, the configuration will be loaded from environment variables.  |
 | name  |   No  |  | |  Enclosure Group name.  |
-| options  |   No  |  | |  List with options to gather additional facts about Enclosure Group. Options allowed: **configuration_script** Gets the configuration script for an Enclosure Group.  |
-| params  |   No  |  | |  List of params to delimit, filter and sort the list of resources.  params allowed: **start**: The first item to return, using 0-based indexing. **count**: The number of resources to return. **filter**: A general filter/query string to narrow the list of items returned. **sort**: The sort order of the returned data set.  |
+| options  |   No  |  | |  List with options to gather additional facts about Enclosure Group. Options allowed: `configuration_script` Gets the configuration script for an Enclosure Group.  |
+| params  |   No  |  | |  List of params to delimit, filter and sort the list of resources.  params allowed: `start`: The first item to return, using 0-based indexing. `count`: The number of resources to return. `filter`: A general filter/query string to narrow the list of items returned. `sort`: The sort order of the returned data set.  |
 
 
  
@@ -2267,7 +2267,7 @@ Manage OneView Ethernet Network resources.
 | ------------- |-------------| ---------|----------- |--------- |
 | config  |   No  |  | |  Path to a .json configuration file containing the OneView client configuration. The configuration file is optional. If the file path is not provided, the configuration will be loaded from environment variables.  |
 | data  |   Yes  |  | |  List with Ethernet Network properties.  |
-| state  |   |  | <ul> <li>present</li>  <li>absent</li>  <li>default_bandwidth_reset</li> </ul> |  Indicates the desired state for the Ethernet Network resource. **present** will ensure data properties are compliant with OneView. **absent** will remove the resource from OneView, if it exists. **default_bandwidth_reset** will reset the network connection template to the default.  |
+| state  |   |  | <ul> <li>present</li>  <li>absent</li>  <li>default_bandwidth_reset</li> </ul> |  Indicates the desired state for the Ethernet Network resource. `present` will ensure data properties are compliant with OneView. `absent` will remove the resource from OneView, if it exists. `default_bandwidth_reset` will reset the network connection template to the default.  |
 | validate_etag  |   |  True  | <ul> <li>true</li>  <li>false</li> </ul> |  When the ETag Validation is enabled, the request will be conditionally processed only if the current ETag for the resource matches the ETag provided in the data.  |
 
 
@@ -2373,8 +2373,8 @@ Retrieve the facts about one or more of the OneView Ethernet Networks.
 | ------------- |-------------| ---------|----------- |--------- |
 | config  |   No  |  | |  Path to a .json configuration file containing the OneView client configuration. The configuration file is optional. If the file path is not provided, the configuration will be loaded from environment variables.  |
 | name  |   No  |  | |  Ethernet Network name.  |
-| options  |   No  |  | |  List with options to gather additional facts about an Ethernet Network and related resources. Options allowed: **associatedProfiles** and **associatedUplinkGroups**.  |
-| params  |   No  |  | |  List of params to delimit, filter and sort the list of resources.  params allowed: **start**: The first item to return, using 0-based indexing. **count**: The number of resources to return. **filter**: A general filter/query string to narrow the list of items returned. **sort**: The sort order of the returned data set.  |
+| options  |   No  |  | |  List with options to gather additional facts about an Ethernet Network and related resources. Options allowed: `associatedProfiles` and `associatedUplinkGroups`.  |
+| params  |   No  |  | |  List of params to delimit, filter and sort the list of resources.  params allowed: `start`: The first item to return, using 0-based indexing. `count`: The number of resources to return. `filter`: A general filter/query string to narrow the list of items returned. `sort`: The sort order of the returned data set.  |
 
 
  
@@ -2593,7 +2593,7 @@ Manage OneView Fibre Channel Network resources.
 | ------------- |-------------| ---------|----------- |--------- |
 | config  |   No  |  | |  Path to a .json configuration file containing the OneView client configuration. The configuration file is optional. If the file path is not provided, the configuration will be loaded from environment variables.  |
 | data  |   Yes  |  | |  List with the Fibre Channel Network properties.  |
-| state  |   |  | <ul> <li>present</li>  <li>absent</li> </ul> |  Indicates the desired state for the Fibre Channel Network resource. **present** will ensure data properties are compliant with OneView. **absent** will remove the resource from OneView, if it exists.  |
+| state  |   |  | <ul> <li>present</li>  <li>absent</li> </ul> |  Indicates the desired state for the Fibre Channel Network resource. `present` will ensure data properties are compliant with OneView. `absent` will remove the resource from OneView, if it exists.  |
 | validate_etag  |   |  True  | <ul> <li>true</li>  <li>false</li> </ul> |  When the ETag Validation is enabled, the request will be conditionally processed only if the current ETag for the resource matches the ETag provided in the data.  |
 
 
@@ -2662,7 +2662,7 @@ Retrieve the facts about one or more of the OneView Fibre Channel Networks.
 | ------------- |-------------| ---------|----------- |--------- |
 | config  |   No  |  | |  Path to a .json configuration file containing the OneView client configuration. The configuration file is optional. If the file path is not provided, the configuration will be loaded from environment variables.  |
 | name  |   No  |  | |  Fibre Channel Network name.  |
-| params  |   No  |  | |  List of params to delimit, filter and sort the list of resources.  params allowed: **start**: The first item to return, using 0-based indexing. **count**: The number of resources to return. **filter**: A general filter/query string to narrow the list of items returned. **sort**: The sort order of the returned data set.  |
+| params  |   No  |  | |  List of params to delimit, filter and sort the list of resources.  params allowed: `start`: The first item to return, using 0-based indexing. `count`: The number of resources to return. `filter`: A general filter/query string to narrow the list of items returned. `sort`: The sort order of the returned data set.  |
 
 
  
@@ -2731,7 +2731,7 @@ Manage OneView FCoE Network resources.
 | ------------- |-------------| ---------|----------- |--------- |
 | config  |   No  |  | |  Path to a .json configuration file containing the OneView client configuration. The configuration file is optional. If the file path is not provided, the configuration will be loaded from environment variables.  |
 | data  |   Yes  |  | |  List with FCoE Network properties.  |
-| state  |   |  | <ul> <li>present</li>  <li>absent</li> </ul> |  Indicates the desired state for the FCoE Network resource. **present** will ensure data properties are compliant with OneView. **absent** will remove the resource from OneView, if it exists.  |
+| state  |   |  | <ul> <li>present</li>  <li>absent</li> </ul> |  Indicates the desired state for the FCoE Network resource. `present` will ensure data properties are compliant with OneView. `absent` will remove the resource from OneView, if it exists.  |
 | validate_etag  |   |  True  | <ul> <li>true</li>  <li>false</li> </ul> |  When the ETag Validation is enabled, the request will be conditionally processed only if the current ETag for the resource matches the ETag provided in the data.  |
 
 
@@ -2793,7 +2793,7 @@ Retrieve the facts about one or more of the OneView FCoE Networks.
 | ------------- |-------------| ---------|----------- |--------- |
 | config  |   No  |  | |  Path to a .json configuration file containing the OneView client configuration. The configuration file is optional. If the file path is not provided, the configuration will be loaded from environment variables.  |
 | name  |   No  |  | |  FCoE Network name.  |
-| params  |   No  |  | |  List of params to delimit, filter and sort the list of resources.  params allowed: **start**: The first item to return, using 0-based indexing. **count**: The number of resources to return. **filter**: A general filter/query string to narrow the list of items returned. **sort**: The sort order of the returned data set.  |
+| params  |   No  |  | |  List of params to delimit, filter and sort the list of resources.  params allowed: `start`: The first item to return, using 0-based indexing. `count`: The number of resources to return. `filter`: A general filter/query string to narrow the list of items returned. `sort`: The sort order of the returned data set.  |
 
 
  
@@ -2863,7 +2863,7 @@ Upload OneView Firmware Bundle resources.
 | ------------- |-------------| ---------|----------- |--------- |
 | config  |   No  |  | |  Path to a .json configuration file containing the OneView client configuration. The configuration file is optional. If the file path is not provided, the configuration will be loaded from environment variables.  |
 | file_path  |   Yes  |  | |  The full path of a local file to be loaded.  |
-| state  |   |  | <ul> <li>present</li> </ul> |  Indicates the desired state for the Firmware Driver resource. **present** will ensure that the firmware bundle is at OneView.  |
+| state  |   |  | <ul> <li>present</li> </ul> |  Indicates the desired state for the Firmware Driver resource. `present` will ensure that the firmware bundle is at OneView.  |
 
 
  
@@ -2918,7 +2918,7 @@ Provides an interface to remove Firmware Driver resources.
 | ------------- |-------------| ---------|----------- |--------- |
 | config  |   No  |  | |  Path to a .json configuration file containing the OneView client configuration. The configuration file is optional. If the file path is not provided, the configuration will be loaded from environment variables.  |
 | name  |   Yes  |  | |  Firmware driver name.  |
-| state  |   |  | <ul> <li>absent</li> </ul> |  Indicates the desired state for the Firmware Driver. **absent** will remove the resource from OneView, if it exists.  |
+| state  |   |  | <ul> <li>absent</li> </ul> |  Indicates the desired state for the Firmware Driver. `absent` will remove the resource from OneView, if it exists.  |
 
 
  
@@ -2963,7 +2963,7 @@ Retrieve the facts about one or more of the OneView Firmware Drivers.
 | ------------- |-------------| ---------|----------- |--------- |
 | config  |   No  |  | |  Path to a .json configuration file containing the OneView client configuration. The configuration file is optional. If the file path is not provided, the configuration will be loaded from environment variables.  |
 | name  |   No  |  | |  Firmware driver name.  |
-| params  |   No  |  | |  List of params to delimit, filter and sort the list of resources.  params allowed: **start**: The first item to return, using 0-based indexing. **count**: The number of resources to return. **sort**: The sort order of the returned data set.  |
+| params  |   No  |  | |  List of params to delimit, filter and sort the list of resources.  params allowed: `start`: The first item to return, using 0-based indexing. `count`: The number of resources to return. `sort`: The sort order of the returned data set.  |
 
 
  
@@ -3304,7 +3304,7 @@ Retrieve facts about one or more of the OneView Interconnect Types.
 | ------------- |-------------| ---------|----------- |--------- |
 | config  |   No  |  | |  Path to a .json configuration file containing the OneView client configuration. The configuration file is optional. If the file path is not provided, the configuration will be loaded from environment variables.  |
 | name  |   No  |  | |  Interconnect Type name.  |
-| params  |   No  |  | |  List of params to delimit, filter and sort the list of resources.  params allowed: **start**: The first item to return, using 0-based indexing. **count**: The number of resources to return. **filter**: A general filter/query string to narrow the list of items returned. **sort**: The sort order of the returned data set.  |
+| params  |   No  |  | |  List of params to delimit, filter and sort the list of resources.  params allowed: `start`: The first item to return, using 0-based indexing. `count`: The number of resources to return. `filter`: A general filter/query string to narrow the list of items returned. `sort`: The sort order of the returned data set.  |
 
 
  
@@ -3522,7 +3522,7 @@ Manage OneView Logical Enclosure resources.
 | ------------- |-------------| ---------|----------- |--------- |
 | config  |   No  |  | |  Path to a .json configuration file containing the OneView client configuration. The configuration file is optional. If the file path is not provided, the configuration will be loaded from environment variables.  |
 | data  |   Yes  |  | |  List with Logical Enclosure properties and its associated states.  |
-| state  |   Yes  |  | <ul> <li>present</li>  <li>firmware_updated</li>  <li>script_updated</li>  <li>dumped</li>  <li>reconfigured</li>  <li>updated_from_group</li>  <li>absent</li> </ul> |  Indicates the desired state for the Logical Enclosure resource. **present** ensures data properties are compliant with OneView. You can rename the enclosure providing an attribute **newName**. **firmware_updated** updates the firmware for the Logical Enclosure. **script_updated** updates the Logical Enclosure configuration script. **dumped** generates a support dump for the Logical Enclosure. **reconfigured** reconfigures all enclosures associated with a logical enclosure. **updated_from_group** makes the logical enclosure consistent with the enclosure group. **absent** will remove the resource from OneView, if it exists.  |
+| state  |   Yes  |  | <ul> <li>present</li>  <li>firmware_updated</li>  <li>script_updated</li>  <li>dumped</li>  <li>reconfigured</li>  <li>updated_from_group</li>  <li>absent</li> </ul> |  Indicates the desired state for the Logical Enclosure resource. `present` ensures data properties are compliant with OneView. You can rename the enclosure providing an attribute `newName`. `firmware_updated` updates the firmware for the Logical Enclosure. `script_updated` updates the Logical Enclosure configuration script. `dumped` generates a support dump for the Logical Enclosure. `reconfigured` reconfigures all enclosures associated with a logical enclosure. `updated_from_group` makes the logical enclosure consistent with the enclosure group. `absent` will remove the resource from OneView, if it exists.  |
 
 
  
@@ -3639,7 +3639,7 @@ Manage OneView Logical Enclosure resources.
 
 #### Notes
 
-- The **absent** state and the creation of a Logical Enclosure done through the **present** state are available only on HPE Synergy.
+- The `absent` state and the creation of a Logical Enclosure done through the `present` state are available only on HPE Synergy.
 
 - A sample configuration file for the config parameter can be found at: https://github.com/HewlettPackard/oneview-ansible/blob/master/examples/oneview_config-rename.json
 
@@ -3668,7 +3668,7 @@ Retrieve facts about one or more of the OneView Logical Enclosures.
 | config  |   No  |  | |  Path to a .json configuration file containing the OneView client configuration. The configuration file is optional. If the file path is not provided, the configuration will be loaded from environment variables.  |
 | name  |   No  |  | |  Logical Enclosure name.  |
 | options  |   No  |  | |  List with options to gather additional facts about a Logical Enclosure and related resources. Options allowed: script.  |
-| params  |   No  |  | |  List of params to delimit, filter and sort the list of resources.  params allowed: **start**: The first item to return, using 0-based indexing. **count**: The number of resources to return. **filter**: A general filter/query string to narrow the list of items returned. **sort**: The sort order of the returned data set.  |
+| params  |   No  |  | |  List of params to delimit, filter and sort the list of resources.  params allowed: `start`: The first item to return, using 0-based indexing. `count`: The number of resources to return. `filter`: A general filter/query string to narrow the list of items returned. `sort`: The sort order of the returned data set.  |
 
 
  
@@ -3752,7 +3752,7 @@ Manage OneView Logical Interconnect resources.
 | ------------- |-------------| ---------|----------- |--------- |
 | config  |   No  |  | |  Path to a .json configuration file containing the OneView client configuration. The configuration file is optional. If the file path is not provided, the configuration will be loaded from environment variables.  |
 | data  |   Yes  |  | |  List with the options.  |
-| state  |   |  | <ul> <li>compliant</li>  <li>ethernet_settings_updated</li>  <li>internal_networks_updated</li>  <li>settings_updated</li>  <li>forwarding_information_base_generated</li>  <li>qos_aggregated_configuration_updated</li>  <li>snmp_configuration_updated</li>  <li>port_monitor_updated</li>  <li>configuration_updated</li>  <li>firmware_installed</li>  <li>telemetry_configuration_updated</li> </ul> |  Indicates the desired state for the Logical Interconnect resource. **compliant** brings the logical interconnect back to a consistent state. **ethernet_settings_updated** updates the Ethernet interconnect settings for the logical interconnect. **internal_networks_updated** updates the internal networks on the logical interconnect. This operation is non-idempotent. **settings_updated** updates the Logical Interconnect settings. **forwarding_information_base_generated** generates the forwarding information base dump file for the logical interconnect. This operation is non-idempotent and asynchronous. **qos_aggregated_configuration_updated** updates the QoS aggregated configuration for the logical interconnect. **snmp_configuration_updated** updates the SNMP configuration for the logical interconnect. **port_monitor_updated** updates the port monitor configuration of a logical interconnect. **configuration_updated** asynchronously applies or re-applies the logical interconnect configuration to all managed interconnects. This operation is non-idempotent. **firmware_installed** installs firmware to a logical interconnect. The three operations that are supported for the firmware update are Stage (uploads firmware to the interconnect), Activate (installs firmware on the interconnect) and Update (which does a Stage and Activate in a sequential manner). All of them are non-idempotent. **telemetry_configuration_updated** updates the telemetry configuration of a logical interconnect.  |
+| state  |   |  | <ul> <li>compliant</li>  <li>ethernet_settings_updated</li>  <li>internal_networks_updated</li>  <li>settings_updated</li>  <li>forwarding_information_base_generated</li>  <li>qos_aggregated_configuration_updated</li>  <li>snmp_configuration_updated</li>  <li>port_monitor_updated</li>  <li>configuration_updated</li>  <li>firmware_installed</li>  <li>telemetry_configuration_updated</li> </ul> |  Indicates the desired state for the Logical Interconnect resource. `compliant` brings the logical interconnect back to a consistent state. `ethernet_settings_updated` updates the Ethernet interconnect settings for the logical interconnect. `internal_networks_updated` updates the internal networks on the logical interconnect. This operation is non-idempotent. `settings_updated` updates the Logical Interconnect settings. `forwarding_information_base_generated` generates the forwarding information base dump file for the logical interconnect. This operation is non-idempotent and asynchronous. `qos_aggregated_configuration_updated` updates the QoS aggregated configuration for the logical interconnect. `snmp_configuration_updated` updates the SNMP configuration for the logical interconnect. `port_monitor_updated` updates the port monitor configuration of a logical interconnect. `configuration_updated` asynchronously applies or re-applies the logical interconnect configuration to all managed interconnects. This operation is non-idempotent. `firmware_installed` installs firmware to a logical interconnect. The three operations that are supported for the firmware update are Stage (uploads firmware to the interconnect), Activate (installs firmware on the interconnect) and Update (which does a Stage and Activate in a sequential manner). All of them are non-idempotent. `telemetry_configuration_updated` updates the telemetry configuration of a logical interconnect.  |
 | validate_etag  |   |  True  | <ul> <li>true</li>  <li>false</li> </ul> |  When the ETag Validation is enabled, the request will be conditionally processed only if the current ETag for the resource matches the ETag provided in the data.  |
 
 
@@ -3911,8 +3911,8 @@ Retrieve facts about one or more of the OneView Logical Interconnects.
 | ------------- |-------------| ---------|----------- |--------- |
 | config  |   No  |  | |  Path to a .json configuration file containing the OneView client configuration. The configuration file is optional. If the file path is not provided, the configuration will be loaded from environment variables.  |
 | name  |   No  |  | |  Logical Interconnect name.  |
-| options  |   No  |  | |  List with options to gather additional facts about Logical Interconnect. Options allowed: **qos_aggregated_configuration** gets the QoS aggregated configuration for the logical interconnect. **snmp_configuration** gets the SNMP configuration for a logical interconnect. **port_monitor** gets the port monitor configuration of a logical interconnect. **internal_vlans** gets the internal VLAN IDs for the provisioned networks on a logical interconnect. **forwarding_information_base** gets the forwarding information base data for a logical interconnect. **firmware** get the installed firmware for a logical interconnect. **unassigned_uplink_ports** gets a collection of uplink ports from the member interconnects which are eligible for assignment to an analyzer port. **telemetry_configuration** gets the telemetry configuration of the logical interconnect. **ethernet_settings** gets the Ethernet interconnect settings for the Logical Interconnect. - These options are valid just when a **name** is provided. Otherwise it will be ignored.  |
-| params  |   No  |  | |  List of params to delimit, filter and sort the list of resources.  params allowed: **start**: The first item to return, using 0-based indexing. **count**: The number of resources to return. **filter**: A general filter/query string to narrow the list of items returned. **sort**: The sort order of the returned data set.  |
+| options  |   No  |  | |  List with options to gather additional facts about Logical Interconnect. Options allowed: `qos_aggregated_configuration` gets the QoS aggregated configuration for the logical interconnect. `snmp_configuration` gets the SNMP configuration for a logical interconnect. `port_monitor` gets the port monitor configuration of a logical interconnect. `internal_vlans` gets the internal VLAN IDs for the provisioned networks on a logical interconnect. `forwarding_information_base` gets the forwarding information base data for a logical interconnect. `firmware` get the installed firmware for a logical interconnect. `unassigned_uplink_ports` gets a collection of uplink ports from the member interconnects which are eligible for assignment to an analyzer port. `telemetry_configuration` gets the telemetry configuration of the logical interconnect. `ethernet_settings` gets the Ethernet interconnect settings for the Logical Interconnect. - These options are valid just when a `name` is provided. Otherwise it will be ignored.  |
+| params  |   No  |  | |  List of params to delimit, filter and sort the list of resources.  params allowed: `start`: The first item to return, using 0-based indexing. `count`: The number of resources to return. `filter`: A general filter/query string to narrow the list of items returned. `sort`: The sort order of the returned data set.  |
 
 
  
@@ -4019,7 +4019,7 @@ Manage OneView Logical Interconnect Group resources.
 | ------------- |-------------| ---------|----------- |--------- |
 | config  |   No  |  | |  Path to a .json configuration file containing the OneView client configuration. The configuration file is optional. If the file path is not provided, the configuration will be loaded from environment variables.  |
 | data  |   Yes  |  | |  List with the Logical Interconnect Group properties.  |
-| state  |   |  | <ul> <li>present</li>  <li>absent</li> </ul> |  Indicates the desired state for the Logical Interconnect Group resource. **present** will ensure data properties are compliant with OneView. **absent** will remove the resource from OneView, if it exists.  |
+| state  |   |  | <ul> <li>present</li>  <li>absent</li> </ul> |  Indicates the desired state for the Logical Interconnect Group resource. `present` will ensure data properties are compliant with OneView. `absent` will remove the resource from OneView, if it exists.  |
 | validate_etag  |   |  True  | <ul> <li>true</li>  <li>false</li> </ul> |  When the ETag Validation is enabled, the request will be conditionally processed only if the current ETag for the resource matches the ETag provided in the data.  |
 
 
@@ -4101,7 +4101,7 @@ Retrieve facts about one or more of the OneView Logical Interconnect Groups.
 | ------------- |-------------| ---------|----------- |--------- |
 | config  |   No  |  | |  Path to a .json configuration file containing the OneView client configuration. The configuration file is optional. If the file path is not provided, the configuration will be loaded from environment variables.  |
 | name  |   No  |  | |  Logical Interconnect Group name.  |
-| params  |   No  |  | |  List of params to delimit, filter and sort the list of resources.  params allowed: **start**: The first item to return, using 0-based indexing. **count**: The number of resources to return. **filter**: A general filter/query string to narrow the list of items returned. **sort**: The sort order of the returned data set.  |
+| params  |   No  |  | |  List of params to delimit, filter and sort the list of resources.  params allowed: `start`: The first item to return, using 0-based indexing. `count`: The number of resources to return. `filter`: A general filter/query string to narrow the list of items returned. `sort`: The sort order of the returned data set.  |
 
 
  
@@ -4533,7 +4533,7 @@ Manage OneView Managed SAN resources.
 | ------------- |-------------| ---------|----------- |--------- |
 | config  |   No  |  | |  Path to a .json configuration file containing the OneView client configuration. The configuration file is optional. If the file path is not provided, the configuration will be loaded from environment variables.  |
 | data  |   Yes  |  | |  List with Managed SAN properties and its associated states. Warning: For the 'present' state, the contents of the publicAttributes will replace the existing list, so leaving out a public attribute from the given list will effectively delete it.  |
-| state  |   Yes  |  | <ul> <li>present</li>  <li>refresh_state_set</li>  <li>endpoints_csv_file_created</li>  <li>issues_report_created</li> </ul> |  Indicates the desired state for the Managed SAN resource. **present** ensures data properties are compliant with OneView. **refresh_state_set** updates the refresh state of the Managed SAN. **endpoints_csv_file_created** creates a SAN endpoints CSV file. **issues_report_created** creates an unexpected zoning report for a SAN.  |
+| state  |   Yes  |  | <ul> <li>present</li>  <li>refresh_state_set</li>  <li>endpoints_csv_file_created</li>  <li>issues_report_created</li> </ul> |  Indicates the desired state for the Managed SAN resource. `present` ensures data properties are compliant with OneView. `refresh_state_set` updates the refresh state of the Managed SAN. `endpoints_csv_file_created` creates a SAN endpoints CSV file. `issues_report_created` creates an unexpected zoning report for a SAN.  |
 
 
  
@@ -4627,8 +4627,8 @@ Retrieve facts about the OneView Managed SANs.
 | ------------- |-------------| ---------|----------- |--------- |
 | config  |   No  |  | |  Path to a .json configuration file containing the OneView client configuration. The configuration file is optional. If the file path is not provided, the configuration will be loaded from environment variables.  |
 | name  |   No  |  | |  Name of the Managed SAN.  |
-| options  |   No  |  | |  List with options to gather additional facts about Managed SAN. Options allowed: **endpoints** gets the list of endpoints in the SAN identified by name. **wwn** gets the list of Managed SANs associated with an informed WWN **locate**.  |
-| params  |   No  |  | |  List of params to delimit, filter and sort the list of resources.  params allowed: **start**: The first item to return, using 0-based indexing. **count**: The number of resources to return. **query**: A general query string to narrow the list of resources returned. **sort**: The sort order of the returned data set.  |
+| options  |   No  |  | |  List with options to gather additional facts about Managed SAN. Options allowed: `endpoints` gets the list of endpoints in the SAN identified by name. `wwn` gets the list of Managed SANs associated with an informed WWN `locate`.  |
+| params  |   No  |  | |  List of params to delimit, filter and sort the list of resources.  params allowed: `start`: The first item to return, using 0-based indexing. `count`: The number of resources to return. `query`: A general query string to narrow the list of resources returned. `sort`: The sort order of the returned data set.  |
 
 
  
@@ -4724,7 +4724,7 @@ Manage OneView Network Set resources.
 | ------------- |-------------| ---------|----------- |--------- |
 | config  |   No  |  | |  Path to a .json configuration file containing the OneView client configuration. The configuration file is optional. If the file path is not provided, the configuration will be loaded from environment variables.  |
 | data  |   Yes  |  | |  List with the Network Set properties.  |
-| state  |   |  | <ul> <li>present</li>  <li>absent</li> </ul> |  Indicates the desired state for the Network Set resource. **present** ensures data properties are compliant with OneView. **absent** removes the resource from OneView, if it exists.  |
+| state  |   |  | <ul> <li>present</li>  <li>absent</li> </ul> |  Indicates the desired state for the Network Set resource. `present` ensures data properties are compliant with OneView. `absent` removes the resource from OneView, if it exists.  |
 | validate_etag  |   |  True  | <ul> <li>true</li>  <li>false</li> </ul> |  When the ETag Validation is enabled, the request will be conditionally processed only if the current ETag for the resource matches the ETag provided in the data.  |
 
 
@@ -4798,8 +4798,8 @@ Retrieve facts about the OneView Network Sets.
 | ------------- |-------------| ---------|----------- |--------- |
 | config  |   No  |  | |  Path to a .json configuration file containing the OneView client configuration. The configuration file is optional. If the file path is not provided, the configuration will be loaded from environment variables.  |
 | name  |   No  |  | |  Network Set name.  |
-| options  |   No  |  | |  List with options to gather facts about Network Set. Option allowed: **withoutEthernet**. The option **withoutEthernet** retrieves the list of network_sets excluding Ethernet networks.  |
-| params  |   No  |  | |  List of params to delimit, filter and sort the list of resources.  params allowed: **start**: The first item to return, using 0-based indexing. **count**: The number of resources to return. **filter**: A general filter/query string to narrow the list of items returned. **sort**: The sort order of the returned data set.  |
+| options  |   No  |  | |  List with options to gather facts about Network Set. Option allowed: `withoutEthernet`. The option `withoutEthernet` retrieves the list of network_sets excluding Ethernet networks.  |
+| params  |   No  |  | |  List of params to delimit, filter and sort the list of resources.  params allowed: `start`: The first item to return, using 0-based indexing. `count`: The number of resources to return. `filter`: A general filter/query string to narrow the list of items returned. `sort`: The sort order of the returned data set.  |
 
 
  
@@ -4888,8 +4888,8 @@ Retrieve facts about one or more Os Deployment Plans.
 | ------------- |-------------| ---------|----------- |--------- |
 | config  |   No  |  | |  Path to a .json configuration file containing the OneView client configuration. The configuration file is optional. If the file path is not provided, the configuration will be loaded from environment variables.  |
 | name  |   No  |  | |  Os Deployment Plan name.  |
-| options  |   No  |  | |  List with options to gather facts about OS Deployment Plan. Option allowed: **osCustomAttributesForServerProfile** The option **osCustomAttributesForServerProfile** retrieves the list of editable OS Custom Atributes, prepared for Server Profile use.  |
-| params  |   No  |  | |  List of params to delimit, filter and sort the list of resources.  params allowed: **start**: The first item to return, using 0-based indexing. **count**: The number of resources to return. **filter**: A general filter/query string to narrow the list of items returned. **sort**: The sort order of the returned data set.  |
+| options  |   No  |  | |  List with options to gather facts about OS Deployment Plan. Option allowed: `osCustomAttributesForServerProfile` The option `osCustomAttributesForServerProfile` retrieves the list of editable OS Custom Atributes, prepared for Server Profile use.  |
+| params  |   No  |  | |  List of params to delimit, filter and sort the list of resources.  params allowed: `start`: The first item to return, using 0-based indexing. `count`: The number of resources to return. `filter`: A general filter/query string to narrow the list of items returned. `sort`: The sort order of the returned data set.  |
 
 
  
@@ -5050,8 +5050,8 @@ Retrieve facts about one or more OS Deployment Servers.
 | ------------- |-------------| ---------|----------- |--------- |
 | config  |   No  |  | |  Path to a .json configuration file containing the OneView client configuration. The configuration file is optional. If the file path is not provided, the configuration will be loaded from environment variables.  |
 | name  |   No  |  | |  OS Deployment Server name.  |
-| options  |   No  |  | |  List with options to gather additional facts about an OS Deployment Server and related resources. Options allowed: **networks**, **appliances**, and **appliance**.  |
-| params  |   No  |  | |  List of params to delimit, filter and sort the list of resources.  params allowed: **start**: The first item to return, using 0-based indexing. **count**: The number of resources to return. **filter**: A general filter/query string to narrow the list of items returned. **sort**: The sort order of the returned data set. **query**: A general query string to narrow the list of resources returned. **fields**: Specifies which fields should be returned in the result set. **view**: Return a specific subset of the attributes of the resource or collection, by specifying the name of a predefined view.  |
+| options  |   No  |  | |  List with options to gather additional facts about an OS Deployment Server and related resources. Options allowed: `networks`, `appliances`, and `appliance`.  |
+| params  |   No  |  | |  List of params to delimit, filter and sort the list of resources.  params allowed: `start`: The first item to return, using 0-based indexing. `count`: The number of resources to return. `filter`: A general filter/query string to narrow the list of items returned. `sort`: The sort order of the returned data set. `query`: A general query string to narrow the list of resources returned. `fields`: Specifies which fields should be returned in the result set. `view`: Return a specific subset of the attributes of the resource or collection, by specifying the name of a predefined view.  |
 
 
  
@@ -5131,7 +5131,7 @@ Manage OneView Power Device resources.
 | ------------- |-------------| ---------|----------- |--------- |
 | config  |   No  |  | |  Path to a .json configuration file containing the OneView client configuration. The configuration file is optional. If the file path is not provided, the configuration will be loaded from environment variables.  |
 | data  |   Yes  |  | |  List with Power Device properties and its associated states.  |
-| state  |   Yes  |  | <ul> <li>present</li>  <li>discovered</li>  <li>absent</li>  <li>power_state_set</li>  <li>refresh_state_set</li>  <li>uid_state_set</li> </ul> |  Indicates the desired state for the Power Device resource. **present** will ensure data properties are compliant with OneView. **discovered** will add an iPDU to the OneView. **absent** will remove the resource from OneView, if it exists. **power_state_set** will set the power state of the Power Device. **refresh_state_set** will set the refresh state of the Power Device. **uid_state_set** will set the UID state of the Power Device.  |
+| state  |   Yes  |  | <ul> <li>present</li>  <li>discovered</li>  <li>absent</li>  <li>power_state_set</li>  <li>refresh_state_set</li>  <li>uid_state_set</li> </ul> |  Indicates the desired state for the Power Device resource. `present` will ensure data properties are compliant with OneView. `discovered` will add an iPDU to the OneView. `absent` will remove the resource from OneView, if it exists. `power_state_set` will set the power state of the Power Device. `refresh_state_set` will set the refresh state of the Power Device. `uid_state_set` will set the UID state of the Power Device.  |
 | validate_etag  |   |  True  | <ul> <li>true</li>  <li>false</li> </ul> |  When the ETag Validation is enabled, the request will be conditionally processed only if the current ETag for the resource matches the ETag provided in the data.  |
 
 
@@ -5236,8 +5236,8 @@ Retrieve facts about the OneView Power Devices.
 | ------------- |-------------| ---------|----------- |--------- |
 | config  |   No  |  | |  Path to a .json configuration file containing the OneView client configuration. The configuration file is optional. If the file path is not provided, the configuration will be loaded from environment variables.  |
 | name  |   No  |  | |  Power Device name.  |
-| options  |   No  |  | |  List with options to gather additional facts about Power Device. Options allowed: **powerState**, **uidState**, **utilization**  |
-| params  |   No  |  | |  List of params to delimit, filter and sort the list of resources.  params allowed: **start**: The first item to return, using 0-based indexing. **count**: The number of resources to return. **filter**: A general filter/query string to narrow the list of items returned. **query**: A general query string to narrow the list of resources returned. **sort**: The sort order of the returned data set.  |
+| options  |   No  |  | |  List with options to gather additional facts about Power Device. Options allowed: `powerState`, `uidState`, `utilization`  |
+| params  |   No  |  | |  List of params to delimit, filter and sort the list of resources.  params allowed: `start`: The first item to return, using 0-based indexing. `count`: The number of resources to return. `filter`: A general filter/query string to narrow the list of items returned. `query`: A general query string to narrow the list of resources returned. `sort`: The sort order of the returned data set.  |
 
 
  
@@ -5339,7 +5339,7 @@ Manage OneView Racks resources.
 | ------------- |-------------| ---------|----------- |--------- |
 | config  |   No  |  | |  Path to a .json configuration file containing the OneView client configuration. The configuration file is optional. If the file path is not provided, the configuration will be loaded from environment variables.  |
 | data  |   Yes  |  | |  List with the Rack properties.  |
-| state  |   |  | <ul> <li>present</li>  <li>absent</li> </ul> |  Indicates the desired state for the Rack resource. **present** will ensure data properties are compliant with OneView. To change the name of the Rack, a I(newName) in the data must be provided. **absent** will remove the resource from OneView, if it exists.  |
+| state  |   |  | <ul> <li>present</li>  <li>absent</li> </ul> |  Indicates the desired state for the Rack resource. `present` will ensure data properties are compliant with OneView. To change the name of the Rack, a _newName_ in the data must be provided. `absent` will remove the resource from OneView, if it exists.  |
 | validate_etag  |   |  True  | <ul> <li>true</li>  <li>false</li> </ul> |  When the ETag Validation is enabled, the request will be conditionally processed only if the current ETag for the resource matches the ETag provided in the data.  |
 
 
@@ -5423,7 +5423,7 @@ Retrieve facts about Rack resources.
 | config  |   No  |  | |  Path to a .json configuration file containing the OneView client configuration. The configuration file is optional. If the file path is not provided, the configuration will be loaded from environment variables.  |
 | name  |   No  |  | |  Rack name.  |
 | options  |   No  |  | |  Retrieve additional facts. Options available: 'deviceTopology'.  |
-| params  |   No  |  | |  List of params to delimit, filter and sort the list of resources.  params allowed: **start**: The first item to return, using 0-based indexing. **count**: The number of resources to return. **filter**: A general filter/query string to narrow the list of items returned. **sort**: The sort order of the returned data set.  |
+| params  |   No  |  | |  List of params to delimit, filter and sort the list of resources.  params allowed: `start`: The first item to return, using 0-based indexing. `count`: The number of resources to return. `filter`: A general filter/query string to narrow the list of items returned. `sort`: The sort order of the returned data set.  |
 
 
  
@@ -5771,7 +5771,7 @@ Retrieve facts about the OneView SAS Interconnect Types.
 | ------------- |-------------| ---------|----------- |--------- |
 | config  |   No  |  | |  Path to a .json configuration file containing the OneView client configuration. The configuration file is optional. If the file path is not provided, the configuration will be loaded from environment variables.  |
 | name  |   No  |  | |  Name of the SAS Interconnect Type.  |
-| params  |   No  |  | |  List of params to delimit, filter and sort the list of resources.  params allowed: **start**: The first item to return, using 0-based indexing. **count**: The number of resources to return. **filter**: A general filter/query string to narrow the list of items returned. **sort**: The sort order of the returned data set.  |
+| params  |   No  |  | |  List of params to delimit, filter and sort the list of resources.  params allowed: `start`: The first item to return, using 0-based indexing. `count`: The number of resources to return. `filter`: A general filter/query string to narrow the list of items returned. `sort`: The sort order of the returned data set.  |
 
 
  
@@ -6020,7 +6020,7 @@ Manage OneView SAS Logical Interconnect Group resources.
 | ------------- |-------------| ---------|----------- |--------- |
 | config  |   No  |  | |  Path to a .json configuration file containing the OneView client configuration. The configuration file is optional. If the file path is not provided, the configuration will be loaded from environment variables.  |
 | data  |   Yes  |  | |  List with the SAS Logical Interconnect Group properties.  |
-| state  |   |  | <ul> <li>present</li>  <li>absent</li> </ul> |  Indicates the desired state for the SAS Logical Interconnect Group resource. **present** will ensure data properties are compliant with OneView. **absent** will remove the resource from OneView, if it exists.  |
+| state  |   |  | <ul> <li>present</li>  <li>absent</li> </ul> |  Indicates the desired state for the SAS Logical Interconnect Group resource. `present` will ensure data properties are compliant with OneView. `absent` will remove the resource from OneView, if it exists.  |
 | validate_etag  |   |  True  | <ul> <li>true</li>  <li>false</li> </ul> |  When the ETag Validation is enabled, the request will be conditionally processed only if the current ETag for the resource matches the ETag provided in the data.  |
 
 
@@ -6113,7 +6113,7 @@ Retrieve facts about one or more of the OneView SAS Logical Interconnect Groups.
 | ------------- |-------------| ---------|----------- |--------- |
 | config  |   No  |  | |  Path to a .json configuration file containing the OneView client configuration. The configuration file is optional. If the file path is not provided, the configuration will be loaded from environment variables.  |
 | name  |   No  |  | |  Name of the SAS Logical Interconnect Group.  |
-| params  |   No  |  | |  List of params to delimit, filter and sort the list of resources.  params allowed: **start**: The first item to return, using 0-based indexing. **count**: The number of resources to return. **filter**: A general filter/query string to narrow the list of items returned. **sort**: The sort order of the returned data set.  |
+| params  |   No  |  | |  List of params to delimit, filter and sort the list of resources.  params allowed: `start`: The first item to return, using 0-based indexing. `count`: The number of resources to return. `filter`: A general filter/query string to narrow the list of items returned. `sort`: The sort order of the returned data set.  |
 
 
  
@@ -6121,12 +6121,12 @@ Retrieve facts about one or more of the OneView SAS Logical Interconnect Groups.
 
 ```yaml
 - name: Gather facts about all SAS Logical Interconnect Groups
-    oneview_sas_logical_interconnect_group_facts:
-        config: "{{ config_path }}"
+  oneview_sas_logical_interconnect_group_facts:
+    config: "{{ config_path }}"
 - debug: var=sas_logical_interconnect_groups
 
 - name: Gather paginated, filtered and sorted facts about SAS Logical Interconnect Groups
-    oneview_sas_logical_interconnect_group_facts:
+  oneview_sas_logical_interconnect_group_facts:
     config: "{{ config }}"
     params:
       start: 0
@@ -6136,7 +6136,7 @@ Retrieve facts about one or more of the OneView SAS Logical Interconnect Groups.
 - debug: var=sas_logical_interconnect_groups
 
 - name: Gather facts about a SAS Logical Interconnect Group by name
-    oneview_sas_logical_interconnect_group_facts:
+  oneview_sas_logical_interconnect_group_facts:
     config: "{{ config_path }}"
     name: "LIG-SLJA-1"
 - debug: var=sas_logical_interconnect_groups
@@ -6503,7 +6503,7 @@ Manage OneView Server Hardware resources.
 | ------------- |-------------| ---------|----------- |--------- |
 | config  |   No  |  | |  Path to a .json configuration file containing the OneView client configuration. The configuration file is optional. If the file path is not provided, the configuration will be loaded from environment variables.  |
 | data  |   Yes  |  | |  List with Server Hardware properties and its associated states.  |
-| state  |   Yes  |  | <ul> <li>present</li>  <li>absent</li>  <li>power_state_set</li>  <li>refresh_state_set</li>  <li>ilo_firmware_version_updated</li>  <li>ilo_state_reset</li>  <li>uid_state_on</li>  <li>uid_state_off</li>  <li>environmental_configuration_set</li> </ul> |  Indicates the desired state for the Server Hardware resource. **present** will ensure data properties are compliant with OneView. **absent** will remove the resource from OneView, if it exists. **power_state_set** will set the power state of the Server Hardware. **refresh_state_set** will set the refresh state of the Server Hardware. **ilo_firmware_version_updated** will update the iLO firmware version of the Server Hardware. **ilo_state_reset** will reset the iLO state. **uid_state_on** will set on the UID state, if necessary. **uid_state_off** will set on the UID state, if necessary. **environmental_configuration_set** will set the environmental configuration of the Server Hardware.  |
+| state  |   Yes  |  | <ul> <li>present</li>  <li>absent</li>  <li>power_state_set</li>  <li>refresh_state_set</li>  <li>ilo_firmware_version_updated</li>  <li>ilo_state_reset</li>  <li>uid_state_on</li>  <li>uid_state_off</li>  <li>environmental_configuration_set</li> </ul> |  Indicates the desired state for the Server Hardware resource. `present` will ensure data properties are compliant with OneView. `absent` will remove the resource from OneView, if it exists. `power_state_set` will set the power state of the Server Hardware. `refresh_state_set` will set the refresh state of the Server Hardware. `ilo_firmware_version_updated` will update the iLO firmware version of the Server Hardware. `ilo_state_reset` will reset the iLO state. `uid_state_on` will set on the UID state, if necessary. `uid_state_off` will set on the UID state, if necessary. `environmental_configuration_set` will set the environmental configuration of the Server Hardware.  |
 | validate_etag  |   |  True  | <ul> <li>true</li>  <li>false</li> </ul> |  When the ETag Validation is enabled, the request will be conditionally processed only if the current ETag for the resource matches the ETag provided in the data.  |
 
 
@@ -6618,8 +6618,8 @@ Retrieve facts about the OneView Server Hardwares.
 | ------------- |-------------| ---------|----------- |--------- |
 | config  |   No  |  | |  Path to a .json configuration file containing the OneView client configuration. The configuration file is optional. If the file path is not provided, the configuration will be loaded from environment variables.  |
 | name  |   No  |  | |  Server Hardware name.  |
-| options  |   No  |  | |  List with options to gather additional facts about Server Hardware related resources. Options allowed: **bios**, **javaRemoteConsoleUrl**, **environmentalConfig**, **iloSsoUrl**, **remoteConsoleUrl**, **utilization**, **firmware**, and **firmwares**.  |
-| params  |   No  |  | |  List of params to delimit, filter and sort the list of resources.  params allowed: **start**: The first item to return, using 0-based indexing. **count**: The number of resources to return. **filter**: A general filter/query string to narrow the list of items returned. **sort**: The sort order of the returned data set.  |
+| options  |   No  |  | |  List with options to gather additional facts about Server Hardware related resources. Options allowed: `bios`, `javaRemoteConsoleUrl`, `environmentalConfig`, `iloSsoUrl`, `remoteConsoleUrl`, `utilization`, `firmware`, and `firmwares`.  |
+| params  |   No  |  | |  List of params to delimit, filter and sort the list of resources.  params allowed: `start`: The first item to return, using 0-based indexing. `count`: The number of resources to return. `filter`: A general filter/query string to narrow the list of items returned. `sort`: The sort order of the returned data set.  |
 
 
  
@@ -6725,7 +6725,7 @@ Retrieve facts about the OneView Server Hardwares.
 
 #### Notes
 
-- The options **firmware** and **firmwares** are only available for API version 300 or later.
+- The options `firmware` and `firmwares` are only available for API version 300 or later.
 
 - A sample configuration file for the config parameter can be found at: https://github.com/HewlettPackard/oneview-ansible/blob/master/examples/oneview_config-rename.json
 
@@ -6880,7 +6880,7 @@ Retrieve facts about Server Hardware Types of the OneView.
 Manage OneView Server Profile resources.
 
 #### Synopsis
- Manage the servers lifecycle with OneView Server Profiles. On **present** state, it selects a server hardware automatically based on the server profile configuration if no server hardware was provided.
+ Manage the servers lifecycle with OneView Server Profiles. On `present` state, it selects a server hardware automatically based on the server profile configuration if no server hardware was provided.
 
 #### Requirements (on the host that executes the module)
   * python >= 2.7.9
@@ -6892,7 +6892,7 @@ Manage OneView Server Profile resources.
 | ------------- |-------------| ---------|----------- |--------- |
 | config  |   No  |  | |  Path to a .json configuration file containing the OneView client configuration. The configuration file is optional. If the file path is not provided, the configuration will be loaded from environment variables.  |
 | data  |   Yes  |  | |  List with Server Profile properties.  |
-| state  |   |  present  | <ul> <li>present</li>  <li>absent</li>  <li>compliant</li> </ul> |  Indicates the desired state for the Server Profile resource by the end of the playbook execution. **present** will ensure data properties are compliant with OneView. This operation will power off the Server Hardware before configuring the Server Profile. After it completes, the Server Hardware is powered on. **absent** will remove the resource from OneView, if it exists. **compliant** will make the server profile compliant with its server profile template, when this option was specified. If there are Offline updates, the Server Hardware is turned off before remediate compliance issues and turned on after that.  |
+| state  |   |  present  | <ul> <li>present</li>  <li>absent</li>  <li>compliant</li> </ul> |  Indicates the desired state for the Server Profile resource by the end of the playbook execution. `present` will ensure data properties are compliant with OneView. This operation will power off the Server Hardware before configuring the Server Profile. After it completes, the Server Hardware is powered on. `absent` will remove the resource from OneView, if it exists. `compliant` will make the server profile compliant with its server profile template, when this option was specified. If there are Offline updates, the Server Hardware is turned off before remediate compliance issues and turned on after that.  |
 | validate_etag  |   |  True  | <ul> <li>true</li>  <li>false</li> </ul> |  When the ETag Validation is enabled, the request will be conditionally processed only if the current ETag for the resource matches the ETag provided in the data.  |
 
 
@@ -7008,8 +7008,8 @@ Retrieve facts about the OneView Server Profiles.
 | ------------- |-------------| ---------|----------- |--------- |
 | config  |   No  |  | |  Path to a .json configuration file containing the OneView client configuration. The configuration file is optional. If the file path is not provided, the configuration will be loaded from environment variables.  |
 | name  |   No  |  | |  Server Profile name.  |
-| options  |   No  |  | |  List with options to gather additional facts about Server Profile related resources. Options allowed: **schema**, **compliancePreview**, **profilePorts**, **messages**, **transformation**, **available_networks**, **available_servers**, **available_storage_system**, **available_storage_systems**, **available_targets**  To gather facts about **compliancePreview**, **messages** and **transformation** it is required to inform the Server Profile name. Otherwise, these options will be ignored.  |
-| params  |   No  |  | |  List of params to delimit, filter and sort the list of resources.  params allowed: **start**: The first item to return, using 0-based indexing. **count**: The number of resources to return. **filter**: A general filter/query string to narrow the list of items returned. **sort**: The sort order of the returned data set.  |
+| options  |   No  |  | |  List with options to gather additional facts about Server Profile related resources. Options allowed: `schema`, `compliancePreview`, `profilePorts`, `messages`, `transformation`, `available_networks`, `available_servers`, `available_storage_system`, `available_storage_systems`, `available_targets`  To gather facts about `compliancePreview`, `messages` and `transformation` it is required to inform the Server Profile name. Otherwise, these options will be ignored.  |
+| params  |   No  |  | |  List of params to delimit, filter and sort the list of resources.  params allowed: `start`: The first item to return, using 0-based indexing. `count`: The number of resources to return. `filter`: A general filter/query string to narrow the list of items returned. `sort`: The sort order of the returned data set.  |
 
 
  
@@ -7147,7 +7147,7 @@ Manage OneView Server Profile Template resources.
 | ------------- |-------------| ---------|----------- |--------- |
 | config  |   No  |  | |  Path to a .json configuration file containing the OneView client configuration. The configuration file is optional. If the file path is not provided, the configuration will be loaded from environment variables.  |
 | data  |   Yes  |  | |  Dict with Server Profile Template properties.  |
-| state  |   |  | <ul> <li>present</li>  <li>absent</li> </ul> |  Indicates the desired state for the Server Profile Template. **present** will ensure data properties are compliant with OneView. **absent** will remove the resource from OneView, if it exists.  |
+| state  |   |  | <ul> <li>present</li>  <li>absent</li> </ul> |  Indicates the desired state for the Server Profile Template. `present` will ensure data properties are compliant with OneView. `absent` will remove the resource from OneView, if it exists.  |
 | validate_etag  |   |  True  | <ul> <li>true</li>  <li>false</li> </ul> |  When the ETag Validation is enabled, the request will be conditionally processed only if the current ETag for the resource matches the ETag provided in the data.  |
 
 
@@ -7224,8 +7224,8 @@ Retrieve facts about the Server Profile Templates from OneView.
 | ------------- |-------------| ---------|----------- |--------- |
 | config  |   No  |  | |  Path to a .json configuration file containing the OneView client configuration. The configuration file is optional. If the file path is not provided, the configuration will be loaded from environment variables.  |
 | name  |   No  |  | |  Server Profile Template name.  |
-| options  |   No  |  | |  List with options to gather additional facts about Server Profile Template resources. Options allowed: **new_profile** and **transformation**.  |
-| params  |   No  |  | |  List of params to delimit, filter and sort the list of resources.  params allowed: **start**: The first item to return, using 0-based indexing. **count**: The number of resources to return. **filter**: A general filter/query string to narrow the list of items returned. **sort**: The sort order of the returned data set.  |
+| options  |   No  |  | |  List with options to gather additional facts about Server Profile Template resources. Options allowed: `new_profile` and `transformation`.  |
+| params  |   No  |  | |  List of params to delimit, filter and sort the list of resources.  params allowed: `start`: The first item to return, using 0-based indexing. `count`: The number of resources to return. `filter`: A general filter/query string to narrow the list of items returned. `sort`: The sort order of the returned data set.  |
 
 
  
@@ -7276,7 +7276,7 @@ Retrieve facts about the Server Profile Templates from OneView.
 
 #### Notes
 
-- The option **transformation** is only available for API version 300 or later.
+- The option `transformation` is only available for API version 300 or later.
 
 - A sample configuration file for the config parameter can be found at: https://github.com/HewlettPackard/oneview-ansible/blob/master/examples/oneview_config-rename.json
 

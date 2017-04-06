@@ -78,7 +78,7 @@ os_volumes:
     type: list
 '''
 from ansible.module_utils.basic import AnsibleModule
-from _ansible.module_utils.oneview import OneViewModuleBase
+from module_utils.oneview import OneViewModuleBase
 
 
 class OsVolumeFactsModule(OneViewModuleBase):
@@ -97,7 +97,7 @@ class OsVolumeFactsModule(OneViewModuleBase):
         if name:
             os_volumes = self.i3s_client.os_volumes.get_by('name', name)
         else:
-            os_volumes = self.i3s_client.os_volumes.get_all(**self.params)
+            os_volumes = self.i3s_client.os_volumes.get_all(**self.facts_params)
 
         return dict(changed=False, ansible_facts=dict(os_volumes=os_volumes))
 

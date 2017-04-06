@@ -214,10 +214,10 @@ telemetry_configuration:
 '''
 
 from ansible.module_utils.basic import AnsibleModule
-from _ansible.module_utils.oneview import (OneViewModuleBase,
-                                           HPOneViewResourceNotFound,
-                                           ResourceComparator,
-                                           HPOneViewValueError)
+from module_utils.oneview import (OneViewModuleBase,
+                                  HPOneViewResourceNotFound,
+                                  ResourceComparator,
+                                  HPOneViewValueError)
 
 
 class LogicalInterconnectModule(OneViewModuleBase):

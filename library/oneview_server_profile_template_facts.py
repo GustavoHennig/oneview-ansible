@@ -17,8 +17,8 @@
 ###
 
 ANSIBLE_METADATA = {'status': ['stableinterface'],
-                    'supported_by': 'committer',
-                    'version': '1.0'}
+                    'supported_by': 'curated',
+                    'metadata_version': '1.0'}
 
 DOCUMENTATION = '''
 ---
@@ -93,7 +93,7 @@ new_profile:
     type: complex
 '''
 from ansible.module_utils.basic import AnsibleModule
-from _ansible.module_utils.oneview import OneViewModuleBase
+from module_utils.oneview import OneViewModuleBase
 
 
 class ServerProfileTemplateFactsModule(OneViewModuleBase):
@@ -140,7 +140,7 @@ class ServerProfileTemplateFactsModule(OneViewModuleBase):
         return facts
 
     def __get_all(self):
-        templates = self.resource_client.get_all(**self.params)
+        templates = self.resource_client.get_all(**self.facts_params)
         return dict(server_profile_templates=templates)
 
 

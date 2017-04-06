@@ -169,7 +169,7 @@ ethernet_settings:
 '''
 
 from ansible.module_utils.basic import AnsibleModule
-from _ansible.module_utils.oneview import OneViewModuleBase, HPOneViewResourceNotFound
+from module_utils.oneview import OneViewModuleBase, HPOneViewResourceNotFound
 
 
 class LogicalInterconnectFactsModule(OneViewModuleBase):
@@ -203,7 +203,7 @@ class LogicalInterconnectFactsModule(OneViewModuleBase):
         if name:
             facts = self.__get_by_name(name)
         else:
-            logical_interconnects = self.resource_client.get_all(**self.params)
+            logical_interconnects = self.resource_client.get_all(**self.facts_params)
             facts = dict(logical_interconnects=logical_interconnects)
 
         return dict(changed=False, ansible_facts=facts)

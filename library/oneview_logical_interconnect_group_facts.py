@@ -1,7 +1,7 @@
 #!/usr/bin/python
-
+# -*- coding: utf-8 -*-
 ###
-# Copyright (2016) Hewlett Packard Enterprise Development LP
+# Copyright (2016-2017) Hewlett Packard Enterprise Development LP
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # You may not use this file except in compliance with the License.
@@ -17,8 +17,9 @@
 ###
 
 ANSIBLE_METADATA = {'status': ['stableinterface'],
-                    'supported_by': 'committer',
-                    'version': '1.0'}
+                    'supported_by': 'curated',
+                    'metadata_version': '1.0'}
+
 DOCUMENTATION = '''
 ---
 module: oneview_logical_interconnect_group_facts
@@ -74,7 +75,7 @@ logical_interconnect_groups:
 '''
 
 from ansible.module_utils.basic import AnsibleModule
-from _ansible.module_utils.oneview import OneViewModuleBase
+from module_utils.oneview import OneViewModuleBase
 
 
 class LogicalInterconnectGroupFactsModule(OneViewModuleBase):
@@ -91,7 +92,7 @@ class LogicalInterconnectGroupFactsModule(OneViewModuleBase):
         if self.module.params.get('name'):
             ligs = self.oneview_client.logical_interconnect_groups.get_by('name', self.module.params['name'])
         else:
-            ligs = self.oneview_client.logical_interconnect_groups.get_all(**self.params)
+            ligs = self.oneview_client.logical_interconnect_groups.get_all(**self.facts_params)
 
         return dict(changed=False, ansible_facts=dict(logical_interconnect_groups=ligs))
 

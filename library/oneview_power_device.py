@@ -17,8 +17,8 @@
 ###
 
 ANSIBLE_METADATA = {'status': ['stableinterface'],
-                    'supported_by': 'committer',
-                    'version': '1.0'}
+                    'supported_by': 'curated',
+                    'metadata_version': '1.0'}
 
 DOCUMENTATION = '''
 ---
@@ -122,7 +122,7 @@ power_device:
 '''
 
 from ansible.module_utils.basic import AnsibleModule
-from _ansible.module_utils.oneview import OneViewModuleBase, HPOneViewValueError, HPOneViewResourceNotFound
+from module_utils.oneview import OneViewModuleBase, HPOneViewValueError, HPOneViewResourceNotFound
 
 
 class PowerDeviceModule(OneViewModuleBase):

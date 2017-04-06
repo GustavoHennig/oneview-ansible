@@ -17,8 +17,8 @@
 ###
 
 ANSIBLE_METADATA = {'status': ['stableinterface'],
-                    'supported_by': 'committer',
-                    'version': '1.0'}
+                    'supported_by': 'curated',
+                    'metadata_version': '1.0'}
 
 DOCUMENTATION = '''
 ---
@@ -94,10 +94,10 @@ server_profile_template:
 '''
 
 from ansible.module_utils.basic import AnsibleModule
-from _ansible.module_utils.oneview import (OneViewModuleBase,
-                                           ServerProfileReplaceNamesByUris,
-                                           ServerProfileMerger,
-                                           ResourceComparator)
+from module_utils.oneview import (OneViewModuleBase,
+                                  ServerProfileReplaceNamesByUris,
+                                  ServerProfileMerger,
+                                  ResourceComparator)
 
 SRV_PROFILE_TEMPLATE_CREATED = 'Server Profile Template created successfully.'
 SRV_PROFILE_TEMPLATE_UPDATED = 'Server Profile Template updated successfully.'

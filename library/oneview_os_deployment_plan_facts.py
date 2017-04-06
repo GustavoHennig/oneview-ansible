@@ -16,8 +16,8 @@
 ###
 
 ANSIBLE_METADATA = {'status': ['stableinterface'],
-                    'supported_by': 'committer',
-                    'version': '1.0'}
+                    'supported_by': 'curated',
+                    'metadata_version': '1.0'}
 
 DOCUMENTATION = '''
 ---
@@ -100,7 +100,7 @@ os_deployment_plan_custom_attributes:
 '''
 
 from ansible.module_utils.basic import AnsibleModule
-from _ansible.module_utils.oneview import OneViewModuleBase
+from module_utils.oneview import OneViewModuleBase
 from six import iteritems
 
 
@@ -124,7 +124,7 @@ class OsDeploymentPlanFactsModule(OneViewModuleBase):
                 ansible_facts.update(option_facts)
 
         else:
-            os_deployment_plans = self.oneview_client.os_deployment_plans.get_all(**self.params)
+            os_deployment_plans = self.oneview_client.os_deployment_plans.get_all(**self.facts_params)
 
         ansible_facts['os_deployment_plans'] = os_deployment_plans
 

@@ -17,8 +17,8 @@
 ###
 
 ANSIBLE_METADATA = {'status': ['stableinterface'],
-                    'supported_by': 'committer',
-                    'version': '1.0'}
+                    'supported_by': 'curated',
+                    'metadata_version': '1.0'}
 
 DOCUMENTATION = '''
 ---
@@ -101,7 +101,7 @@ logical_enclosure_script:
 '''
 
 from ansible.module_utils.basic import AnsibleModule
-from _ansible.module_utils.oneview import OneViewModuleBase
+from module_utils.oneview import OneViewModuleBase
 
 
 class LogicalEnclosureFactsModule(OneViewModuleBase):
@@ -124,7 +124,7 @@ class LogicalEnclosureFactsModule(OneViewModuleBase):
             if self.options and logical_enclosures:
                 ansible_facts = self.__gather_optional_facts(self.options, logical_enclosures[0])
         else:
-            logical_enclosures = self.oneview_client.logical_enclosures.get_all(**self.params)
+            logical_enclosures = self.oneview_client.logical_enclosures.get_all(**self.facts_params)
 
         ansible_facts['logical_enclosures'] = logical_enclosures
 

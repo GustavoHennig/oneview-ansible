@@ -16,9 +16,9 @@
 # limitations under the License.
 ###
 
-ANSIBLE_METADATA = {'status': ['stableinterface'],
-                    'supported_by': 'committer',
-                    'version': '1.0'}
+ANSIBLE_METADATA = {'metadata_version': '1.0',
+                    'status': ['stableinterface'],
+                    'supported_by': 'curated'}
 
 DOCUMENTATION = '''
 module: oneview_managed_san_facts
@@ -126,7 +126,7 @@ wwn_associated_sans:
 '''
 
 from ansible.module_utils.basic import AnsibleModule
-from _ansible.module_utils.oneview import OneViewModuleBase
+from module_utils.oneview import OneViewModuleBase
 
 
 class ManagedSanFactsModule(OneViewModuleBase):
@@ -167,7 +167,7 @@ class ManagedSanFactsModule(OneViewModuleBase):
         return dict(changed=False, ansible_facts=facts)
 
     def __get_sub_options(self, option):
-        return option if type(option) is dict else {}
+        return option if isinstance(option, dict) else {}
 
 
 def main():

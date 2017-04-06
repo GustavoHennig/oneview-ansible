@@ -1,5 +1,5 @@
 #!/usr/bin/python
-
+# -*- coding: utf-8 -*-
 ###
 # Copyright (2016) Hewlett Packard Enterprise Development LP
 #
@@ -16,6 +16,9 @@
 # limitations under the License.
 ###
 
+ANSIBLE_METADATA = {'status': ['stableinterface'],
+                    'supported_by': 'curated',
+                    'metadata_version': '1.0'}
 
 DOCUMENTATION = '''
 ---
@@ -101,7 +104,7 @@ enet_associated_uplink_groups:
 '''
 
 from ansible.module_utils.basic import AnsibleModule
-from _ansible.module_utils.oneview import OneViewModuleBase
+from module_utils.oneview import OneViewModuleBase
 
 
 class EthernetNetworkFactsModule(OneViewModuleBase):
@@ -124,7 +127,7 @@ class EthernetNetworkFactsModule(OneViewModuleBase):
             if self.module.params.get('options') and ethernet_networks:
                 ansible_facts = self.__gather_optional_facts(ethernet_networks[0])
         else:
-            ethernet_networks = self.resource_client.get_all(**self.params)
+            ethernet_networks = self.resource_client.get_all(**self.facts_params)
 
         ansible_facts['ethernet_networks'] = ethernet_networks
 

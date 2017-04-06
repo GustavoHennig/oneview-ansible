@@ -18,13 +18,13 @@ import unittest
 import mock
 
 from copy import deepcopy
-from _ansible.module_utils.oneview import (HPOneViewException,
-                                           HPOneViewTaskError,
-                                           OneViewModuleBase,
-                                           SPKeys,
-                                           ServerProfileMerger,
-                                           ServerProfileReplaceNamesByUris,
-                                           ResourceComparator)
+from module_utils.oneview import (HPOneViewException,
+                                  HPOneViewTaskError,
+                                  OneViewModuleBase,
+                                  SPKeys,
+                                  ServerProfileMerger,
+                                  ServerProfileReplaceNamesByUris,
+                                  ResourceComparator)
 
 from oneview_server_profile import (ServerProfileModule,
                                     MAKE_COMPLIANT_NOT_SUPPORTED,

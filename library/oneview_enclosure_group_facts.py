@@ -16,9 +16,9 @@
 # limitations under the License.
 ###
 
-ANSIBLE_METADATA = {'status': ['stableinterface'],
-                    'supported_by': 'committer',
-                    'version': '1.0'}
+ANSIBLE_METADATA = {'metadata_version': '1.0',
+                    'status': ['stableinterface'],
+                    'supported_by': 'curated'}
 
 DOCUMENTATION = '''
 ---
@@ -94,7 +94,7 @@ enclosure_group_script:
 '''
 
 from ansible.module_utils.basic import AnsibleModule
-from _ansible.module_utils.oneview import OneViewModuleBase
+from module_utils.oneview import OneViewModuleBase
 
 
 class EnclosureGroupFactsModule(OneViewModuleBase):
@@ -124,7 +124,7 @@ class EnclosureGroupFactsModule(OneViewModuleBase):
             if enclosure_groups and "configuration_script" in self.options:
                 facts["enclosure_group_script"] = self.__get_script(enclosure_groups)
         else:
-            enclosure_groups = self.oneview_client.enclosure_groups.get_all(**self.params)
+            enclosure_groups = self.oneview_client.enclosure_groups.get_all(**self.facts_params)
 
         facts["enclosure_groups"] = enclosure_groups
         return dict(changed=False, ansible_facts=facts)

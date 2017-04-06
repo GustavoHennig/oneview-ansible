@@ -17,8 +17,8 @@
 ###
 
 ANSIBLE_METADATA = {'status': ['stableinterface'],
-                    'supported_by': 'committer',
-                    'version': '1.0'}
+                    'supported_by': 'curated',
+                    'metadata_version': '1.0'}
 
 DOCUMENTATION = '''
 ---
@@ -134,7 +134,7 @@ power_device_utilization:
 '''
 
 from ansible.module_utils.basic import AnsibleModule
-from _ansible.module_utils.oneview import OneViewModuleBase
+from module_utils.oneview import OneViewModuleBase
 
 
 class PowerDeviceFactsModule(OneViewModuleBase):
@@ -157,7 +157,7 @@ class PowerDeviceFactsModule(OneViewModuleBase):
             if self.options and power_devices:
                 ansible_facts = self.gather_option_facts(self.options, power_devices[0])
         else:
-            power_devices = self.oneview_client.power_devices.get_all(**self.params)
+            power_devices = self.oneview_client.power_devices.get_all(**self.facts_params)
 
         ansible_facts["power_devices"] = power_devices
 

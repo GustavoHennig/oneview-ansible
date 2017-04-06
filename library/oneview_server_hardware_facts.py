@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 ###
-# Copyright (2016) Hewlett Packard Enterprise Development LP
+# Copyright (2016-2017) Hewlett Packard Enterprise Development LP
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # You may not use this file except in compliance with the License.
@@ -17,8 +17,8 @@
 ###
 
 ANSIBLE_METADATA = {'status': ['stableinterface'],
-                    'supported_by': 'committer',
-                    'version': '1.0'}
+                    'supported_by': 'curated',
+                    'metadata_version': '1.0'}
 
 DOCUMENTATION = '''
 ---
@@ -177,7 +177,7 @@ server_hardware_firmwares:
 '''
 
 from ansible.module_utils.basic import AnsibleModule
-from _ansible.module_utils.oneview import OneViewModuleBase
+from module_utils.oneview import OneViewModuleBase
 
 
 class ServerHardwareFactsModule(OneViewModuleBase):
@@ -200,7 +200,7 @@ class ServerHardwareFactsModule(OneViewModuleBase):
                 ansible_facts = self.gather_option_facts(self.options, server_hardwares[0])
 
         else:
-            server_hardwares = self.oneview_client.server_hardware.get_all(**self.params)
+            server_hardwares = self.oneview_client.server_hardware.get_all(**self.facts_params)
 
         if self.options and self.options.get('firmwares'):
             ansible_facts['server_hardware_firmwares'] = self.get_all_firmwares(self.options)

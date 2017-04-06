@@ -94,7 +94,7 @@ datacenter_visual_content:
 '''
 
 from ansible.module_utils.basic import AnsibleModule
-from _ansible.module_utils.oneview import OneViewModuleBase
+from module_utils.oneview import OneViewModuleBase
 
 
 class DatacenterFactsModule(OneViewModuleBase):
@@ -123,7 +123,7 @@ class DatacenterFactsModule(OneViewModuleBase):
 
             ansible_facts['datacenters'] = datacenters
         else:
-            ansible_facts['datacenters'] = client.get_all(**self.params)
+            ansible_facts['datacenters'] = client.get_all(**self.facts_params)
 
         return dict(changed=False,
                     ansible_facts=ansible_facts)

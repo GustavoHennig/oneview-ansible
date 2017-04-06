@@ -1,7 +1,7 @@
 #!/usr/bin/python
-
+# -*- coding: utf-8 -*-
 ###
-# Copyright (2016) Hewlett Packard Enterprise Development LP
+# Copyright (2016-2017) Hewlett Packard Enterprise Development LP
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # You may not use this file except in compliance with the License.
@@ -17,8 +17,8 @@
 ###
 
 ANSIBLE_METADATA = {'status': ['stableinterface'],
-                    'supported_by': 'committer',
-                    'version': '1.0'}
+                    'supported_by': 'curated',
+                    'metadata_version': '1.0'}
 
 DOCUMENTATION = '''
 module: oneview_alert_facts
@@ -76,8 +76,8 @@ alerts:
     type: list
 '''
 
-from ansible.module_utils.basic import *
-from _ansible.module_utils.oneview import OneViewModuleBase
+from ansible.module_utils.basic import AnsibleModule
+from module_utils.oneview import OneViewModuleBase
 
 
 class AlertFactsModule(OneViewModuleBase):
@@ -88,7 +88,7 @@ class AlertFactsModule(OneViewModuleBase):
         super(AlertFactsModule, self).__init__(additional_arg_spec=argument_spec)
 
     def execute_module(self):
-        facts = self.oneview_client.alerts.get_all(**self.params)
+        facts = self.oneview_client.alerts.get_all(**self.facts_params)
 
         return dict(changed=False, ansible_facts=dict(alerts=facts))
 

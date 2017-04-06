@@ -17,8 +17,8 @@
 ###
 
 ANSIBLE_METADATA = {'status': ['stableinterface'],
-                    'supported_by': 'committer',
-                    'version': '1.0'}
+                    'supported_by': 'curated',
+                    'metadata_version': '1.0'}
 
 DOCUMENTATION = '''
 ---
@@ -119,7 +119,7 @@ managed_san_issues:
 '''
 
 from ansible.module_utils.basic import AnsibleModule
-from _ansible.module_utils.oneview import OneViewModuleBase, HPOneViewResourceNotFound, ResourceComparator
+from module_utils.oneview import OneViewModuleBase, HPOneViewResourceNotFound, ResourceComparator
 
 MANAGED_SAN_UPDATED = 'Managed SAN updated successfully.'
 MANAGED_SAN_REFRESH_STATE_UPDATED = 'Managed SAN\'s refresh state changed successfully.'

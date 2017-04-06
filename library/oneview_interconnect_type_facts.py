@@ -1,7 +1,7 @@
 #!/usr/bin/python
-
+# -*- coding: utf-8 -*-
 ###
-# Copyright (2016) Hewlett Packard Enterprise Development LP
+# Copyright (2016-2017) Hewlett Packard Enterprise Development LP
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # You may not use this file except in compliance with the License.
@@ -15,6 +15,10 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 ###
+
+ANSIBLE_METADATA = {'status': ['stableinterface'],
+                    'supported_by': 'curated',
+                    'metadata_version': '1.0'}
 
 DOCUMENTATION = '''
 ---
@@ -71,7 +75,7 @@ interconnect_types:
 '''
 
 from ansible.module_utils.basic import AnsibleModule
-from _ansible.module_utils.oneview import OneViewModuleBase
+from module_utils.oneview import OneViewModuleBase
 
 
 class InterconnectTypeFactsModule(OneViewModuleBase):
@@ -89,7 +93,7 @@ class InterconnectTypeFactsModule(OneViewModuleBase):
         if self.module.params.get('name'):
             interconnect_types = self.oneview_client.interconnect_types.get_by('name', self.module.params['name'])
         else:
-            interconnect_types = self.oneview_client.interconnect_types.get_all(**self.params)
+            interconnect_types = self.oneview_client.interconnect_types.get_all(**self.facts_params)
 
         return dict(changed=False, ansible_facts=dict(interconnect_types=interconnect_types))
 

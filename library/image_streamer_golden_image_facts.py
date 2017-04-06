@@ -77,7 +77,7 @@ golden_images:
 '''
 
 from ansible.module_utils.basic import AnsibleModule
-from _ansible.module_utils.oneview import OneViewModuleBase
+from module_utils.oneview import OneViewModuleBase
 
 
 class GoldenImageFactsModule(OneViewModuleBase):
@@ -99,7 +99,7 @@ class GoldenImageFactsModule(OneViewModuleBase):
         if name:
             golden_images = self.i3s_client.golden_images.get_by("name", name)
         else:
-            golden_images = self.i3s_client.golden_images.get_all(**self.params)
+            golden_images = self.i3s_client.golden_images.get_all(**self.facts_params)
 
         ansible_facts['golden_images'] = golden_images
 
