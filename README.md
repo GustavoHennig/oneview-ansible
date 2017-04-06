@@ -7,7 +7,7 @@ Modules to manage HPE OneView using Ansible playbooks.
 
 ## Requirements
 
- - Ansible >= 2.0.2
+ - Ansible >= 2.1
  - Python >= 2.7.9
  - HPE OneView Python SDK ([Install HPE OneView Python SDK](https://github.com/HewlettPackard/python-hpOneView#installation))
 
@@ -64,7 +64,7 @@ Sample playbooks and instructions on how to run the modules can be found in the 
 
 To run the Ansible modules provided in this project, you should execute the following steps:
 
-###1. Clone the repository
+### 1. Clone the repository
 
 Run:
 
@@ -72,17 +72,18 @@ Run:
 $ git clone https://github.com/HewlettPackard/oneview-ansible.git
 ```
 
-###2. Configure the ANSIBLE_LIBRARY environmental variable
+### 2. Configure the ANSIBLE_LIBRARY environmental variable
 
-Set the `ANSIBLE_LIBRARY` path, specifying the `library` full path from the cloned project:
+Set the environment variables `ANSIBLE_LIBRARY` and `PYTHONPATH`, specifying the `library` full path from the cloned project:
 
 ```bash
 $ export ANSIBLE_LIBRARY=/path/to/oneview-ansible/library
+$ export PYTHONPATH=$PYTHONPATH:$ANSIBLE_LIBRARY
 ```
 
-###3. OneViewClient Configuration
+### 3. OneViewClient Configuration
 
-####Using a JSON Configuration File
+#### Using a JSON Configuration File
 
 To use the Ansible OneView modules, you can store the configuration on a JSON file. This file is used to define the
 settings, which will be used on the OneView appliance connection, like hostname, username, and password. Here's an
@@ -120,7 +121,7 @@ The configuration file path must be provided for all of the playbooks `config` a
     name: "FCoE Network Test"
 ```
 
-####Environment Variables
+#### Environment Variables
 
 If you prefer, the configuration can also be stored in environment variables.
 
@@ -148,7 +149,7 @@ In this case, you shouldn't provide the `config` argument. For example:
 
 Once you have defined the environment variables, you can run the plays.
 
-###4. OneView 3.0
+### 4. OneView 3.0
 
 The Ansible Modules for HPE OneView already supports the new API endpoints for OneView 3.0 and for HPE Synergy.
 To access this feature, you must set the API version on the OneViewClient configuration, either using the JSON configuration:
@@ -163,7 +164,7 @@ export ONEVIEWSDK_API_VERSION='300'
 ```
 
 
-###5. HPE Synergy Image Streamer
+### 5. HPE Synergy Image Streamer
 
 Modules to manage HPE Synergy Image Streamer appliances are also included in this project.
 To use these modules, you must set the Image Streamer IP on the OneViewClient configuration,

@@ -42,20 +42,22 @@ class AnsibleModuleDocumentationTest(unittest.TestCase):
         "key3": '',
         "key4": None,
         "key5": False,
-        "key6": 1
+        "key6": 1,
+        "key7": "Test I(Italic), C(highlight), U(http://teste.com)"
     }
 
     def test_resource_compare_equals(self):
         ret = format_dict(self.DICT_WITH_FORMATTING)
 
         self.assertEqual(ret,
-                         {'key1': {'key1.key1': 'List with params X(parentheses): **count**, **fields** and **view**.'},
+                         {'key1': {'key1.key1': 'List with params X(parentheses): `count`, `fields` and `view`.'},
                           'key2': ['',
                                    {'k2.l2': '1'},
-                                   {'k2.l3': {'l3.k1': {'l3.k1.l1': ['**test**', None]}}},
-                                   'More format: **count** C(without end'],
+                                   {'k2.l3': {'l3.k1': {'l3.k1.l1': ['`test`', None]}}},
+                                   'More format: `count` C(without end'],
                           'key3': '',
                           'key4': None,
                           'key5': False,
-                          'key6': 1}
+                          'key6': 1,
+                          'key7': "Test _Italic_, `highlight`, http://teste.com"}
                          )

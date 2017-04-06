@@ -1,6 +1,6 @@
 #!/bin/bash
 ###
-# Copyright (2016) Hewlett Packard Enterprise Development LP
+# Copyright (2016-2017) Hewlett Packard Enterprise Development LP
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # You may not use this file except in compliance with the License.
@@ -40,6 +40,12 @@ fi
 
 export PYTHONPATH=$PYTHON_SDK:$ANSIBLE_LIBRARY:$PYTHONPATH
 
+# Find site packages
+site_packages=$(python -c "from distutils.sysconfig import get_python_lib; print get_python_lib()")
+
+# Copy OneView doc fragements to the Ansible located in the site packages
+cp -f build-doc/module_docs_fragments/oneview.py ${site_packages}/ansible/utils/module_docs_fragments/
+
 print_summary () {
   if [ $2 -eq 0 ]; then
     echo -e "  ${COLOR_SUCCESS}$1: ok${COLOR_END}"
@@ -61,7 +67,7 @@ validate_modules () {
         fi
         echo "$line"
       fi
-    done < <(ansible-validate-modules library)
+    done < <(ansible-validate-modules library --exclude module_utils)
   else
     echo "ERROR: ansible-validate-modules is not installed."
     exit_code_module_validation=1
@@ -92,14 +98,15 @@ if [ -z "$TRAVIS" ]; then
   exit_code_doc_generation=$?
 
 #Coveralls runs only when Travis is running the build
-else  
+else
   echo -e "\n${COLOR_START}Running Coveralls${COLOR_END}"
-  coverage run --source=library/ -m unittest discover
+  coverage run --source=library/ -m unittest discover test/
+  # Append module_utils tests
+  coverage run -a --source=library/ -m unittest discover test/module_utils
   coveralls
   exit_code_coveralls=$?
 fi
 
-export PYTHONPATH=dependencies:$PYTHONPATH
 
 echo -e "\n${COLOR_START}Running tests${COLOR_END}"
 python -m unittest discover

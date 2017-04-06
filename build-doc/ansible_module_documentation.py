@@ -117,7 +117,11 @@ def main():
             try:
                 module_file_name = os.path.normpath(os.path.join(root, file_name))
 
-                doc, plainexamples, returndocs = module_docs.get_docstring(module_file_name)
+                # Tuple size may vary according to the Ansible version
+                docstring = module_docs.get_docstring(module_file_name)
+                doc = docstring[0]
+                plainexamples = docstring[1]
+                returndocs = docstring[2]
 
                 if doc:
                     doc = format_dict(doc)
@@ -150,8 +154,9 @@ def check_exclusion(file_name, exclusion_filters):
 
 
 def format_doc(data):
-    ret = re.sub(r"(C\()(.*?)(\))", r'**\2**', data)
+    ret = re.sub(r"(C\()(.*?)(\))", r'`\2`', data)
     ret = re.sub(r"(U\()(.*?)(\))", r'\2', ret)
+    ret = re.sub(r"(I\()(.*?)(\))", r'_\2_', ret)
     return ret
 
 
@@ -167,7 +172,8 @@ def format_dict(ancestor):
         try:
             return format_doc(ancestor)
         except Exception as e:
-            print(str(type(ancestor)) + e.args[0])
+            # For debug purpose:
+            # errors.append(str(type(ancestor)) + e.args[0])
             return ancestor
 
     return ancestor
