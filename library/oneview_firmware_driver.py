@@ -41,7 +41,7 @@ options:
       description:
         - Firmware driver name.
       required: True
-      
+
 extends_documentation_fragment:
     - oneview
 '''
