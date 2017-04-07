@@ -83,7 +83,6 @@ from module_utils.oneview import OneViewModuleBase
 class GoldenImageFactsModule(OneViewModuleBase):
     argument_spec = dict(
         name=dict(required=False, type='str'),
-        options=dict(required=False, type='list'),
         params=dict(required=False, type='dict')
     )
 
